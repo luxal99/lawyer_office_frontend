@@ -1,14 +1,16 @@
 .col-sm-3 h5 {
-    padding-top: .5em;
+    padding-top: 1em;
     margin-left: 1em;
+}
+
+.left-col,
+.middle-col,
+.right-col {
+    padding-top: .5em;
 }
 
 .left-col {
     border-right: 1px solid #e1e1e1;
-}
-
-.middle-col {
-    padding: 1em;
 }
 
 mat-form-field {
@@ -17,11 +19,6 @@ mat-form-field {
 
 .right-col {
     border-left: 1px solid #e1e1e1;
-    padding: 2em;
-}
-
-.right-col h4 {
-    font-weight: bold;
 }
 
 .profile-btn {
