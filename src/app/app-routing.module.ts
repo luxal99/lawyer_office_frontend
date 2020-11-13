@@ -8,8 +8,8 @@ import { AuthService } from './service/auth.service';
 
 
 const routes: Routes = [
-  { path: '', component: OfficeOverviewComponent,canActivate:[AuthService] },
-  {path:'login',component:LoginComponent},
+  {path:'',component:LoginComponent},
+  { path: 'overview', component: OfficeOverviewComponent,canActivate:[AuthService] },
   { path: 'register', component: RegistationComponent}
 ];
 
