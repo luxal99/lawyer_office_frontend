@@ -10,6 +10,7 @@ import { OfficeOverviewComponent } from './office-overview/office-overview.compo
 import { CaseOverviewComponent } from './case-overview/case-overview.component';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule

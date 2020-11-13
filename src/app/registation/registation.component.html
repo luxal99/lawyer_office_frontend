@@ -7,14 +7,22 @@
                 <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" alt="" class="img-fluid">
             </div>
             <div class="form-div">
-                <form [formGroup]="loginForm">
+                <form [formGroup]="registrationForm">
                     <div>
                         <mat-form-field appearance="fill">
                             <mat-label>Ime i prezime</mat-label>
-                            <input formControlName="username" matInput placeholder="lawyer21">
+                            <input formControlName="full_name" matInput placeholder="John Doe">
                             <mat-icon matSuffix>spellcheck</mat-icon>
                         </mat-form-field>
                     </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input formControlName="email" matInput placeholder="mail@example.com">
+                            <mat-icon matSuffix>account_circle</mat-icon>
+                        </mat-form-field>
+                    </div>
+
                     <div>
                         <mat-form-field appearance="fill">
                             <mat-label>Korisničko ime</mat-label>
@@ -26,19 +34,19 @@
                     <div>
                         <mat-form-field appearance="fill">
                             <mat-label>Šifra</mat-label>
-                            <input formControlName="password" matInput placeholder="Password">
+                            <input type="password" formControlName="password" matInput placeholder="Password">
                             <mat-icon matSuffix>lock</mat-icon>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field appearance="fill">
                             <mat-label>Ponovite šifru</mat-label>
-                            <input formControlName="password" matInput placeholder="Password">
+                            <input type="password" formControlName="confirm_password" matInput placeholder="Password">
                             <mat-icon matSuffix>lock</mat-icon>
                         </mat-form-field>
                     </div>
                     <div>
-                        <button mat-button [disabled]="!loginForm.valid" class="login-btn gradient-blue-btn">Pristupi</button>
+                        <button mat-button [disabled]="!registrationForm.valid" class="login-btn gradient-blue-btn" (click)="register()">Registruj se</button>
                     </div>
                 </form>
             </div>
