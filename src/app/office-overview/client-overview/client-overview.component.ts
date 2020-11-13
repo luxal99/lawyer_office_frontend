@@ -9,7 +9,7 @@ export class ClientOverviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
   }
 
 }

@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { ClientOverviewComponent } from './office-overview/client-overview/client-overview.component';
+import { GlobalOverviewComponent } from './office-overview/global-overview/global-overview.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ClientOverviewComponent } from './office-overview/client-overview/clien
     OfficeOverviewComponent,
     CaseOverviewComponent,
     HeaderComponent,
-    ClientOverviewComponent
+    ClientOverviewComponent,
+    GlobalOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { ClientOverviewComponent } from './office-overview/client-overview/clien
     ReactiveFormsModule
   ],
   providers: [],
+  entryComponents:[ClientOverviewComponent,GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

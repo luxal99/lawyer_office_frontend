@@ -1,11 +1,18 @@
 <app-header></app-header>
 <div class="content">
     <div class="row">
-        <div class="col-sm-3">
-            <h4 class="current"><i class="fa fa-eye"></i> Pregled</h4>
-            <h4><i class="fa fa-users"></i> Stranke</h4>
-            <h4> <i class="fa fa-book"></i> Predmeti</h4>
-            <h4><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+        <div class="col-sm-3" id="menu">
+            <a (click)="loadGlobarOverview()">
+                <h4 (click)="changeColor($event)" class="link"><i class="fa fa-eye"></i> Pregled</h4>
+            </a>
+            <a (click)="loadClientOverview()">
+                <h4 (click)="changeColor($event)" class="link"><i class="fa fa-users"></i> Stranke</h4>
+            </a>
+            <h4 class="link"> <i class="fa fa-book"></i> Predmeti</h4>
+            <h4 class="link"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+        </div>
+        <div class="target" #target>
+
         </div>
     </div>
 </div>

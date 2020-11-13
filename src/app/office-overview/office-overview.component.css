@@ -13,8 +13,12 @@
     padding-top: .3em;
 }
 
-.current {
+.active {
     color: #56CCF2;
     color: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
     color: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+.content h4:hover {
+    cursor: pointer;
 }
