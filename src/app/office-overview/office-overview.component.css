@@ -1,4 +1,20 @@
 .content {
     background-color: #F7F8F8;
-    min-height: 86vh;
+    min-height: 91vh;
+}
+
+.content .row .col-sm-3 {
+    padding: 2em;
+    border-right: 1px solid #e1e1e1;
+    height: 91vh;
+}
+
+.content h4 {
+    padding-top: .3em;
+}
+
+.current {
+    color: #56CCF2;
+    color: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    color: linear-gradient(to right, #2F80ED, #56CCF2);
 }

@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { ClientOverviewComponent } from './office-overview/client-overview/client-overview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './header/header.component';
     RegistationComponent,
     OfficeOverviewComponent,
     CaseOverviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    ClientOverviewComponent
   ],
   imports: [
     BrowserModule,
