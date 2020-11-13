@@ -1,49 +1,33 @@
-<div class="nav-menu">
-    <div class="row text-left">
-        <div class="col-sm text-left" style="padding:2em;display: inline-flex;">
-            <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" width="100px" height="100px" alt="">
-            
-        </div>
-        <div class="col-sm-6" style="padding:2em;display: inline-flex;">
-            <div class="search-div">
-                <form [formGroup]="searchForm">
-                    <mat-form-field class="example-full-width">
-                        
-                        <mat-label><mat-icon matSuffix>search</mat-icon></mat-label>
-                        <input type="text" matInput [matAutocomplete]="auto" formControlName="search">
-                       
-                    </mat-form-field>
-                </form>
+<div class="header">
+    <div class="row">
+        <div class="col-sm-3 left-col">
+            <div style="display: inline-flex;padding: 2em;">
+                <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" height="50px" width="50px" alt="">
+                <h5>Advokatska kancelarija</h5>
             </div>
         </div>
-        <div class="col-sm text-right" style="padding:2em;display: inline-flex;">
-
+        <div class="col-sm text-center middle-col">
+            <mat-form-field appearance="legacy">
+                <mat-label>Pretaži</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-3 right-col text-right">
             <div style="display: inline-flex;">
-
-                <button mat-icon-button [matMenuTriggerFor]="notificationMenu" id="notification"><mat-icon [matBadge]="notificationCounter" style="margin-top: 1.5em;margin-right: 2em;color: #fff;" id="notification" matBadgeColor="warn">info</mat-icon></button>
-
-                <mat-menu #notificationMenu="matMenu">
-                    <div class="notification-div" *ngFor="let notf of listOfNotifications">
-                        <h6>Neprocitana poruka od <span style="font-weight: bold;" *ngIf="listOfNotifications.length > 0">{{notf.senderId.username}}</span></h6>
-                    </div>
-                </mat-menu>
-
-
-                
-
-                <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-btn" id="userBtn"><mat-icon>notifications_active</mat-icon></button>
+                <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>notifications</mat-icon></button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item routerLinkActive="router-link-active"><mat-icon style="color: #121212;">person</mat-icon> Profil</button>
-                    <button mat-menu-item><mat-icon style="color: #121212;">exit_to_app</mat-icon> Logout</button>
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
                 </mat-menu>
 
-                <a>
-                    <h5 class="h4-bold" id="h4-bold">Admin123</h5>
-                    <!-- <h4 id="userParagraf">{{loggedUser}}</h4> -->
-                </a>
+                <h4>{{username}}</h4>
+                <button mat-icon-button class="profile-btn" [matMenuTriggerFor]="profile"><mat-icon>expand_more</mat-icon></button>
+                <mat-menu #profile="matMenu">
+                    <button mat-menu-item>Item 1</button>
+                    <button mat-menu-item>Item 2</button>
+                </mat-menu>
             </div>
-
-
         </div>
     </div>
 </div>
