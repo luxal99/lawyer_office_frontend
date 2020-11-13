@@ -10,7 +10,11 @@ import { OfficeOverviewComponent } from './office-overview/office-overview.compo
 import { CaseOverviewComponent } from './case-overview/case-overview.component';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+<<<<<<< Updated upstream
 import { HttpClientModule } from '@angular/common/http';
+=======
+import { HeaderComponent } from './header/header.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegistationComponent,
     OfficeOverviewComponent,
-    CaseOverviewComponent
+    CaseOverviewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

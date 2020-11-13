@@ -1,0 +1,95 @@
+.nav-menu {
+    background-color: #fff;
+    padding: 0% 5% 0% 0;
+}
+
+.search-div {
+    width: 50%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.menu-btn {
+    margin-top: 2em;
+    color: #121212;
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 1.5em;
+}
+
+.circle {
+    background-color: #FF634E;
+    color: #fff;
+}
+
+.h4-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding-left: .5em;
+    color: #121212;
+    padding-top: 1.8em;
+}
+
+.h4-bold-active {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    padding-left: .5em;
+    color: #FF634E;
+    padding-top: 1.8em;
+}
+
+.h4-bold:hover,
+.h4-bold-active:hover {
+    color: #535050;
+    transition: .5s ease;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+::ng-deep.mat-dialog-container {
+    padding: 0 !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #fff !important;
+}
+
+ ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #fff !important;
+}
+
+.nav-menu {
+    background-color: #fff;
+}
+
+::ng-deep.mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #535050;
+}
+
+input {
+    color: #fff;
+}
+
+#userParagraf {
+    color: #fff;
+}
+
+.notification-div {
+    padding: 2em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media screen and (max-width:756px) {
+    .search-div {
+        width: 100%;
+    }
+}
