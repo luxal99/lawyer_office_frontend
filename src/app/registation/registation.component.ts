@@ -16,7 +16,6 @@ export class RegistationComponent implements OnInit {
     email: new FormControl("", Validators.required),
     username: new FormControl("", Validators.required),
     password: new FormControl("", Validators.required),
-
     confirm_password: new FormControl("", Validators.required),
   })
 
@@ -26,17 +25,16 @@ export class RegistationComponent implements OnInit {
   }
 
   register() {
-    this.userService.save(new User(
-      this.registrationForm.get("username").value, this.registrationForm.get("password").value,
-      new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
-    )).subscribe(resp => {
-      this.openSnackBar(resp, "DONE")
-    }, err => {
-      console.log(err);
-      console.log(err);
-      
-      // this.openSnackBar("Dogodila se greska", "DONE")
-    })
+    if (this.registrationForm.get("password").value === this.registrationForm.get("confirm_password")) {
+      this.userService.save(new User(
+        this.registrationForm.get("username").value, this.registrationForm.get("password").value,
+        new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
+      )).subscribe(resp => {
+        this.openSnackBar(resp, "DONE")
+      }, err => {
+        this.openSnackBar("Dogodila se greska", "DONE")
+      })
+    }
   }
 
   openSnackBar(message: string, action: string) {
