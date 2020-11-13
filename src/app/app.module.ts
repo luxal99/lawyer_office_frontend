@@ -9,6 +9,7 @@ import { RegistationComponent } from './registation/registation.component';
 import { OfficeOverviewComponent } from './office-overview/office-overview.component';
 import { CaseOverviewComponent } from './case-overview/case-overview.component';
 import { MaterialModule } from './material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MaterialModule } from './material.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
