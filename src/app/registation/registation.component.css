@@ -31,3 +31,44 @@ mat-form-field {
     color: #fff;
     font-size: 16px;
 }
+
+@media screen and (max-width:420px){
+    .login-form{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 5%;
+        margin-right:5%;
+    }
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px){
+    .login-form{
+        margin-top: 10%;
+        margin-bottom: 5%;
+        margin-left: 0%;
+        margin-right:0%;
+        zoom: 100%;
+    }
+    .col-sm-4{
+        max-width: 80%;
+        flex: 80%;
+        margin-left: 5em;
+
+    }
+}
+@media only screen 
+and (min-device-width : 1024px) 
+and (max-device-width : 1366px){
+    .login-form{
+        margin-top: 10%;
+        margin-bottom: 5%;
+        margin-left: 16%;
+        margin-right:16%;
+        zoom: 100%;
+    }
+    .col-sm-4{
+        max-width: 80%;
+    }
+
+}
