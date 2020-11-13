@@ -1,4 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.gradient-blue-btn {
+    background: #56CCF2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+    font-family: 'Cairo', sans-serif;
+}

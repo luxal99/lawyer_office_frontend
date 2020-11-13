@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistationComponent } from './registation/registation.component';
 import { OfficeOverviewComponent } from './office-overview/office-overview.component';
 import { CaseOverviewComponent } from './case-overview/case-overview.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CaseOverviewComponent } from './case-overview/case-overview.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
