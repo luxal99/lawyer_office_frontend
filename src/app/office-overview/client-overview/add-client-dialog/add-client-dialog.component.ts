@@ -11,6 +11,8 @@ import { ClientService } from 'src/app/service/client.service';
 })
 export class AddClientDialogComponent implements OnInit {
 
+  heading = "Dodavanje stranke"
+
   addClientForm = new FormGroup({
     full_name: new FormControl(this.data.full_name, Validators.required),
     email: new FormControl(this.data.email, Validators.required),
@@ -19,6 +21,13 @@ export class AddClientDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Client, private clientService: ClientService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.setHeading();
+  }
+
+  setHeading(){
+    if (this.data.id !== undefined) {
+      this.heading = "Izmena stranke"
+    }
   }
 
   save() {
@@ -28,7 +37,10 @@ export class AddClientDialogComponent implements OnInit {
       this.addClientForm.get("email").value,
       this.addClientForm.get("telephone").value)
 
-    if (this.data.id !== null) {
+    if (this.data.id !== undefined) {
+    
+      console.log(this.data.id);
+      
       client.id = this.data.id;
 
       this.clientService.update(client).subscribe(resp => {

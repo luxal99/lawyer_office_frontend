@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { from } from 'rxjs';
 import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
 import { AddClientDialogComponent } from './add-client-dialog/add-client-dialog.component';
 import { ClientOverviewDialogComponent } from './client-overview-dialog/client-overview-dialog.component';
-
 @Component({
   selector: 'app-client-overview',
   templateUrl: './client-overview.component.html',
@@ -25,7 +25,10 @@ export class ClientOverviewComponent implements OnInit {
       this.listOfClients = resp as Array<Client>;
     })
   }
+  
   openAddClientDialog(client?:Client): void {
+
+    
     const dialogRef = this.dialog.open(AddClientDialogComponent, {
       minWidth: '40%',
       position: { right: '0' },

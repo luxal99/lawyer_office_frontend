@@ -41,8 +41,6 @@ export class OfficeOverviewComponent implements OnInit {
     e.target.className = "active";
   }
 
-  
-
 
   async loadGlobarOverview() {
     this.entry.clear();
@@ -58,4 +56,11 @@ export class OfficeOverviewComponent implements OnInit {
     this.entry.createComponent(factory);
   }
 
+
+  async loadCaseOverview() {
+    this.entry.clear();
+    const { CaseOverviewComponent } = await import('./case-overview/case-overview.component');
+    const factory = this.resolver.resolveComponentFactory(CaseOverviewComponent)
+    this.entry.createComponent(factory);
+  }
 }

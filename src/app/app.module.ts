@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegistationComponent } from './registation/registation.component';
 import { OfficeOverviewComponent } from './office-overview/office-overview.component';
-import { CaseOverviewComponent } from './case-overview/case-overview.component';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,21 +17,23 @@ import { AddClientDialogComponent } from './office-overview/client-overview/add-
 import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { AddCaseDialogComponent } from './office-overview/case-overview/add-case-dialog/add-case-dialog.component';
 import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
-
+import {CaseOverviewComponent} from "./office-overview/case-overview/case-overview.component";
+import { HeadingComponent } from './heading/heading.component'
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistationComponent,
-    OfficeOverviewComponent,
     CaseOverviewComponent,
+    OfficeOverviewComponent,
     HeaderComponent,
     ClientOverviewComponent,
     GlobalOverviewComponent,
     AddClientDialogComponent,
     ClientOverviewDialogComponent,
     AddCaseDialogComponent,
-    CaseOverviewDialogComponent
+    CaseOverviewDialogComponent,
+    HeadingComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,7 @@ import { CaseOverviewDialogComponent } from './office-overview/case-overview/cas
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents: [AddClientDialogComponent,AddCaseDialogComponent,CaseOverviewDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
+  entryComponents: [AddClientDialogComponent, AddCaseDialogComponent,CaseOverviewComponent, CaseOverviewDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

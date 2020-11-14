@@ -1,1 +1,22 @@
-<p>add-case-dialog works!</p>
+<div class="case-dialog">
+    <app-heading header="Dodavanje predmeta"></app-heading>
+    <form [formGroup]="addCaseForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Ime i prezime</mat-label>
+                <input formControlName="full_name" matInput placeholder="John Doe">
+                <mat-icon matSuffix>subject</mat-icon>
+                <mat-hint>Ovo polje je obavezno</mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Datum početka slučaja</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+    <app-heading header="Napomena"></app-heading>
+</div>

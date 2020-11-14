@@ -19,7 +19,11 @@ h5,
 h6,
 p,
 button {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif !important;
+}
+
+button {
+    font-weight: bold !important;
 }
 
 .gradient-red-btn {

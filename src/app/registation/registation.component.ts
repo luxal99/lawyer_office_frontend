@@ -25,7 +25,7 @@ export class RegistationComponent implements OnInit {
   }
 
   register() {
-    if (this.registrationForm.get("password").value === this.registrationForm.get("confirm_password")) {
+    if (this.registrationForm.get("password").value === this.registrationForm.get("confirm_password").value) {
       this.userService.save(new User(
         this.registrationForm.get("username").value, this.registrationForm.get("password").value,
         new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
