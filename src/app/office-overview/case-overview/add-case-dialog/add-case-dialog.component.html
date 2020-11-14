@@ -3,8 +3,8 @@
     <form [formGroup]="addCaseForm">
         <div>
             <mat-form-field appearance="fill">
-                <mat-label>Ime i prezime</mat-label>
-                <input formControlName="full_name" matInput placeholder="John Doe">
+                <mat-label>Naslov</mat-label>
+                <input formControlName="title" matInput placeholder="John Doe">
                 <mat-icon matSuffix>subject</mat-icon>
                 <mat-hint>Ovo polje je obavezno</mat-hint>
             </mat-form-field>
@@ -17,6 +17,36 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Odaberi stranku</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let client of listOfClietns" [value]="client">
+                        {{client.full_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </form>
+    <div>
+        <div class="row add-lawsuid-div">
+            <div class="col-sm">
+                <h4>Dodaj ročište</h4>
+            </div>
+            <div class="col-sm text-right">
+                <button mat-icon-button (click)="showLawsuitForm()"><mat-icon>keyboard_arrow_down</mat-icon></button>
+            </div>
+        </div>
+
+
+        <div id="lawsuit" style="display: none;">
+            <h6>Rociste</h6>
+        </div>
+    </div>
     <app-heading header="Napomena"></app-heading>
+    <div style="margin-top: 2em;">
+        <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
+    </div>
+
+    <button class="gradient-blue-btn save-btn" mat-button>Sačuvaj</button>
 </div>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +37,7 @@ import { HeadingComponent } from './heading/heading.component'
   ],
   imports: [
     BrowserModule,
+    CKEditorModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
