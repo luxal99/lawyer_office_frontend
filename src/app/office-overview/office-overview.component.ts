@@ -17,7 +17,11 @@ export class OfficeOverviewComponent implements OnInit {
   constructor(private cvRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
- 
+    this.initDefaultMenu();
+  }
+
+  initDefaultMenu(){
+   document.getElementById("overview-btn").click();
   }
 
   changeColor(e){
