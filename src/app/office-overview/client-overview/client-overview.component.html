@@ -1,3 +1,32 @@
 <div class="client">
-    <h1>Stranke</h1>
+    <div class="row">
+        <div class="col">
+            <h1>Stranke</h1>
+        </div>
+        <div class="col text-right">
+            <button mat-button (click)="openAddClientDialog()" class="add-client-btn gradient-blue-btn">Dodaj stranku</button>
+        </div>
+    </div>
+
+    <div class="client-container">
+        <div class="client-item" *ngFor="let client of listOfClients">
+            <div class="row">
+                <div class="col-sm border-col">
+                    <h6>Ime i prezime</h6>
+                    <h4>{{client.full_name}}</h4>
+                </div>
+                <div class="col-sm border-col">
+                    <h6>Telefon</h6>
+                    <h4>{{client.telephone}}</h4>
+                </div>
+                <div class="col-sm">
+                    <div class="btn-div">
+                        <button mat-button class="gradient-blue-btn overview-btn">Pregledaj</button>
+
+                        <button mat-button class="gradient-red-btn del-btn">Obriši</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

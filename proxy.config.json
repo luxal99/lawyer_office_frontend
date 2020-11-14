@@ -1,6 +1,9 @@
 [{
     "context": [
-        "/user"
+        "/user",
+        "/client",
+        "/case",
+        "/lawsuit"
     ],
     "target": "http://localhost:8080",
     "secure": false

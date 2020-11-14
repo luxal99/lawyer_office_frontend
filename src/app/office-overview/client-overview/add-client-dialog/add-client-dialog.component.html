@@ -1,0 +1,38 @@
+<div class="client-dialog">
+    <h3>Dodavanje stranke</h3>
+    <mat-divider></mat-divider>
+
+    <div class="form-div">
+        <form [formGroup]="addClientForm">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Ime i prezime</mat-label>
+                    <input formControlName="full_name" matInput placeholder="Placeholder">
+                    <mat-icon matSuffix>subject</mat-icon>
+                    <mat-hint>Ovo polje je obavezno</mat-hint>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Placeholder">
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                    <mat-hint>Ovo polje je obavezno</mat-hint>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Kontakt telefon</mat-label>
+                    <input matInput formControlName="telephone" placeholder="06921***">
+                    <mat-icon matSuffix>contact_phone</mat-icon>
+                    <mat-hint>Ovo polje je obavezno</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-button class="gradient-blue-btn save-btn" (click)="save()" mat-dialog-close>Sačuvaj</button>
+            </div>
+
+        </form>
+    </div>
+</div>

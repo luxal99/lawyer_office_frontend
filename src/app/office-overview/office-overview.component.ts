@@ -1,5 +1,6 @@
 import { ComponentFactoryResolver } from '@angular/core';
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { async } from '@angular/core/testing';
 import * as $ from "jquery"
 @Component({
   selector: 'app-office-overview',
@@ -17,11 +18,19 @@ export class OfficeOverviewComponent implements OnInit {
   constructor(private cvRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
+  }
+
+
+  ngAfterViewInit(): void {
     this.initDefaultMenu();
   }
 
-  initDefaultMenu(){
+
+ async initDefaultMenu(){
    document.getElementById("overview-btn").click();
+   const { GlobalOverviewComponent } = await import('./global-overview/global-overview.component');
+   const factory = this.resolver.resolveComponentFactory(GlobalOverviewComponent)
+   this.entry.createComponent(factory);
   }
 
   changeColor(e){
@@ -33,10 +42,6 @@ export class OfficeOverviewComponent implements OnInit {
   }
 
   
-
-  ngAfterViewInit(): void {
-    this.loadGlobarOverview()
-  }
 
 
   async loadGlobarOverview() {

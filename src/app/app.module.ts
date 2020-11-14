@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { ClientOverviewComponent } from './office-overview/client-overview/client-overview.component';
 import { GlobalOverviewComponent } from './office-overview/global-overview/global-overview.component';
+import { AddClientDialogComponent } from './office-overview/client-overview/add-client-dialog/add-client-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GlobalOverviewComponent } from './office-overview/global-overview/globa
     CaseOverviewComponent,
     HeaderComponent,
     ClientOverviewComponent,
-    GlobalOverviewComponent
+    GlobalOverviewComponent,
+    AddClientDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { GlobalOverviewComponent } from './office-overview/global-overview/globa
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents:[ClientOverviewComponent,GlobalOverviewComponent],
+  entryComponents:[AddClientDialogComponent,ClientOverviewComponent,GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,39 @@
+.client-dialog {
+    padding: 2em 1em;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+mat-icon {
+    color: #56CCF2;
+    /* fallback for old browsers */
+    color: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    color: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+mat-form-field {
+    width: 90%;
+    margin-top: 2em;
+}
+
+.form-div {
+    padding: 1em 0 2em 0;
+}
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background: none
+}
+
+::ng-deep.mat-form-field-underline {
+    transform: none;
+}
+
+.save-btn {
+    width: 60%;
+    padding: .5em 0 .5em 0;
+    margin-top: 2em;
+    color: #fff;
+}

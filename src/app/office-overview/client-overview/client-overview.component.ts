@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Client } from 'src/app/model/Client';
+import { ClientService } from 'src/app/service/client.service';
+import { AddClientDialogComponent } from './add-client-dialog/add-client-dialog.component';
 
 @Component({
   selector: 'app-client-overview',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientOverviewComponent implements OnInit {
 
-  constructor() { }
+  listOfClients:Array<Client> = [];
+
+  constructor(private dialog: MatDialog,private clientService:ClientService) { }
 
   async ngOnInit(): Promise<void> {
+    this.getAllClients();
+  }
+
+  getAllClients(){
+    this.clientService.getAll().subscribe(resp=>{
+      this.listOfClients = resp as Array<Client>;
+    })
+  }
+  openAddClientDialog(): void {
+    const dialogRef = this.dialog.open(AddClientDialogComponent, {
+      minWidth: '40%',
+      position: { right: '0' },
+      height: '100vh'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllClients();
+    });
   }
 
 }
+
