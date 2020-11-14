@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { ClientOverviewComponent } from './office-overview/client-overview/client-overview.component';
 import { GlobalOverviewComponent } from './office-overview/global-overview/global-overview.component';
 import { AddClientDialogComponent } from './office-overview/client-overview/add-client-dialog/add-client-dialog.component';
+import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddClientDialogComponent } from './office-overview/client-overview/add-
     HeaderComponent,
     ClientOverviewComponent,
     GlobalOverviewComponent,
-    AddClientDialogComponent
+    AddClientDialogComponent,
+    ClientOverviewDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { AddClientDialogComponent } from './office-overview/client-overview/add-
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents:[AddClientDialogComponent,ClientOverviewComponent,GlobalOverviewComponent],
+  entryComponents: [AddClientDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,39 @@
+.client-overview-dialog {
+    padding: 3em 1em;
+}
+
+.blue-box,
+.silver-box {
+    border-radius: 10px;
+    height: 1em;
+    width: 25%;
+    margin-left: 1em;
+    margin-top: .3em;
+}
+
+.blue-box {
+    background: #56CCF2;
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+.silver-box {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #FFFFFF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #FFFFFF);
+}
+
+.case-container .col-sm-5 {
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    padding: 2em;
+    margin: 3em;
+    border-radius: 10px;
+}
+
+.case-container {
+    margin-top: 3em;
+}

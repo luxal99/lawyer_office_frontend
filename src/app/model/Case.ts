@@ -3,8 +3,11 @@ import { Client } from './Client';
 export class Case {
 
 	id: number;
+
+	title:string;
 	creation_date: Date;
 	note: string;
+	status:boolean
 
 	id_client: Client
 
