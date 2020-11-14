@@ -4,7 +4,7 @@
             <h1>Stranke</h1>
         </div>
         <div class="col text-right">
-            <button mat-button (click)="openAddClientDialog()" class="add-client-btn gradient-blue-btn">Dodaj stranku</button>
+            <button mat-button (click)="openAddClientDialog({})" class="add-client-btn gradient-blue-btn">Dodaj stranku</button>
         </div>
     </div>
 
@@ -22,6 +22,7 @@
                 <div class="col-sm">
                     <div class="btn-div">
                         <button mat-button class="gradient-blue-btn overview-btn" (click)="openClientOverview(client)">Pregledaj</button>
+                        <button mat-button class="gradient-blue-btn edit-btn" (click)="openAddClientDialog(client)">Izmeni</button>
 
                         <button mat-button class="gradient-red-btn del-btn">Obriši</button>
                     </div>

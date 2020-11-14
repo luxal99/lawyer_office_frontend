@@ -16,6 +16,8 @@ import { ClientOverviewComponent } from './office-overview/client-overview/clien
 import { GlobalOverviewComponent } from './office-overview/global-overview/global-overview.component';
 import { AddClientDialogComponent } from './office-overview/client-overview/add-client-dialog/add-client-dialog.component';
 import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
+import { AddCaseDialogComponent } from './office-overview/case-overview/add-case-dialog/add-case-dialog.component';
+import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ClientOverviewDialogComponent } from './office-overview/client-overview
     ClientOverviewComponent,
     GlobalOverviewComponent,
     AddClientDialogComponent,
-    ClientOverviewDialogComponent
+    ClientOverviewDialogComponent,
+    AddCaseDialogComponent,
+    CaseOverviewDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,7 @@ import { ClientOverviewDialogComponent } from './office-overview/client-overview
     ReactiveFormsModule
   ],
   providers: [],
-  entryComponents: [AddClientDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
+  entryComponents: [AddClientDialogComponent,AddCaseDialogComponent,CaseOverviewDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

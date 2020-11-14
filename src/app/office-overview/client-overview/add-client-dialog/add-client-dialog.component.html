@@ -7,7 +7,7 @@
             <div>
                 <mat-form-field appearance="fill">
                     <mat-label>Ime i prezime</mat-label>
-                    <input formControlName="full_name" matInput placeholder="Placeholder">
+                    <input formControlName="full_name" matInput placeholder="John Doe">
                     <mat-icon matSuffix>subject</mat-icon>
                     <mat-hint>Ovo polje je obavezno</mat-hint>
                 </mat-form-field>
@@ -30,7 +30,7 @@
             </div>
 
             <div>
-                <button mat-button class="gradient-blue-btn save-btn" (click)="save()" mat-dialog-close>Sačuvaj</button>
+                <button mat-button class="gradient-blue-btn save-btn" (click)="save()" [disabled]="!addClientForm.valid" mat-dialog-close>Sačuvaj</button>
             </div>
 
         </form>

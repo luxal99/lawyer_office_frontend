@@ -25,11 +25,12 @@ export class ClientOverviewComponent implements OnInit {
       this.listOfClients = resp as Array<Client>;
     })
   }
-  openAddClientDialog(): void {
+  openAddClientDialog(client?:Client): void {
     const dialogRef = this.dialog.open(AddClientDialogComponent, {
       minWidth: '40%',
       position: { right: '0' },
-      height: '100vh'
+      height: '100vh',
+      data:client
     });
 
     dialogRef.afterClosed().subscribe(result => {

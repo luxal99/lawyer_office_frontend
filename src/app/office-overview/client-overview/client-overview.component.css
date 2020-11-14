@@ -19,15 +19,21 @@
     margin-top: 3em;
 }
 
-.del-btn {
+.del-btn,
+.edit-btn {
     margin-left: 2em;
 }
 
 .del-btn,
-.overview-btn {
+.overview-btn,
+.edit-btn {
     color: #fff;
     width: 30%;
     padding: .2em 0 .2em 0;
+}
+
+.edit-btn {
+    color: #121212;
 }
 
 h6 {
@@ -53,4 +59,12 @@ h6 {
     display: inline-flex;
     width: 100%;
     padding-bottom: 1em;
+}
+
+.edit-btn {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #FFFFFF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #FFFFFF);
 }

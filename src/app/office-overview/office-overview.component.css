@@ -22,3 +22,7 @@
 .content h4:hover {
     cursor: pointer;
 }
+
+.target {
+    zoom: 90%;
+}
