@@ -72,9 +72,11 @@ export class AddCaseDialogComponent implements OnInit {
     await this.caseService.save(caseEntity).subscribe(resp => {
       caseEntity.id = resp['id']
     }, err => {
-
     })
 
+
+    console.log(caseEntity.creation_date);
+    
     return caseEntity
   }
 
@@ -82,17 +84,14 @@ export class AddCaseDialogComponent implements OnInit {
     setTimeout(() => {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
 
-    console.log(lawsuit);
-    
+      this.lawsuitService.save(lawsuit).subscribe(resp => {
 
-    this.lawsuitService.save(lawsuit).subscribe(resp => {
+        this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")
+      }, err => {
+        console.log(err);
 
-      this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")
-    }, err => {
-      console.log(err);
-      
-      this.openSnackBar("Dogodila se greška pri čuvanju ročišta", "DONE")
-    })
+        this.openSnackBar("Dogodila se greška pri čuvanju ročišta", "DONE")
+      })
     }, 100);
   }
 
@@ -100,6 +99,9 @@ export class AddCaseDialogComponent implements OnInit {
     if (document.getElementById("lawsuit").style.display === "none") {
       this.saveCase().then(() => {
         this.openSnackBar("Uspešno ste sačuvali predmet", "DONE")
+      },err=>{
+
+        this.openSnackBar("Dogodila se greška pri čuvanju predmeta", "DONE")
       });
     } else {
 

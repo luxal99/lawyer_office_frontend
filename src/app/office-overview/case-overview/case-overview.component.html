@@ -7,4 +7,27 @@
             <button mat-button class="gradient-blue-btn add-btn" (click)="openAddCaseDialog()">Dodaj predmet</button>
         </div>
     </div>
+
+    <div class="overview-container">
+        <div class="client-item" *ngFor="let case of listOfCases">
+            <div class="row">
+                <div class="col-sm border-col">
+                    <h6>Naziv</h6>
+                    <h4>{{case.title}}</h4>
+                </div>
+                <div class="col-sm border-col">
+                    <h6>Telefon</h6>
+                    <h4>{{case.creation_date_formatted}}</h4>
+                </div>
+                <div class="col-sm">
+                    <div class="btn-div">
+                        <button mat-button class="gradient-blue-btn overview-btn" (click)="openCaseOverview(case)">Pregledaj</button>
+                        <button mat-button class="gradient-blue-btn edit-btn" (click)="openAddCaseDialog(case)">Izmeni</button>
+
+                        <button mat-button class="gradient-red-btn del-btn">Obriši</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

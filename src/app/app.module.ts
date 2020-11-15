@@ -19,6 +19,7 @@ import { AddCaseDialogComponent } from './office-overview/case-overview/add-case
 import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
 import {CaseOverviewComponent} from "./office-overview/case-overview/case-overview.component";
 import { HeadingComponent } from './heading/heading.component'
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,7 @@ import { HeadingComponent } from './heading/heading.component'
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   entryComponents: [AddClientDialogComponent, AddCaseDialogComponent,CaseOverviewComponent, CaseOverviewDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })

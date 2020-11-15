@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Client } from './Client';
 
 export class Case {
@@ -6,6 +7,7 @@ export class Case {
 
 	title:string;
 	creation_date: Date;
+	creation_date_formatted:string;
 	note: string;
 	status:boolean
 
