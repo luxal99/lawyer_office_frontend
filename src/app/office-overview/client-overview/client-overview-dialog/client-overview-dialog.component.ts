@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Client } from 'src/app/model/Client';
@@ -16,6 +17,9 @@ export class ClientOverviewDialogComponent implements OnInit {
 
   ngOnInit() {
     this.countCases();
+    this.data.listOfCases.forEach(cs => {
+      cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
+    })
   }
 
   countCases() {

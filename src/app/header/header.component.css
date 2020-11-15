@@ -9,17 +9,13 @@
     padding-top: .5em;
 }
 
-.left-col {
-    border-right: 1px solid #e1e1e1;
-}
+.left-col {}
 
 mat-form-field {
     width: 90%;
 }
 
-.right-col {
-    border-left: 1px solid #e1e1e1;
-}
+.right-col {}
 
 .profile-btn {
     color: #56CCF2;

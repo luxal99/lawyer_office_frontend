@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-sm-5" *ngFor="let case of data.listOfCases" [ngStyle]="case.status ? {'background':'linear-gradient(to right, #2F80ED, #56CCF2)','color':'#fff'}:{'background':'linear-gradient(to right, #ECE9E6, #FFFFFF)'}">
                 <h5>Naziv: {{case.title}}</h5>
-                <h5>Datum: {{case.creation_date}}</h5>
+                <h5>Datum: {{case.creation_date_formatted}}</h5>
             </div>
 
             <div class="col-sm-1"></div>

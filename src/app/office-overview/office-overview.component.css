@@ -5,7 +5,7 @@
 
 .content .row .col-sm-3 {
     padding: 2em;
-    border-right: 1px solid #e1e1e1;
+    background-color: #fff;
     height: 91vh;
 }
 
@@ -14,11 +14,23 @@
 }
 
 .active {
+    transition: .5s ease;
     color: #56CCF2;
     color: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
     color: linear-gradient(to right, #2F80ED, #56CCF2);
+    background-color: #121212;
+    padding: .5em;
+    border-radius: 20px;
 }
 
 .content h4:hover {
     cursor: pointer;
+}
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background: none
+}
+
+::ng-deep.mat-form-field-underline {
+    transform: none !important;
 }

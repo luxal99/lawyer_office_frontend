@@ -46,8 +46,13 @@ export class CaseOverviewDialogComponent implements OnInit {
   }
 
   changeStatus() {
-    this.data.status = false
 
+
+    if (this.data.status) {
+      this.data.status = false
+    } else {
+      this.data.status = true;
+    }
     this.caseService.update(this.data).subscribe(resp => {
       console.log(resp);
 

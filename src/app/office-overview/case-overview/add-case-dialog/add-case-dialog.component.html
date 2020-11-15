@@ -62,5 +62,5 @@
         <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
     </div>
 
-    <button class="gradient-blue-btn save-btn" (click)="save()" mat-button>Sačuvaj</button>
+    <button class="gradient-blue-btn save-btn" [disabled]="!addCaseForm.valid" (click)="save()" mat-button>Sačuvaj</button>
 </div>
