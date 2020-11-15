@@ -12,7 +12,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Datum početka slučaja</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput formControlName="creation_date" [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -20,7 +20,7 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Odaberi stranku</mat-label>
-                <mat-select>
+                <mat-select formControlName="id_client">
                     <mat-option *ngFor="let client of listOfClietns" [value]="client">
                         {{client.full_name}}
                     </mat-option>
@@ -50,7 +50,7 @@
             </form>
 
             <div style="margin-top: 2em">
-                <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
+                <ckeditor #lawsuitEditor [editor]="LawsuitEditor" [data]="lawsuitEditorData"></ckeditor>
             </div>
         </div>
     </div>
@@ -62,5 +62,5 @@
         <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
     </div>
 
-    <button class="gradient-blue-btn save-btn" mat-button>Sačuvaj</button>
+    <button class="gradient-blue-btn save-btn" (click)="save()" mat-button>Sačuvaj</button>
 </div>

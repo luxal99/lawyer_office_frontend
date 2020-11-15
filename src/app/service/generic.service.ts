@@ -11,7 +11,7 @@ export class GenericService<T> {
   constructor(protected http: HttpClient) { }
 
   save(entity: T) {
-    return this.http.post(`/${this.route}`, entity, { responseType: 'text' });
+    return this.http.post(`/${this.route}`, entity, { responseType: 'json' });
   }
 
   findById(id){

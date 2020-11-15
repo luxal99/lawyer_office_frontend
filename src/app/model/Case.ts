@@ -11,7 +11,8 @@ export class Case {
 
 	id_client: Client
 
-	constructor(_creation_date?: Date, _note?: string, _id_client?: Client) {
+	constructor(_title?:string,_creation_date?: Date, _note?: string, _id_client?: Client) {
+		this.title = _title;
 		this.creation_date = _creation_date;
 		this.note = _note;
 		this.id_client = _id_client;

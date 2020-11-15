@@ -30,7 +30,7 @@ export class RegistationComponent implements OnInit {
         this.registrationForm.get("username").value, this.registrationForm.get("password").value,
         new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
       )).subscribe(resp => {
-        this.openSnackBar(resp, "DONE")
+        this.openSnackBar('Uspesno ste se registrovali', "DONE")
       }, err => {
         this.openSnackBar("Dogodila se greska", "DONE")
       })
