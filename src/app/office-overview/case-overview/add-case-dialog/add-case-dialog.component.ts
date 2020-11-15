@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/model/Client';
 import { CaseService } from 'src/app/service/case.service';
@@ -7,10 +7,11 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent, CKEditorComponent } from '@ckeditor/ckeditor5-angular';
 import { Case } from 'src/app/model/Case';
 import { Observable } from 'rxjs';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { da } from 'date-fns/locale';
 @Component({
   selector: 'app-add-case-dialog',
   templateUrl: './add-case-dialog.component.html',
@@ -18,7 +19,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class AddCaseDialogComponent implements OnInit {
 
-  savedCase: Observable<Case>
+  selectedClient = {} ;
 
   @ViewChild('editor', { static: false }) editorComponent: CKEditorComponent;
   public Editor = ClassicEditor;
@@ -32,7 +33,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl("", Validators.required),
-    creation_date: new FormControl("", Validators.required),
+    creation_date: new FormControl( Validators.required),
     id_client: new FormControl("", Validators.required)
   })
 
@@ -109,6 +110,10 @@ export class AddCaseDialogComponent implements OnInit {
         this.saveLawsuit(resp);
       })
     }
+  }
+
+  update(){
+    
   }
 
   openSnackBar(message: string, action: string) {

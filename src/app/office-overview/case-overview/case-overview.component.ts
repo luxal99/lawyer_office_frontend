@@ -34,11 +34,12 @@ export class CaseOverviewComponent implements OnInit {
   }
 
 
-  openAddCaseDialog(): void {
+  openAddCaseDialog(client): void {
     const dialogRef = this.dialog.open(AddCaseDialogComponent, {
       minWidth: '40%',
       position: { right: '0' },
       height: '100vh',
+      data:client
     });
 
     dialogRef.afterClosed().subscribe(result => {

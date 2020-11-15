@@ -20,6 +20,7 @@ import { CaseOverviewDialogComponent } from './office-overview/case-overview/cas
 import {CaseOverviewComponent} from "./office-overview/case-overview/case-overview.component";
 import { HeadingComponent } from './heading/heading.component'
 import { DatePipe } from '@angular/common';
+import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { DatePipe } from '@angular/common';
     ClientOverviewDialogComponent,
     AddCaseDialogComponent,
     CaseOverviewDialogComponent,
-    HeadingComponent
+    HeadingComponent,
+    EditCaseDialogComponent
   ],
   imports: [
     BrowserModule,
