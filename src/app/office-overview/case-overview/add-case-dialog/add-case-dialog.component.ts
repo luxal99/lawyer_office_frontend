@@ -19,13 +19,15 @@ export class AddCaseDialogComponent implements OnInit {
   editorData = '';
   listOfClietns: Array<Client> = [];
 
-
   addCaseForm = new FormGroup({
     title: new FormControl("", Validators.required),
     creation_date: new FormControl("", Validators.required),
     id_client: new FormControl("", Validators.required)
   })
 
+  lawsuitForm = new FormGroup({
+    date: new FormControl("",Validators.required)
+  })
   constructor(private clientService: ClientService, private caseService: CaseService) { }
 
   ngOnInit() {

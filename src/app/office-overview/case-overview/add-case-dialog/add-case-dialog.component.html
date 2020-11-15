@@ -29,21 +29,35 @@
         </div>
     </form>
     <div>
-        <div class="row add-lawsuid-div">
-            <div class="col-sm">
-                <h4>Dodaj ročište</h4>
-            </div>
-            <div class="col-sm text-right">
-                <button mat-icon-button (click)="showLawsuitForm()"><mat-icon>keyboard_arrow_down</mat-icon></button>
-            </div>
+        <div style="display: inline-flex;width: 100%;">
+
+            <app-heading header="Dodaj ročište" style="width: 100%;"></app-heading>
+
+            <button mat-icon-button (click)="showLawsuitForm()"><mat-icon>keyboard_arrow_down</mat-icon></button>
         </div>
 
 
         <div id="lawsuit" style="display: none;">
-            <h6>Rociste</h6>
+            <form [formGroup]="lawsuitForm">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Datum početka slučaja</mat-label>
+                        <input matInput formControlName="date" [matDatepicker]="lawsuit_picker">
+                        <mat-datepicker-toggle matSuffix [for]="lawsuit_picker"></mat-datepicker-toggle>
+                        <mat-datepicker #lawsuit_picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </form>
+
+            <div style="margin-top: 2em">
+                <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
+            </div>
         </div>
     </div>
-    <app-heading header="Napomena"></app-heading>
+    <div style="padding-top: 2em;">
+
+        <app-heading header="Napomena"></app-heading>
+    </div>
     <div style="margin-top: 2em;">
         <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
     </div>
