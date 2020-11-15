@@ -106,7 +106,15 @@ h6 {
 .edit-btn {
     background: #ECE9E6;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ECE9E6, #FFFFFF);
+    background: -webkit-linear-gradient(to right, #ECE9E6, #e1e1e1);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ECE9E6, #FFFFFF);
+    background: linear-gradient(to right, #ECE9E6, #e1e1e1);
+}
+
+.gradient-silver-btn {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #e1e1e1);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #e1e1e1);
 }

@@ -5,6 +5,7 @@ export class Lawsuit {
     id: number;
 
     date: Date;
+    date_formatted: string;
     note: string;
     id_case: Case
 

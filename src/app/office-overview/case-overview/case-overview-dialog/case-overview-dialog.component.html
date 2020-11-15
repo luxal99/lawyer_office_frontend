@@ -1,1 +1,38 @@
-<p>case-overview-dialog works!</p>
+<div class="case-dialog-overview">
+    <div style="display: inline-flex;width: 100%;">
+        <app-heading style="width: 100%;" header="Detalji o slučaju"></app-heading>
+        <div class="text-right">
+            <button mat-button class="gradient-red-btn edit-status-btn">Izmeni status</button>
+
+            <button mat-button class="gradient-silver-btn delete-btn">Obriši</button>
+        </div>
+    </div>
+
+    <div class="case-info">
+        <h5>Datum kreiranja <span>{{data.creation_date_formatted}}</span></h5>
+        <div style="display: inline-flex;width: 100%;">
+            <h5 style="padding-top: .5em;">Stranka <span>{{data.id_client.full_name}}</span></h5>
+            <button mat-button class="gradient-blue-btn show-client-btn">Pregledaj</button>
+        </div>
+
+        <mat-expansion-panel hideToggle expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Pregledaj ročišta
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="lawsuit-container">
+                <div class="lawsuit" *ngFor="let lawsuit of data.listOfLawsuits">
+                    <app-heading header="Ročište"></app-heading>
+                    <h5 style="padding-top: 1em;">Datum ročišta <span>{{lawsuit.date_formatted}}</span></h5>
+                    <p [innerHTML]="lawsuit.note"></p>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <div style="margin-top: 2em;">
+
+            <app-heading header="Napomena/Komentar"></app-heading>
+        </div>
+        <p [innerHTML]="data.note"></p>
+    </div>
+</div>

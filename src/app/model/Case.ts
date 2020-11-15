@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Client } from './Client';
+import { Lawsuit } from './Lawsuit';
 
 export class Case {
 
@@ -12,7 +13,8 @@ export class Case {
 	status:boolean
 
 	id_client: Client
-
+	listOfLawsuits:Lawsuit[];
+	
 	constructor(_title?:string,_creation_date?: Date, _note?: string, _id_client?: Client) {
 		this.title = _title;
 		this.creation_date = _creation_date;

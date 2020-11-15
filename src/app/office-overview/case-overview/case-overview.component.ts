@@ -17,7 +17,7 @@ export class CaseOverviewComponent implements OnInit {
   listOfCases: Array<Case> = [];
 
   _listOfCases: Array<Case> = [];
-  constructor(private dialog: MatDialog, private caseService: CaseService,private datePipe:DatePipe) { }
+  constructor(private dialog: MatDialog, private caseService: CaseService, private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.getAllCases();
@@ -27,8 +27,8 @@ export class CaseOverviewComponent implements OnInit {
     this.caseService.getAll().subscribe(resp => {
       this.listOfCases = resp as Array<Case>
 
-      this.listOfCases.forEach(cs =>{
-        cs.creation_date_formatted =  formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
+      this.listOfCases.forEach(cs => {
+        cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
       })
     })
   }
@@ -48,10 +48,10 @@ export class CaseOverviewComponent implements OnInit {
 
   openCaseOverview(client): void {
     const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
-      minWidth: '70%',
+      minWidth: '50%',
       position: { right: '0' },
       height: '100vh',
-      data:client
+      data: client
     });
 
     dialogRef.afterClosed().subscribe(result => {

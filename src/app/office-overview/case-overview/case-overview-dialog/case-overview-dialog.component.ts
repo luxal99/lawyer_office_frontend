@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { Case } from 'src/app/model/Case';
 
 @Component({
   selector: 'app-case-overview-dialog',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaseOverviewDialogComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Case) { }
 
   ngOnInit() {
+    this.data.listOfLawsuits.forEach(lawsuit => {
+      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+    })
+
   }
 
 }
