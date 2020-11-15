@@ -5,7 +5,9 @@
 
 .content .row .col-sm-3 {
     padding: 2em;
-    background-color: #fff;
+    color: #000;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     height: 91vh;
 }
 
@@ -33,4 +35,18 @@
 
 ::ng-deep.mat-form-field-underline {
     transform: none !important;
+}
+
+.window::after {
+    background-image: url('https://picsum.photos/id/424/1500/900');
+    background-size: cover;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+.window::after {
+    content: "";
+    display: block;
+    width: 100%;
+    filter: blur(0.5rem);
 }

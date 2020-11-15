@@ -17,7 +17,7 @@ import { AddClientDialogComponent } from './office-overview/client-overview/add-
 import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { AddCaseDialogComponent } from './office-overview/case-overview/add-case-dialog/add-case-dialog.component';
 import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
-import {CaseOverviewComponent} from "./office-overview/case-overview/case-overview.component";
+import { CaseOverviewComponent } from "./office-overview/case-overview/case-overview.component";
 import { HeadingComponent } from './heading/heading.component'
 import { DatePipe } from '@angular/common';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
@@ -48,7 +48,8 @@ import { EditCaseDialogComponent } from './office-overview/case-overview/edit-ca
     ReactiveFormsModule
   ],
   providers: [DatePipe],
-  entryComponents: [AddClientDialogComponent, AddCaseDialogComponent,CaseOverviewComponent, CaseOverviewDialogComponent, ClientOverviewDialogComponent, ClientOverviewComponent, GlobalOverviewComponent],
+  entryComponents: [AddClientDialogComponent, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
+     ClientOverviewDialogComponent, ClientOverviewComponent, EditCaseDialogComponent,GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

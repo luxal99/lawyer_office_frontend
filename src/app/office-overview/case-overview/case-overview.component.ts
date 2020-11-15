@@ -6,6 +6,7 @@ import { CaseService } from 'src/app/service/case.service';
 import { AddCaseDialogComponent } from './add-case-dialog/add-case-dialog.component';
 import { CaseOverviewDialogComponent } from './case-overview-dialog/case-overview-dialog.component';
 import { parse } from 'date-fns';
+import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
 @Component({
   selector: 'app-case-overview',
   templateUrl: './case-overview.component.html',
@@ -49,6 +50,20 @@ export class CaseOverviewComponent implements OnInit {
 
   openCaseOverview(client): void {
     const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
+      minWidth: '50%',
+      position: { right: '0' },
+      height: '100vh',
+      data: client
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllCases();
+    });
+  }
+
+
+  openEditCaseDialog(client): void {
+    const dialogRef = this.dialog.open(EditCaseDialogComponent, {
       minWidth: '50%',
       position: { right: '0' },
       height: '100vh',
