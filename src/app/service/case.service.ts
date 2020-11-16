@@ -7,4 +7,8 @@ import { GenericService } from './generic.service';
 })
 export class CaseService extends GenericService<Case> {
   route = "case";
+
+  getLastThreeCases(){
+    return this.http.get(`/${this.route}/lastThree`,{responseType:'json'})
+  }
 }

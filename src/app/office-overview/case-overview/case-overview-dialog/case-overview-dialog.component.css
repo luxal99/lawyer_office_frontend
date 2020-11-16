@@ -34,3 +34,9 @@ mat-expansion-panel {
 p {
     font-size: 18px;
 }
+
+.edit-lawsuit-btn {
+    color: #fff;
+    padding: 1px 0;
+    width: 5%;
+}

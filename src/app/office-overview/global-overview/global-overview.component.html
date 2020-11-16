@@ -1,3 +1,34 @@
 <div class="global-overview">
+    <div class="row">
+        <div class="col-sm-8">
+            <app-heading header="Najnoviji predmeti"></app-heading>
+            <div class="overview-container">
+                <div class="row" *ngFor="let case of listOfLastThreeCases">
+                    <div class="col-sm border-col">
+                        <h6>Naziv</h6>
+                        <h4>{{case.title}}</h4>
+                    </div>
+                    <div class="col-sm border-col">
+                        <h6>Datum</h6>
+                        <h4>{{case.creation_date_formatted}}</h4>
+                    </div>
+                    <div class="col-sm text-center">
+                        <div class="btn-div ">
+                            <button mat-button class="gradient-blue-btn overview-btn" style="width: 50%;" (click)="openCaseOverview(case)">Pregledaj</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <app-heading header="Predstojeća ročišta"></app-heading>
 
+            <div class="card-container" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i">
+                <div class="lawyersuit-card" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} " (click)="openCaseOverview(lawsuit.id_case)">
+                    <h5>{{lawsuit.date_formatted}}</h5>
+                    <h5 class="lawsuit-case">Predmet: {{lawsuit.id_case.title}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

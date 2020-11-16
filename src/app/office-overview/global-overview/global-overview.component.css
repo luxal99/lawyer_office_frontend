@@ -1,3 +1,28 @@
 .global-overview {
     padding: 3em;
 }
+
+.lawyersuit-card {
+    padding: 2em;
+    color: #e1e1e1;
+    border-radius: 10px;
+    margin-top: 2em;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+}
+
+.lawsuit-case {
+    color: #121212;
+    font-weight: normal;
+}
+
+.lawyersuit-card:hover {
+    background-color: #282828 !important;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.lawyersuit-card:hover .lawsuit-case {
+    color: #ffa900;
+}

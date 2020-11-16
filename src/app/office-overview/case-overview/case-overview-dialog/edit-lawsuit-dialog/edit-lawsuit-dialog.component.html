@@ -1,0 +1,22 @@
+<div class="dialog">
+    <app-heading header="Izmena ročišta"></app-heading>
+
+    <div class="form-div">
+        <form [formGroup]="editLawsuitForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Datum ročišta</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="lawsuit_picker">
+                <mat-datepicker-toggle matSuffix [for]="lawsuit_picker"></mat-datepicker-toggle>
+                <mat-datepicker #lawsuit_picker></mat-datepicker>
+            </mat-form-field>
+        </form>
+
+        <div style="margin-top: 2em">
+            <ckeditor #lawsuitEditor [editor]="LawsuitEditor" [data]="data.note"></ckeditor>
+        </div>
+
+        <div style="margin-top: 2em;">
+            <button mat-button class="gradient-blue-btn save-btn" (click)="update()">Sačuvaj</button>
+        </div>
+    </div>
+</div>

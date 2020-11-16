@@ -28,9 +28,6 @@ export class OfficeOverviewComponent implements OnInit {
 
  async initDefaultMenu(){
    document.getElementById("overview-btn").click();
-   const { GlobalOverviewComponent } = await import('./global-overview/global-overview.component');
-   const factory = this.resolver.resolveComponentFactory(GlobalOverviewComponent)
-   this.entry.createComponent(factory);
   }
 
   changeColor(e){

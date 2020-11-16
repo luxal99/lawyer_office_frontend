@@ -4,6 +4,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';
+import { EditLawsuitDialogComponent } from './edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 
 @Component({
   selector: 'app-case-overview-dialog',
@@ -39,6 +40,16 @@ export class CaseOverviewDialogComponent implements OnInit {
       position: { right: '0' },
       height: '100vh',
       data: client
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openEditLawsuitDialog(lawsuit): void {
+    const dialogRef = this.dialog.open(EditLawsuitDialogComponent, {
+      width: 'auto',
+      data: lawsuit
     });
 
     dialogRef.afterClosed().subscribe(result => {

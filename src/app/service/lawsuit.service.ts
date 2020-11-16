@@ -7,4 +7,8 @@ import { GenericService } from './generic.service';
 })
 export class LawsuitService extends GenericService<Lawsuit> {
   route = "lawsuit"
+
+  getNextThreeLawsuit() {
+    return this.http.get(`${this.route}/nextThreeLawsuit`, { responseType: 'json' })
+  }
 }

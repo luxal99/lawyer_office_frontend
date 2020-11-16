@@ -1,4 +1,11 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Case } from 'src/app/model/Case';
+import { Lawsuit } from 'src/app/model/Lawsuit';
+import { CaseService } from 'src/app/service/case.service';
+import { LawsuitService } from 'src/app/service/lawsuit.service';
+import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 
 @Component({
   selector: 'app-global-overview',
@@ -7,9 +14,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GlobalOverviewComponent implements OnInit {
 
-  constructor() { }
+  listOfLastThreeCases: Array<Case> = [];
+  listOfNextThreeLawsuits: Array<Lawsuit> = [];
+
+  constructor(private lawsuitService: LawsuitService, private caseService: CaseService,private dialog:MatDialog) { }
 
   async ngOnInit(): Promise<void> {
+    this.getLastThreeCases();
+    this.getNextThreeLawsuit();
   }
 
+  getLastThreeCases() {
+    this.caseService.getLastThreeCases().subscribe(resp => {
+      this.listOfLastThreeCases = resp as Array<Case>
+      this.listOfLastThreeCases.forEach(cs => {
+        cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
+      })
+    })
+  }
+
+  getNextThreeLawsuit() {
+    this.lawsuitService.getNextThreeLawsuit().subscribe(resp => {
+      this.listOfNextThreeLawsuits = resp as Array<Lawsuit>
+      
+      this.listOfNextThreeLawsuits.forEach(lawsuit=>{
+        lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+
+        lawsuit.id_case.creation_date_formatted = formatDate(lawsuit.id_case.creation_date, 'dd/MM/yyyy', 'en-US');
+      })
+    })
+  }
+
+  openCaseOverview(cs): void {
+    const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
+      minWidth: '50%',
+      position: { right: '0' },
+      height: '100vh',
+      data: cs
+    });
+  }
 }

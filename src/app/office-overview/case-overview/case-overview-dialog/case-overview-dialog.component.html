@@ -27,6 +27,9 @@
                     <app-heading header="Ročište"></app-heading>
                     <h5 style="padding-top: 1em;">Datum ročišta <span>{{lawsuit.date_formatted}}</span></h5>
                     <p [innerHTML]="lawsuit.note"></p>
+                    <div style="margin-top: 1em;">
+                        <button mat-button class="gradient-blue-btn edit-lawsuit-btn" (click)="openEditLawsuitDialog(lawsuit)">Izmeni</button>
+                    </div>
                 </div>
             </div>
         </mat-expansion-panel>

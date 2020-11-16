@@ -21,6 +21,7 @@ import { CaseOverviewComponent } from "./office-overview/case-overview/case-over
 import { HeadingComponent } from './heading/heading.component'
 import { DatePipe } from '@angular/common';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
+import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { EditCaseDialogComponent } from './office-overview/case-overview/edit-ca
     AddCaseDialogComponent,
     CaseOverviewDialogComponent,
     HeadingComponent,
-    EditCaseDialogComponent
+    EditCaseDialogComponent,
+    EditLawsuitDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { EditCaseDialogComponent } from './office-overview/case-overview/edit-ca
   ],
   providers: [DatePipe],
   entryComponents: [AddClientDialogComponent, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-     ClientOverviewDialogComponent, ClientOverviewComponent, EditCaseDialogComponent,GlobalOverviewComponent],
+    ClientOverviewDialogComponent, ClientOverviewComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
