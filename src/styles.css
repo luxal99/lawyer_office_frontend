@@ -116,3 +116,10 @@ h6 {
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #ECE9E6, #e1e1e1);
 }
+
+@media screen and (max-width:420px){
+   
+    .overview-container .row {
+        border-bottom: none;
+    }
+}

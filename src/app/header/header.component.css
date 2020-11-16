@@ -55,3 +55,11 @@ mat-icon {
 .col-sm-2 {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+@media screen and (max-width:420px){
+    .left-col,
+    .middle-col,
+    .right-col {
+        padding-top: 1.5em;
+    }
+}

@@ -38,7 +38,11 @@
     transform: none !important;
 }
 
-.logo {
-    display: inline-flex;
-    padding: 2em 0 5em 0;
+@media screen and (max-width:420px){
+
+
+    .content .row .col-sm-3 {
+
+        height: 60vh;
+    }
 }
