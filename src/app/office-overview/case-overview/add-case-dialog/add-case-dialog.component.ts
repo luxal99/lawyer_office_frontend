@@ -1,17 +1,21 @@
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+import { CKEditorComponent, ChangeEvent } from '@ckeditor/ckeditor5-angular';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Client } from 'src/app/model/Client';
-import { CaseService } from 'src/app/service/case.service';
-import { ClientService } from 'src/app/service/client.service';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ChangeEvent, CKEditorComponent } from '@ckeditor/ckeditor5-angular';
+import { MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+
 import { Case } from 'src/app/model/Case';
-import { Observable } from 'rxjs';
-import { MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { CaseService } from 'src/app/service/case.service';
+import { Client } from 'src/app/model/Client';
+import { ClientService } from 'src/app/service/client.service';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
+import { Observable } from 'rxjs';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { da } from 'date-fns/locale';
+import { formatDate } from '@angular/common';
+
 @Component({
   selector: 'app-add-case-dialog',
   templateUrl: './add-case-dialog.component.html',
@@ -19,7 +23,7 @@ import { da } from 'date-fns/locale';
 })
 export class AddCaseDialogComponent implements OnInit {
 
-  selectedClient = {} ;
+  selectedClient = {};
 
   @ViewChild('editor', { static: false }) editorComponent: CKEditorComponent;
   public Editor = ClassicEditor;
@@ -33,7 +37,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl("", Validators.required),
-    creation_date: new FormControl( Validators.required),
+    creation_date: new FormControl(Validators.required),
     id_client: new FormControl("", Validators.required)
   })
 
@@ -70,6 +74,7 @@ export class AddCaseDialogComponent implements OnInit {
       this.addCaseForm.get("id_client").value,
     );
 
+    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
     await this.caseService.save(caseEntity).subscribe(resp => {
       caseEntity.id = resp['id']
     }, err => {
@@ -77,13 +82,14 @@ export class AddCaseDialogComponent implements OnInit {
 
 
     console.log(caseEntity.creation_date);
-    
+
     return caseEntity
   }
 
   async saveLawsuit(enCase) {
     setTimeout(() => {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
+      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
       this.lawsuitService.save(lawsuit).subscribe(resp => {
 
@@ -100,7 +106,7 @@ export class AddCaseDialogComponent implements OnInit {
     if (document.getElementById("lawsuit").style.display === "none") {
       this.saveCase().then(() => {
         this.openSnackBar("Uspešno ste sačuvali predmet", "DONE")
-      },err=>{
+      }, err => {
 
         this.openSnackBar("Dogodila se greška pri čuvanju predmeta", "DONE")
       });
@@ -112,8 +118,8 @@ export class AddCaseDialogComponent implements OnInit {
     }
   }
 
-  update(){
-    
+  update() {
+
   }
 
   openSnackBar(message: string, action: string) {

@@ -23,10 +23,6 @@ export class CaseOverviewDialogComponent implements OnInit {
 
 
   init() {
-    this.data.listOfLawsuits.forEach(lawsuit => {
-      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
-    })
-
     if (this.data.status) {
       this.status = "Aktivan"
     } else {

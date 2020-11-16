@@ -1,16 +1,18 @@
-import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { Case } from 'src/app/model/Case';
-import { Lawsuit } from 'src/app/model/Lawsuit';
-import { CaseService } from 'src/app/service/case.service';
-import { LawsuitService } from 'src/app/service/lawsuit.service';
-import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from 'src/app/service/client.service';
+import { MatDialog, MatSnackBar } from '@angular/material';
+
+import { Case } from 'src/app/model/Case';
+import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
+import { CaseService } from 'src/app/service/case.service';
 import { Client } from 'src/app/model/Client';
+import { ClientService } from 'src/app/service/client.service';
+import { Lawsuit } from 'src/app/model/Lawsuit';
+import { LawsuitService } from 'src/app/service/lawsuit.service';
+import { formatDate } from '@angular/common';
+
 @Component({
   selector: 'app-global-overview',
   templateUrl: './global-overview.component.html',
@@ -18,6 +20,7 @@ import { Client } from 'src/app/model/Client';
 })
 export class GlobalOverviewComponent implements OnInit {
 
+  currentDate = new Date();
   listOfClient: Array<Client> = [];
   listOfLastThreeCases: Array<Case> = [];
   listOfNextThreeLawsuits: Array<Lawsuit> = [];
@@ -33,20 +36,16 @@ export class GlobalOverviewComponent implements OnInit {
   barChartPlugins = [];
 
 
-  dateForm = new FormGroup({
+  lawsuitForm = new FormGroup({
     date: new FormControl(Date.now(), Validators.required),
-    id_case: new FormControl("",Validators.required)
+    id_client: new FormControl("", Validators.required)
   })
 
   barChartData: ChartDataSets[] = [{ data: this.analyticsData, backgroundColor: ['#2F80ED', "#F45C43"] }
   ];
 
-  test() {
-    console.log('212121');
-
-  }
-
-  constructor(private lawsuitService: LawsuitService, private caseService: CaseService, private clientService:ClientService,private dialog: MatDialog) { }
+  constructor(private lawsuitService: LawsuitService, private caseService: CaseService,
+    private clientService: ClientService, private dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   async ngOnInit(): Promise<void> {
     this.getLastThreeCases();
@@ -101,4 +100,25 @@ export class GlobalOverviewComponent implements OnInit {
       data: cs
     });
   }
+
+  saveLawsuit() {
+    let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, "", this.lawsuitForm.get("id_client").value);
+    lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US')
+
+    this.lawsuitService.save(lawsuit).subscribe(resp => {
+      this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.id_case.title}`, "DONE")
+
+      this.getNextThreeLawsuit();
+    }, err => {
+      this.openSnackBar("Dogodila se greška", "POKUŠAJ PONOVO")
+    })
+  }
+
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
 }

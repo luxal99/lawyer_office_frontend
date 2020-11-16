@@ -1,12 +1,13 @@
-import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { Case } from 'src/app/model/Case';
-import { CaseService } from 'src/app/service/case.service';
+import { DatePipe, formatDate } from '@angular/common';
+
 import { AddCaseDialogComponent } from './add-case-dialog/add-case-dialog.component';
+import { Case } from 'src/app/model/Case';
 import { CaseOverviewDialogComponent } from './case-overview-dialog/case-overview-dialog.component';
-import { parse } from 'date-fns';
+import { CaseService } from 'src/app/service/case.service';
 import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
+import { MatDialog } from '@angular/material';
+import { parse } from 'date-fns';
 @Component({
   selector: 'app-case-overview',
   templateUrl: './case-overview.component.html',
@@ -27,10 +28,6 @@ export class CaseOverviewComponent implements OnInit {
   getAllCases() {
     this.caseService.getAll().subscribe(resp => {
       this.listOfCases = resp as Array<Case>
-
-      this.listOfCases.forEach(cs => {
-        cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
-      })
     })
   }
 

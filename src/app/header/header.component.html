@@ -9,11 +9,18 @@
             </div>
         </div>
         <div class="col-sm middle-col text-center">
-            <mat-form-field appearance="fill">
-                <mat-label>Pretaži</mat-label>
-                <input matInput placeholder="Placeholder">
-                <mat-icon matSuffix>search</mat-icon>
-            </mat-form-field>
+            <form [formGroup]="searchForm">
+                <mat-form-field class="example-full-width" appereance="fill">
+                    <mat-label>Pretraži</mat-label>
+                    <input type="text" matInput [matAutocomplete]="auto" formControlName="search" (ngModelChange)="clear()" id="search">
+                    <mat-icon matSuffix>search</mat-icon>
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let filter of filteredArray" [value]="filter.title || filter.full_name" (click)="desideToOpenDialog(filter)">
+                            {{filter.title || filter.full_name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
         </div>
         <div class="col-sm-2 right-col text-right">
             <div style="display: inline-flex;padding-top: 1em;">

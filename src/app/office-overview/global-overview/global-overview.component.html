@@ -28,11 +28,11 @@
                     </div>
                 </div>
                 <div class="col-sm" style="padding-top: 3em;">
-                    <form [formGroup]="dateForm">
+                    <form [formGroup]="lawsuitForm">
                         <div>
                             <mat-form-field appearance="fill">
                                 <mat-label>Datum ročišta</mat-label>
-                                <input matInput formControlName="date" [matDatepicker]="picker">
+                                <input matInput formControlName="date" [matDatepicker]="picker" [min]="currentDate">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
@@ -50,7 +50,7 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                        <button mat-button class="save-btn gradient-blue-btn">Dodaj</button>
+                        <button mat-button class="save-btn gradient-blue-btn" (click)="saveLawsuit()" [disabled]="!lawsuitForm.valid">Dodaj</button>
                     </form>
                 </div>
             </div>

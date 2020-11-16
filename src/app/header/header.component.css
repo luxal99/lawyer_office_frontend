@@ -56,7 +56,21 @@ mat-icon {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width:420px){
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0 !important;
+}
+
+::ng-deep.mat-form-field-flex {
+    background-color: rgba(0, 0, 0, .04) !important;
+    border-radius: 10px;
+    padding: 0 1em .5em 1em;
+}
+
+mat-label {
+    color: #666;
+}
+
+@media screen and (max-width:420px) {
     .left-col,
     .middle-col,
     .right-col {

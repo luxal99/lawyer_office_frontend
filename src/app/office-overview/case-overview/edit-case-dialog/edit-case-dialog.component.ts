@@ -9,6 +9,7 @@ import { Lawsuit } from 'src/app/model/Lawsuit';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientService } from 'src/app/service/client.service';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class EditCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl(this.data.title, Validators.required),
-    creation_date: new FormControl(this.data.creation_date,Validators.required),
+    creation_date: new FormControl(this.data.creation_date, Validators.required),
     id_client: new FormControl("", Validators.required)
   })
 
@@ -49,7 +50,7 @@ export class EditCaseDialogComponent implements OnInit {
     this.setSelectedClient();
   }
 
-  setSelectedClient(){
+  setSelectedClient() {
     this.selectedClient = this.data.id_client.id
   }
   getAllClients() {
@@ -90,6 +91,7 @@ export class EditCaseDialogComponent implements OnInit {
   async saveLawsuit(enCase) {
     setTimeout(() => {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
+      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
       this.lawsuitService.save(lawsuit).subscribe(resp => {
         this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")
