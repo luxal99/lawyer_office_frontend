@@ -7,3 +7,76 @@
     width: 40%;
     color: #fff;
 }
+
+.client-container {
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    padding-top: .5em;
+    padding-bottom: 2em;
+    margin-top: 3em;
+}
+
+.del-btn,
+.edit-btn {
+    margin-left: 2em;
+}
+
+.del-btn,
+.overview-btn,
+.edit-btn {
+    color: #fff;
+    width: 30%;
+    padding: .2em 0 .2em 0;
+}
+
+.edit-btn {
+    color: #121212;
+}
+
+h6 {
+    color: #999;
+    font-weight: bold;
+    line-height: 3px;
+}
+
+.border-col {
+    border-right: 1px solid #e1e1e1;
+}
+
+
+.client-container .row .col-sm {
+    padding-top: 2em;
+}
+
+.client-container .row {
+    padding: 0em 2em 0 2em;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.btn-div {
+    display: inline-flex;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.edit-btn {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #FFFFFF);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #FFFFFF);
+}
+
+@media screen and (max-width:420px){
+    .client{
+        padding: 0em;
+    }
+    .add-client-btn {
+        width: 80%;
+    }
+
+   
+}

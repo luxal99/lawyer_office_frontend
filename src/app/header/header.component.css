@@ -46,3 +46,11 @@ mat-icon {
     background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
     background: linear-gradient(to right, #2F80ED, #56CCF2);
 }
+
+@media screen and (max-width:420px){
+    .left-col,
+    .middle-col,
+    .right-col {
+        padding-top: 1.5em;
+    }
+}

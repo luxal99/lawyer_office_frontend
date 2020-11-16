@@ -37,3 +37,12 @@
 ::ng-deep.mat-form-field-underline {
     transform: none !important;
 }
+
+@media screen and (max-width:420px){
+
+
+    .content .row .col-sm-3 {
+
+        height: 60vh;
+    }
+}
