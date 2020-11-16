@@ -70,6 +70,10 @@ mat-label {
     color: #666;
 }
 
+.notification {
+    padding: 2em;
+}
+
 @media screen and (max-width:420px) {
     .left-col,
     .middle-col,
