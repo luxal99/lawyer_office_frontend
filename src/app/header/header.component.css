@@ -6,16 +6,12 @@
 .left-col,
 .middle-col,
 .right-col {
-    padding-top: .5em;
+    padding-top: 1em;
 }
-
-.left-col {}
 
 mat-form-field {
     width: 90%;
 }
-
-.right-col {}
 
 .profile-btn {
     color: #56CCF2;
@@ -31,7 +27,7 @@ mat-icon {
 }
 
 .header {
-    background-color: #fff;
+    background-color: #f7f8f7;
 }
 
 ::ng-deep.mat-form-field-underline {
@@ -45,4 +41,17 @@ mat-icon {
     background: #56CCF2;
     background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
     background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+.empty-col {
+    background-color: #fff;
+}
+
+.logo {
+    display: inline-flex;
+    padding-top: 2em;
+}
+
+.col-sm-2 {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -1,5 +1,8 @@
 .global-overview {
     padding: 3em;
+    background-color: #fff;
+    margin: 1em;
+    border-radius: 30px;
 }
 
 .lawyersuit-card {

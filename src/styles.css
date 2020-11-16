@@ -56,8 +56,6 @@ button {
     -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
     border-radius: 10px;
-    padding-top: .5em;
-    padding-bottom: 2em;
     margin-top: 3em;
 }
 

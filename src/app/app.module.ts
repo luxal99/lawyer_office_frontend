@@ -22,6 +22,7 @@ import { HeadingComponent } from './heading/heading.component'
 import { DatePipe } from '@angular/common';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { EditLawsuitDialogComponent } from './office-overview/case-overview/case
   ],
   imports: [
     BrowserModule,
+    ChartsModule,
     CKEditorModule,
     AppRoutingModule,
     HttpClientModule,
@@ -49,7 +51,7 @@ import { EditLawsuitDialogComponent } from './office-overview/case-overview/case
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,ThemeService],
   entryComponents: [AddClientDialogComponent, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
     ClientOverviewDialogComponent, ClientOverviewComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]

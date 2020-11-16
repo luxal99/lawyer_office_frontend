@@ -6,7 +6,8 @@ import { Lawsuit } from 'src/app/model/Lawsuit';
 import { CaseService } from 'src/app/service/case.service';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
-
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 @Component({
   selector: 'app-global-overview',
   templateUrl: './global-overview.component.html',
@@ -17,12 +18,28 @@ export class GlobalOverviewComponent implements OnInit {
   listOfLastThreeCases: Array<Case> = [];
   listOfNextThreeLawsuits: Array<Lawsuit> = [];
 
+  barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  barChartLabels: Label[] = ['Aktivan','Zatovren'];
+  barChartType: ChartType = 'pie';
+  barChartLegend = true;
+  barChartPlugins = [];
+
+
+  barChartData: ChartDataSets[] = [{ data: [1,2], backgroundColor: ['#2F80ED', "#F45C43"] }
+  ];
+
+
+
   constructor(private lawsuitService: LawsuitService, private caseService: CaseService,private dialog:MatDialog) { }
 
   async ngOnInit(): Promise<void> {
     this.getLastThreeCases();
     this.getNextThreeLawsuit();
   }
+
+  
 
   getLastThreeCases() {
     this.caseService.getLastThreeCases().subscribe(resp => {

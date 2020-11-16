@@ -11,4 +11,8 @@ export class CaseService extends GenericService<Case> {
   getLastThreeCases(){
     return this.http.get(`/${this.route}/lastThree`,{responseType:'json'})
   }
+
+  getCaseAnalytics(){
+    return this.http.get(`/${this.route}/analytics`,{responseType:'json'})
+  }
 }
