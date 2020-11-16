@@ -29,3 +29,13 @@
 .lawyersuit-card:hover .lawsuit-case {
     color: #ffa900;
 }
+
+mat-form-field {
+    width: 100%;
+}
+
+.save-btn {
+    padding: .3em 0;
+    color: #fff;
+    width: 50%;
+}

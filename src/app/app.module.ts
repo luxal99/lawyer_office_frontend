@@ -23,6 +23,9 @@ import { DatePipe } from '@angular/common';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 import { ChartsModule, ThemeService } from 'ng2-charts';
+import { MatDaterangepickerModule } from 'mat-daterangepicker';
+import { MatCalendar, MatCalendarBody, MatDatepicker, MatDatepickerToggle, MatMonthView } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +45,7 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
     EditLawsuitDialogComponent
   ],
   imports: [
+    MatDaterangepickerModule,
     BrowserModule,
     ChartsModule,
     CKEditorModule,
@@ -52,7 +56,7 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
     ReactiveFormsModule
   ],
   providers: [DatePipe,ThemeService],
-  entryComponents: [AddClientDialogComponent, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
+  entryComponents: [AddClientDialogComponent, MatDatepicker,MatCalendar,MatMonthView,MatCalendarBody,MatDatepickerToggle,AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
     ClientOverviewDialogComponent, ClientOverviewComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })

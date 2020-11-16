@@ -22,13 +22,36 @@
 
             <div class="row">
                 <div class="col-sm">
-                    <div class="overview-container">
+                    <div class="overview-container" style="padding: 1em;">
                         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
                       </canvas>
                     </div>
                 </div>
-                <div class="col-sm">
-
+                <div class="col-sm" style="padding-top: 3em;">
+                    <form [formGroup]="dateForm">
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Datum ročišta</mat-label>
+                                <input matInput formControlName="date" [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Slučaj/Predmet</mat-label>
+                                <mat-select formControlName="id_client">
+                                    <mat-option>-- None --</mat-option>
+                                    <mat-optgroup *ngFor="let client of listOfClient" [label]="client.full_name">
+                                        <mat-option *ngFor="let case of client.listOfCases" [value]="case">
+                                            {{case.title}}
+                                        </mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <button mat-button class="save-btn gradient-blue-btn">Dodaj</button>
+                    </form>
                 </div>
             </div>
         </div>
