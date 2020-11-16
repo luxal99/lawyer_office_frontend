@@ -1,8 +1,10 @@
 <div class="global-overview">
     <div class="row">
         <div class="col-sm-8">
-            <app-heading header="Najnoviji predmeti"></app-heading>
+
+            <app-heading header="Najnoviji predmeti" class="desktop-app-header"></app-heading>
             <div class="overview-container">
+
                 <div class="row" *ngFor="let case of listOfLastThreeCases">
                     <div class="col-sm border-col">
                         <h6>Naziv</h6>
@@ -18,6 +20,22 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="mobile-overview" style="display: none;">
+
+                <app-heading header="Najnoviji predmeti"></app-heading>
+                <div class="case-card" *ngFor="let case of listOfLastThreeCases">
+                    <h5 style="color: #fff;">{{case.creation_date_formatted}}</h5>
+                    <h5 style="font-weight: bold;">{{case.title}}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-container" style="margin: 1em;">
+            <div class="" style="padding: 1em;width: 100%;background-color: #fff;border-radius: 15px;">
+                <canvas style="width: 100%;" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                  </canvas>
             </div>
 
             <div class="row">
@@ -56,10 +74,13 @@
             </div>
         </div>
         <div class="col-sm">
-            <app-heading header="Predstojeća ročišta"></app-heading>
+            <app-heading header="Predstojeća ročišta" class="desktop-app-header"></app-heading>
 
-            <div class="card-container" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i">
-                <div class="lawyersuit-card" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} " (click)="openCaseOverview(lawsuit.id_case)">
+            <div class="card-container">
+
+                <app-heading header="Predstojeća ročišta"></app-heading>
+                <div class="lawyersuit-card" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} "
+                    (click)="openCaseOverview(lawsuit.id_case)">
                     <h5>{{lawsuit.date_formatted}}</h5>
                     <h5 class="lawsuit-case">Predmet: {{lawsuit.id_case.title}}</h5>
                 </div>

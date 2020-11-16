@@ -39,3 +39,67 @@ mat-form-field {
     color: #fff;
     width: 50%;
 }
+
+.case-card {
+    padding: 5em 1em;
+    background: #56CCF2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+    display: inline-block;
+    margin: 1em;
+    border-radius: 15px;
+}
+
+.mobile-overview {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width:570px) {
+    .mobile-overview {
+        display: block !important;
+    }
+    .col-sm-3 {
+        display: none;
+    }
+    .overview-container {
+        display: none;
+    }
+     ::-webkit-scrollbar {
+        display: none;
+    }
+    .card-container {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    .lawyersuit-card {
+        display: inline-block;
+        margin: 1em;
+        padding: 5em 1em;
+        border-radius: 15px;
+    }
+    .global-overview {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+    .mobile-overview,
+    .card-container {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 2em;
+    }
+    .desktop-app-header {
+        display: none;
+    }
+    .card-container {
+        margin-top: 2em;
+    }
+}

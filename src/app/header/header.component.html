@@ -25,7 +25,7 @@
         <div class="col-sm-2 right-col text-right" style="padding-top: 2em;">
 
             <div class="row">
-                <div class="col-sm">
+                <div class="col">
                     <button mat-icon-button [disabled]="listOfNotification.length === 0" [matMenuTriggerFor]="menu"><mat-icon matBadge="{{listOfNotification.length}}" matBadgeOverlap="false">{{notificationIcon}}</mat-icon></button>
                     <mat-menu #menu="matMenu">
                         <div class="notification" *ngFor="let notification of listOfNotification">
@@ -39,7 +39,7 @@
                     </mat-menu>
 
                 </div>
-                <div class="col-sm" style="display: inline-flex;">
+                <div class="col text-right" style="display: inline-flex;">
 
                     <h4>{{username}}</h4>
                     <button mat-icon-button class="profile-btn" [matMenuTriggerFor]="profile"><mat-icon>expand_more</mat-icon></button>
@@ -49,6 +49,6 @@
                     </mat-menu>
                 </div>
             </div>
-        </div>e
+        </div>
     </div>
 </div>

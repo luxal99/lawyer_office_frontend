@@ -38,11 +38,11 @@
     transform: none !important;
 }
 
-@media screen and (max-width:420px){
-
-
+@media screen and (max-width:420px) {
+    .col-sm-2 {
+        display: none !important;
+    }
     .content .row .col-sm-3 {
-
         height: 60vh;
     }
 }

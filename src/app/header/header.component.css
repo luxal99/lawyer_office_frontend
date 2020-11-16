@@ -80,4 +80,7 @@ mat-label {
     .right-col {
         padding-top: 1.5em;
     }
+    .right-col {
+        display: none;
+    }
 }
