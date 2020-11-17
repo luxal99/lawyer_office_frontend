@@ -48,8 +48,17 @@ mat-form-field {
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2F80ED, #56CCF2);
     display: inline-block;
-    margin: 1em;
+    margin: 1em 0;
     border-radius: 15px;
+    width: 100%;
+}
+
+.mobile-container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2em;
+    margin-top: 2em;
+    display: none;
 }
 
 .mobile-overview {
@@ -76,12 +85,6 @@ mat-form-field {
      ::-webkit-scrollbar {
         display: none;
     }
-    .card-container {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
     .lawyersuit-card {
         display: inline-block;
         margin: 1em;
@@ -94,16 +97,12 @@ mat-form-field {
         margin: 0;
         border: 0;
     }
-    .mobile-overview,
-    .card-container {
-        background-color: #fff;
-        border-radius: 15px;
-        padding: 2em;
-    }
-    .desktop-app-header {
+    .desktop-app-header,
+    .desktop-lawsuit {
         display: none;
     }
-    .card-container {
-        margin-top: 2em;
+    .mobile-app-header,
+    .mobile-container {
+        display: block;
     }
 }
