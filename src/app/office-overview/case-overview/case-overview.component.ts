@@ -6,8 +6,10 @@ import { Case } from 'src/app/model/Case';
 import { CaseOverviewDialogComponent } from './case-overview-dialog/case-overview-dialog.component';
 import { CaseService } from 'src/app/service/case.service';
 import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
+import { GlobalMethods } from 'src/app/dialog-global';
 import { MatDialog } from '@angular/material';
 import { parse } from 'date-fns';
+
 @Component({
   selector: 'app-case-overview',
   templateUrl: './case-overview.component.html',
@@ -33,42 +35,19 @@ export class CaseOverviewComponent implements OnInit {
 
 
   openAddCaseDialog(client): void {
-    const dialogRef = this.dialog.open(AddCaseDialogComponent, {
-      minWidth: '40%',
-      position: { right: '0' },
-      height: '100vh',
-      data:client
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openAddCaseDialog(client).afterClosed().subscribe(() => {
       this.getAllCases();
-    });
+    })
   }
 
-  openCaseOverview(client): void {
-    const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
-      minWidth: '50%',
-      position: { right: '0' },
-      height: '100vh',
-      data: client
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.getAllCases();
-    });
+  openCaseOverview(data): void {
+    new GlobalMethods(this.dialog).openCaseOverviewDialog(data)
   }
 
 
-  openEditCaseDialog(client): void {
-    const dialogRef = this.dialog.open(EditCaseDialogComponent, {
-      minWidth: '50%',
-      position: { right: '0' },
-      height: '100vh',
-      data: client
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
+  openEditCaseDialog(data): void {
+    new GlobalMethods(this.dialog).openEditCaseDialog(data).afterClosed().subscribe(result => {
       this.getAllCases();
-    });
+    })
   }
 }

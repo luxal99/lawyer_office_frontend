@@ -4,11 +4,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 
+import { AddCaseDialogComponent } from '../case-overview/add-case-dialog/add-case-dialog.component';
 import { Case } from 'src/app/model/Case';
 import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 import { CaseService } from 'src/app/service/case.service';
 import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
+import { GlobalMethods } from 'src/app/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { formatDate } from '@angular/common';
@@ -92,14 +94,6 @@ export class GlobalOverviewComponent implements OnInit {
     })
   }
 
-  openCaseOverview(cs): void {
-    const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
-      minWidth: '50%',
-      position: { right: '0' },
-      height: '100vh',
-      data: cs
-    });
-  }
 
   saveLawsuit() {
     let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, "", this.lawsuitForm.get("id_client").value);
@@ -121,4 +115,8 @@ export class GlobalOverviewComponent implements OnInit {
     });
   }
 
+
+  openCaseOverview(data) {
+    new GlobalMethods(this.dialog).openCaseOverviewDialog(data)
+  }
 }

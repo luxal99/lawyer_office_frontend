@@ -22,22 +22,6 @@
                 </div>
             </div>
 
-            <div class="mobile-overview" style="display: none;">
-
-                <app-heading header="Najnoviji predmeti"></app-heading>
-                <div class="case-card" *ngFor="let case of listOfLastThreeCases">
-                    <h5 style="color: #fff;">{{case.creation_date_formatted}}</h5>
-                    <h5 style="font-weight: bold;">{{case.title}}</h5>
-                </div>
-            </div>
-        </div>
-
-        <div class="mobile-container" style="margin: 1em;">
-            <div class="" style="padding: 1em;width: 100%;background-color: #fff;border-radius: 15px;">
-                <canvas style="width: 100%;" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-                  </canvas>
-            </div>
-
             <div class="row">
                 <div class="col-sm">
                     <div class="overview-container" style="padding: 1em;">
@@ -72,13 +56,23 @@
                     </form>
                 </div>
             </div>
+
+            <div class="mobile-overview" style="display: none;">
+
+                <app-heading header="Najnoviji predmeti"></app-heading>
+                <div class="case-card" *ngFor="let case of listOfLastThreeCases">
+                    <h5 style="color: #fff;">{{case.creation_date_formatted}}</h5>
+                    <h5 style="font-weight: bold;">{{case.title}}</h5>
+                </div>
+            </div>
+
         </div>
         <div class="col-sm">
             <app-heading header="Predstojeća ročišta" class="desktop-app-header"></app-heading>
 
             <div class="card-container">
 
-                <app-heading header="Predstojeća ročišta"></app-heading>
+                <app-heading header="Predstojeća ročišta" class="mobile-app-header"></app-heading>
                 <div class="lawyersuit-card" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} "
                     (click)="openCaseOverview(lawsuit.id_case)">
                     <h5>{{lawsuit.date_formatted}}</h5>

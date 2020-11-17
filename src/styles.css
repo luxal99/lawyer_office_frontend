@@ -117,9 +117,15 @@ h6 {
     background: linear-gradient(to right, #ECE9E6, #e1e1e1);
 }
 
-@media screen and (max-width:420px){
-   
+@media screen and (max-width:570px) {
     .overview-container .row {
         border-bottom: none;
+    }
+     ::-webkit-scrollbar {
+        display: none;
+    }
+    .mat-dialog-container {
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 20px !important;
     }
 }

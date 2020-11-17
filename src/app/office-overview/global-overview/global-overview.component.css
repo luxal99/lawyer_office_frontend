@@ -59,6 +59,10 @@ mat-form-field {
     -webkit-overflow-scrolling: touch;
 }
 
+.mobile-app-header {
+    display: none;
+}
+
 @media screen and (max-width:570px) {
     .mobile-overview {
         display: block !important;
