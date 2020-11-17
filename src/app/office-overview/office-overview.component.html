@@ -1,7 +1,6 @@
-<app-header></app-header>
-<div class="content">
-    <div class="row">
-        <div class="col-sm-2" id="menu">
+<mat-drawer-container>
+    <mat-drawer #drawer mode="over" style="width: 70%;">
+        <div id="menu">
 
             <a (click)="loadGlobarOverview()">
                 <h4 (click)="changeColor($event)" id="overview-btn"><i class="fa fa-eye"></i> Pregled</h4>
@@ -16,10 +15,36 @@
                 <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
             </a>
         </div>
-        <div class="col-sm">
-            <div class="target" #target>
+    </mat-drawer>
+    <mat-drawer-content>
 
+        <div class="menu">
+            <button mat-icon-button class="menu-btn" (click)="drawer.toggle()"><mat-icon style="font-size: 30px;">format_align_left</mat-icon></button>
+        </div>
+        <app-header></app-header>
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-2" id="menu">
+
+                    <a (click)="loadGlobarOverview()">
+                        <h4 (click)="changeColor($event)" id="overview-btn"><i class="fa fa-eye"></i> Pregled</h4>
+                    </a>
+                    <a (click)="loadClientOverview()">
+                        <h4 (click)="changeColor($event)" class="link"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+                    </a>
+                    <a (click)="loadCaseOverview()">
+                        <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+                    </a>
+                    <a>
+                        <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <div class="target" #target>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </mat-drawer-content>
+</mat-drawer-container>

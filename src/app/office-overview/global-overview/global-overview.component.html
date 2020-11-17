@@ -28,7 +28,7 @@
                 <div class="mobile-overview" style="display: none;">
 
 
-                    <div class="case-card" *ngFor="let case of listOfLastThreeCases">
+                    <div class="case-card" *ngFor="let case of listOfLastThreeCases" (click)="openCaseOverview(case)">
                         <h5 style="color: #fff;">{{case.creation_date_formatted}}</h5>
                         <h5 style="font-weight: bold;">{{case.title}}</h5>
                     </div>

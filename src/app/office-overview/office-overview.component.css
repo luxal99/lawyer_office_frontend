@@ -38,11 +38,27 @@
     transform: none !important;
 }
 
+.menu {
+    display: none;
+    padding: 1em;
+    background-color: #fff;
+}
+
+mat-drawer {
+    padding: 15em 2em 0 2em;
+}
+
 @media screen and (max-width:420px) {
     .col-sm-2 {
         display: none !important;
     }
     .content .row .col-sm-3 {
         height: 60vh;
+    }
+    .menu {
+        display: block;
+    }
+     ::ng-deep.empty-col {
+        display: none;
     }
 }
