@@ -1,18 +1,21 @@
 <mat-drawer-container>
     <mat-drawer #drawer mode="over" style="width: 70%;">
-        <div id="menu">
+        <div class="text-center" style="padding-top: 2em;">
+            <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" alt="" class="img-fluid" width="100px">
+        </div>
+        <div class="side-menu">
 
             <a (click)="loadGlobarOverview()">
-                <h4 (click)="changeColor($event)" id="overview-btn"><i class="fa fa-eye"></i> Pregled</h4>
+                <h4 (click)="changeColor($event)"><i class="fa fa-eye"></i> Pregled</h4>
             </a>
             <a (click)="loadClientOverview()">
-                <h4 (click)="changeColor($event)" class="link"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+                <h4 (click)="changeColor($event)"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
             </a>
             <a (click)="loadCaseOverview()">
-                <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+                <h4 (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
             </a>
             <a>
-                <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+                <h4 (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
             </a>
         </div>
     </mat-drawer>

@@ -49,7 +49,6 @@ h6 {
     border-right: 1px solid #e1e1e1;
 }
 
-
 .client-container .row .col-sm {
     padding-top: 2em;
 }
@@ -73,13 +72,45 @@ h6 {
     background: linear-gradient(to right, #ECE9E6, #FFFFFF);
 }
 
-@media screen and (max-width:420px){
-    .client{
+.mobile-container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2em;
+    margin-top: 1em;
+    display: none;
+    overflow: scroll;
+    height: 50vh;
+}
+
+.mobile-overview {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.client-card {
+    padding: 2em;
+    border-radius: 15px;
+    margin-top: 1em;
+    width: 100%;
+    height: 250px;
+}
+
+@media screen and (max-width:420px) {
+    .client {
         padding: 0em;
     }
     .add-client-btn {
-        width: 80%;
+        width: 100%;
     }
-
-   
+    .overview-container {
+        display: none;
+    }
+    .mobile-container {
+        display: block;
+    }
+    .header-row {
+        padding: 3em 1em 0 1em;
+    }
 }

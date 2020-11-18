@@ -7,6 +7,7 @@ import { CaseService } from '../service/case.service';
 import { Client } from '../model/Client';
 import { ClientOverviewDialogComponent } from '../office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from '../service/client.service';
+import { GlobalMethods } from '../dialog-global';
 import { MatDialog } from '@angular/material';
 import { Notification } from 'src/app/model/Notification';
 import { NotificationService } from '../service/notification.service';
@@ -91,8 +92,8 @@ export class HeaderComponent implements OnInit {
     this.notificatioService.delete(notification.id).subscribe(resp => {
       this.getNotification();
     }, err => {
-        console.log(err);
-        
+      console.log(err);
+
     })
   }
   async search() {
@@ -122,28 +123,14 @@ export class HeaderComponent implements OnInit {
   }
 
   openCaseOverview(cs): void {
-    const dialogRef = this.dialog.open(CaseOverviewDialogComponent, {
-      minWidth: '50%',
-      position: { right: '0' },
-      height: '100vh',
-      data: cs
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openCaseOverviewDialog(cs).afterClosed().subscribe(result => {
       this.getAllCases();
-    });
+    })
   }
   openClientOverview(client): void {
-    const dialogRef = this.dialog.open(ClientOverviewDialogComponent, {
-      minWidth: '70%',
-      position: { right: '0' },
-      height: '100vh',
-      data: client
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openClientOverview(client).afterClosed().subscribe(() => {
       this.getAllClients();
-    });
+    })
   }
 
   desideToOpenDialog(object) {

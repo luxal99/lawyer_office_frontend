@@ -44,8 +44,8 @@
     background-color: #fff;
 }
 
-mat-drawer {
-    padding: 15em 2em 0 2em;
+.side-menu {
+    margin: 5em 2em 0 2em;
 }
 
 @media screen and (max-width:420px) {
