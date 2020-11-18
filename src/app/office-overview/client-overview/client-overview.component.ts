@@ -29,7 +29,7 @@ export class ClientOverviewComponent implements OnInit {
     })
   }
 
-  openAddClientDialog(client: Client): void {
+  openAddClientDialog(client): void {
     new GlobalMethods(this.dialog).openAddClientDialog(client).afterClosed().subscribe(result => {
       this.getAllClients();
     })
