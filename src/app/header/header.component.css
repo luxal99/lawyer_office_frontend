@@ -70,6 +70,10 @@ mat-label {
     color: #666;
 }
 
+h4:hover {
+    cursor: pointer;
+}
+
 .notification {
     padding: 2em;
 }

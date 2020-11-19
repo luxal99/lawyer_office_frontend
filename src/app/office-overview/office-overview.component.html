@@ -5,17 +5,27 @@
         </div>
         <div class="side-menu">
 
-            <a (click)="loadGlobarOverview()">
-                <h4 (click)="changeColor($event)"><i class="fa fa-eye"></i> Pregled</h4>
+            <a (click)="drawer.toggle()">
+                <a (click)="loadGlobarOverview()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-eye"></i> Pregled</h4>
+                </a>
             </a>
-            <a (click)="loadClientOverview()">
-                <h4 (click)="changeColor($event)"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+            <a (click)="drawer.toggle()">
+                <a (click)="loadClientOverview()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+                </a>
             </a>
-            <a (click)="loadCaseOverview()">
-                <h4 (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+
+            <a (click)="drawer.toggle()">
+                <a (click)="loadCaseOverview()">
+                    <h4 (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+                </a>
             </a>
-            <a>
-                <h4 (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+            <a (click)="drawer.toggle()">
+
+                <a (click)="openUserProfileDialog()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+                </a>
             </a>
         </div>
     </mat-drawer>
@@ -38,7 +48,7 @@
                     <a (click)="loadCaseOverview()">
                         <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
                     </a>
-                    <a>
+                    <a (click)="openUserProfileDialog()">
                         <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
                     </a>
                 </div>

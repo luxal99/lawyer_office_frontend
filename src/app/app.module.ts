@@ -26,6 +26,7 @@ import { NgModule } from '@angular/core';
 import { OfficeOverviewComponent } from './office-overview/office-overview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './registation/registation.component';
+import { UserProfileComponent } from './office-overview/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RegistationComponent } from './registation/registation.component';
     CaseOverviewDialogComponent,
     HeadingComponent,
     EditCaseDialogComponent,
-    EditLawsuitDialogComponent
+    EditLawsuitDialogComponent,
+    UserProfileComponent
   ],
   imports: [
     MatDaterangepickerModule,
@@ -56,9 +58,9 @@ import { RegistationComponent } from './registation/registation.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe, ThemeService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [DatePipe, ThemeService,HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   entryComponents: [AddClientDialogComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent, ClientOverviewComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+    ClientOverviewDialogComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

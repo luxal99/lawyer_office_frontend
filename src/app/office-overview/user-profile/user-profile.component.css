@@ -1,0 +1,23 @@
+.dialog {
+    padding: 2em 1em;
+}
+
+.form-div {
+    padding-top: 2em;
+}
+
+mat-form-field {
+    width: 90%;
+}
+
+.save-btn {
+    padding: .5em 0;
+    width: 60%;
+    color: #fff;
+}
+
+@media screen and (max-width:570px) {
+    mat-form-field {
+        width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+<div class="dialog">
+    <app-heading header="Izmena korisničkih podataka"></app-heading>
+    <div class="form-div">
+        <form [formGroup]="userForm">
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Korisničko ime</mat-label>
+                    <input formControlName="username" matInput placeholder="lawyer21">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Šifra</mat-label>
+                    <input type="password" formControlName="password" matInput placeholder="Password">
+                    <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Ponovite šifru</mat-label>
+                    <input type="password" formControlName="confirm_password" matInput placeholder="Password">
+                    <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-button *ngIf="userForm.valid && userForm.get('password').value === userForm.get('confirm_password').value" class=" gradient-blue-btn save-btn">Izmeni podatke</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 import { ComponentType } from '@angular/cdk/portal';
 import { DialogOptions } from './dialog-options';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
+import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 import { MatDialog } from '@angular/material';
+import { UserProfileComponent } from './office-overview/user-profile/user-profile.component';
 
 export class GlobalMethods<T> {
-
-
 
     constructor(private dialog: MatDialog) {
     }
@@ -39,5 +39,13 @@ export class GlobalMethods<T> {
 
     openEditCaseDialog(data) {
         return new GlobalMethods(this.dialog).openDialog(EditCaseDialogComponent, DialogOptions.getOptions(data))
+    }
+
+    openEditLawsuitDialog(lawsuit) {
+        return new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit))
+    }
+
+    openUserProfileDialog() {
+        return new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
     }
 }

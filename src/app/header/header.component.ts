@@ -133,6 +133,16 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  openUserProfileDialog() {
+    new GlobalMethods(this.dialog).openUserProfileDialog()
+  }
+
+  logout() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
+    location.reload();
+  }
+
   desideToOpenDialog(object) {
 
     console.log(object.full_name);

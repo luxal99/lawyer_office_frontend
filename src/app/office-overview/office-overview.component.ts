@@ -1,7 +1,13 @@
-import { ComponentFactoryResolver } from '@angular/core';
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { async } from '@angular/core/testing';
 import * as $ from "jquery"
+
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+
+import { ComponentFactoryResolver } from '@angular/core';
+import { GlobalMethods } from '../dialog-global';
+import { MatDialog } from '@angular/material';
+import { async } from '@angular/core/testing';
+import { th } from 'date-fns/locale';
+
 @Component({
   selector: 'app-office-overview',
   templateUrl: './office-overview.component.html',
@@ -15,7 +21,7 @@ export class OfficeOverviewComponent implements OnInit {
   @ViewChild('target', { read: ViewContainerRef, static: false }) entry: ViewContainerRef;
 
 
-  constructor(private cvRef: ViewContainerRef, private resolver: ComponentFactoryResolver) { }
+  constructor(private cvRef: ViewContainerRef, private resolver: ComponentFactoryResolver, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -26,16 +32,20 @@ export class OfficeOverviewComponent implements OnInit {
   }
 
 
- async initDefaultMenu(){
-   document.getElementById("overview-btn").click();
+  async initDefaultMenu() {
+    document.getElementById("overview-btn").click();
   }
 
-  changeColor(e){
+  changeColor(e) {
     var elems = document.querySelectorAll(".active");
-    [].forEach.call(elems, function(el) {
+    [].forEach.call(elems, function (el) {
       el.classList.remove("active");
     });
     e.target.className = "active";
+  }
+
+  openUserProfileDialog() {
+    new GlobalMethods(this.dialog).openUserProfileDialog()
   }
 
 

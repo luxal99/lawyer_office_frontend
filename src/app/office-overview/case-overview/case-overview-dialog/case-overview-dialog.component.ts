@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { GlobalMethods } from 'src/app/dialog-global';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';
@@ -18,9 +19,7 @@ export class CaseOverviewDialogComponent implements OnInit {
 
   ngOnInit() {
     this.init();
-
   }
-
 
   init() {
     if (this.data.status) {
@@ -31,25 +30,11 @@ export class CaseOverviewDialogComponent implements OnInit {
 
   }
   openClientOverview(client): void {
-    const dialogRef = this.dialog.open(ClientOverviewDialogComponent, {
-      minWidth: '70%',
-      position: { right: '0' },
-      height: '100vh',
-      data: client
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    new GlobalMethods(this.dialog).openClientOverview(client)
   }
 
   openEditLawsuitDialog(lawsuit): void {
-    const dialogRef = this.dialog.open(EditLawsuitDialogComponent, {
-      width: 'auto',
-      data: lawsuit
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    new GlobalMethods(this.dialog).openEditLawsuitDialog(lawsuit);
   }
 
   changeStatus() {

@@ -4,8 +4,9 @@
     "scripts": {
         "ng": "ng",
         "start": "sudo ng serve --watch --proxy-config proxy.config.json",
-        "build": "ng build --prod --aot",
+        "build": "ng build --aot --prod",
         "test": "ng test",
+        "deploy_on_vm": "rsync -avz -e 'ssh' ./dist/lawyer-office-frontend/* root@$SERVER:/var/www/html",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },

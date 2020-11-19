@@ -1,6 +1,6 @@
 .content {
     background-color: #F7F8F8;
-    min-height: 91vh;
+    min-height: 89vh;
 }
 
 .content .row .col-sm-2 {
@@ -9,7 +9,7 @@
     background-color: #fff;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    min-height: 91vh;
+    min-height: 89vh;
 }
 
 .content h4 {

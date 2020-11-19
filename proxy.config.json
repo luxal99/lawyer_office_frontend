@@ -1,12 +1,11 @@
 [{
     "context": [
+        "/case",
         "/user",
         "/client",
-        "/case",
         "/lawsuit",
         "/notification"
     ],
     "target": "http://localhost:8080",
-    "changeOrigin": true,
     "secure": false
 }]
