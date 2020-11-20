@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { MatSnackBar } from '@angular/material';
 import { User } from '../model/User';
 import { UserInfo } from '../model/UserInfo';
@@ -30,8 +31,12 @@ export class RegistationComponent implements OnInit {
         this.registrationForm.get("username").value, this.registrationForm.get("password").value,
         new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
       )).subscribe(resp => {
+        console.log(resp);
+        
         this.openSnackBar('Uspesno ste se registrovali', "DONE")
       }, err => {
+        console.log(err);
+        
         this.openSnackBar("Dogodila se greska", "DONE")
       })
     }
