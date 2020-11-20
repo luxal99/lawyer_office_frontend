@@ -4,9 +4,9 @@ import { AddClientDialogComponent } from './add-client-dialog/add-client-dialog.
 import { Client } from 'src/app/model/Client';
 import { ClientOverviewDialogComponent } from './client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from 'src/app/service/client.service';
+import { DialogOptions } from 'src/app/dialog-options';
 import { GlobalMethods } from 'src/app/dialog-global';
 import { MatDialog } from '@angular/material';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-client-overview',
@@ -25,18 +25,18 @@ export class ClientOverviewComponent implements OnInit {
 
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClients = resp as Array<Client>;
+      this.listOfClients = resp;
     })
   }
 
   openAddClientDialog(client): void {
-    new GlobalMethods(this.dialog).openAddClientDialog(client).afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openDialog(AddClientDialogComponent,DialogOptions.getOptions(client)).afterClosed().subscribe(result => {
       this.getAllClients();
     })
   }
 
   openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openClientOverview(client)
+    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
   }
 }
 

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
-
 @Component({
   selector: 'app-add-client-dialog',
   templateUrl: './add-client-dialog.component.html',
@@ -24,7 +23,7 @@ export class AddClientDialogComponent implements OnInit {
     this.setHeading();
   }
 
-  setHeading(){
+  setHeading() {
     if (this.data.id !== undefined) {
       this.heading = "Izmena stranke"
     }
@@ -38,9 +37,7 @@ export class AddClientDialogComponent implements OnInit {
       this.addClientForm.get("telephone").value)
 
     if (this.data.id !== undefined) {
-    
-      console.log(this.data.id);
-      
+
       client.id = this.data.id;
 
       this.clientService.update(client).subscribe(resp => {
@@ -58,8 +55,9 @@ export class AddClientDialogComponent implements OnInit {
         this.openSnackBar("Dogodila se greška", "DONE")
       })
     }
-  }
 
+    return "Aleksa"
+  }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

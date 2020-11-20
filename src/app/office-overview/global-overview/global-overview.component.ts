@@ -10,6 +10,7 @@ import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dial
 import { CaseService } from 'src/app/service/case.service';
 import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
+import { DialogOptions } from 'src/app/dialog-options';
 import { GlobalMethods } from 'src/app/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
@@ -58,7 +59,7 @@ export class GlobalOverviewComponent implements OnInit {
 
   getAnalytics() {
     this.caseService.getCaseAnalytics().subscribe(resp => {
-      this.analyticsResponseData = resp as Array<any>
+      this.analyticsResponseData = resp 
 
       this.analyticsResponseData.forEach(res => {
         this.analyticsData.push(Number.parseInt(res.value))
@@ -69,13 +70,13 @@ export class GlobalOverviewComponent implements OnInit {
 
   getAllCases() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClient = resp as Array<Client>
+      this.listOfClient = resp 
     })
   }
 
   getLastThreeCases() {
     this.caseService.getLastThreeCases().subscribe(resp => {
-      this.listOfLastThreeCases = resp as Array<Case>
+      this.listOfLastThreeCases = resp 
       this.listOfLastThreeCases.forEach(cs => {
         cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
       })
@@ -84,7 +85,7 @@ export class GlobalOverviewComponent implements OnInit {
 
   getNextThreeLawsuit() {
     this.lawsuitService.getNextThreeLawsuit().subscribe(resp => {
-      this.listOfNextThreeLawsuits = resp as Array<Lawsuit>
+      this.listOfNextThreeLawsuits = resp
 
       this.listOfNextThreeLawsuits.forEach(lawsuit => {
         lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
@@ -117,6 +118,6 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   openCaseOverview(data) {
-    new GlobalMethods(this.dialog).openCaseOverviewDialog(data)
+    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
   }
 }

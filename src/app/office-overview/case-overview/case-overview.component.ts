@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe, formatDate } from '@angular/common';
 
 import { AddCaseDialogComponent } from './add-case-dialog/add-case-dialog.component';
 import { Case } from 'src/app/model/Case';
 import { CaseOverviewDialogComponent } from './case-overview-dialog/case-overview-dialog.component';
 import { CaseService } from 'src/app/service/case.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { DialogOptions } from 'src/app/dialog-options';
 import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
 import { GlobalMethods } from 'src/app/dialog-global';
 import { MatDialog } from '@angular/material';
-import { parse } from 'date-fns';
 
 @Component({
   selector: 'app-case-overview',
@@ -21,7 +21,7 @@ export class CaseOverviewComponent implements OnInit {
   listOfCases: Array<Case> = [];
 
   _listOfCases: Array<Case> = [];
-  constructor(private dialog: MatDialog, private caseService: CaseService, private datePipe: DatePipe) { }
+  constructor(private dialog: MatDialog, private caseService: CaseService) { }
 
   ngOnInit() {
     this.getAllCases();
@@ -29,24 +29,30 @@ export class CaseOverviewComponent implements OnInit {
 
   getAllCases() {
     this.caseService.getAll().subscribe(resp => {
-      this.listOfCases = resp as Array<Case>
+      this.listOfCases = resp
     })
   }
 
+  openConfirmDialog() {
+    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(result=>{
+      console.log(result);
+      
+    })
+  }
 
   openAddCaseDialog(client): void {
-    new GlobalMethods(this.dialog).openAddCaseDialog(client).afterClosed().subscribe(() => {
+    new GlobalMethods(this.dialog).openDialog(AddCaseDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
       this.getAllCases();
     })
   }
 
   openCaseOverview(data): void {
-    new GlobalMethods(this.dialog).openCaseOverviewDialog(data)
+    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
   }
 
 
   openEditCaseDialog(data): void {
-    new GlobalMethods(this.dialog).openEditCaseDialog(data).afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openDialog(EditCaseDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(result => {
       this.getAllCases();
     })
   }

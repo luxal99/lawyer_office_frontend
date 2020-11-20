@@ -16,36 +16,9 @@ export class GlobalMethods<T> {
     constructor(private dialog: MatDialog) {
     }
 
-    protected openDialog(component: ComponentType<T>, options: {}) {
+     openDialog(component: ComponentType<T>, options: {}) {
         let dialogRef = this.dialog.open<T>(component, options)
         return dialogRef;
     }
 
-    openCaseOverviewDialog(data) {
-        return new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data));
-    }
-
-    openAddClientDialog(client: Client) {
-        return new GlobalMethods(this.dialog).openDialog(AddClientDialogComponent, DialogOptions.getOptions(client));
-    }
-
-    openAddCaseDialog(data) {
-        return new GlobalMethods(this.dialog).openDialog(AddCaseDialogComponent, DialogOptions.getOptions(data))
-    }
-
-    openClientOverview(client) {
-        return new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
-    }
-
-    openEditCaseDialog(data) {
-        return new GlobalMethods(this.dialog).openDialog(EditCaseDialogComponent, DialogOptions.getOptions(data))
-    }
-
-    openEditLawsuitDialog(lawsuit) {
-        return new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit))
-    }
-
-    openUserProfileDialog() {
-        return new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
-    }
 }

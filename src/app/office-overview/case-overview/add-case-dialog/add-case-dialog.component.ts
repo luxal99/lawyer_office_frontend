@@ -11,9 +11,6 @@ import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
-import { Observable } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { da } from 'date-fns/locale';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -41,6 +38,10 @@ export class AddCaseDialogComponent implements OnInit {
     id_client: new FormControl("", Validators.required)
   })
 
+  
+
+
+
   lawsuitForm = new FormGroup({
     date: new FormControl("", Validators.required)
   })
@@ -53,7 +54,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClietns = resp as Array<Client>
+      this.listOfClietns = resp 
     })
   }
 
@@ -74,15 +75,14 @@ export class AddCaseDialogComponent implements OnInit {
       this.addCaseForm.get("id_client").value,
     );
 
+    console.log(caseEntity);
+    
+
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
     await this.caseService.save(caseEntity).subscribe(resp => {
       caseEntity.id = resp['id']
     }, err => {
     })
-
-
-    console.log(caseEntity.creation_date);
-
     return caseEntity
   }
 
@@ -95,7 +95,6 @@ export class AddCaseDialogComponent implements OnInit {
 
         this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")
       }, err => {
-        console.log(err);
 
         this.openSnackBar("Dogodila se greška pri čuvanju ročišta", "DONE")
       })

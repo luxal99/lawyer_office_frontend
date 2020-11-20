@@ -55,7 +55,7 @@ export class EditCaseDialogComponent implements OnInit {
   }
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClietns = resp as Array<Client>
+      this.listOfClietns = resp 
     })
   }
 
@@ -76,6 +76,7 @@ export class EditCaseDialogComponent implements OnInit {
     );
 
     caseEntity.id = this.data.id;
+    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US')
     let client = new Client();
     client.id = this.addCaseForm.get("id_client").value;
 

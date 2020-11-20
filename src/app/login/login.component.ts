@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from '../service/auth.service';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
-import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl("", Validators.required),
     password: new FormControl("", Validators.required)
   })
-  constructor(private authService: AuthService, private router: Router,private _snackBar: MatSnackBar) { }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -24,13 +25,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.auth(new User(this.loginForm.get("username").value, this.loginForm.get("password").value)).subscribe(resp => {
       if (resp['token']) {
-        localStorage.setItem("token",JSON.stringify(resp['token']))
+        localStorage.setItem("token", JSON.stringify(resp['token']))
 
-        localStorage.setItem("username",JSON.stringify(resp['username']))
+        localStorage.setItem("username", JSON.stringify(resp['username']))
         this.router.navigate(['/overview'])
       }
-    },err =>{
-        this.openSnackBar("Uneti podaci nisu validni","DONE")
+    }, err => {
+      this.openSnackBar("Uneti podaci nisu validni", "DONE")
     })
   }
 

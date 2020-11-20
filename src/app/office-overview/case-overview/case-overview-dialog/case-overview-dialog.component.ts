@@ -1,7 +1,8 @@
-import { formatDate } from '@angular/common';
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { GlobalMethods } from 'src/app/dialog-global';
+import { DialogOptions } from 'src/app/dialog-options';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';
@@ -29,12 +30,14 @@ export class CaseOverviewDialogComponent implements OnInit {
     }
 
   }
-  openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openClientOverview(client)
+  openClientOverview(client) {
+    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent,DialogOptions.getOptions(client))
   }
 
-  openEditLawsuitDialog(lawsuit): void {
-    new GlobalMethods(this.dialog).openEditLawsuitDialog(lawsuit);
+  openEditLawsuitDialog(lawsuit) {
+    new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent,DialogOptions.getOptions(lawsuit)).afterClosed().subscribe(() => {
+      this.findById();
+    });
   }
 
   changeStatus() {
@@ -46,8 +49,12 @@ export class CaseOverviewDialogComponent implements OnInit {
       this.data.status = true;
     }
     this.caseService.update(this.data).subscribe(resp => {
-      console.log(resp);
+    })
+  }
 
+  findById() {
+    this.caseService.findById(this.data.id).subscribe(resp => {
+      this.data = resp as Case
     })
   }
 }

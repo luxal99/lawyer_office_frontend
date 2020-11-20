@@ -1,0 +1,17 @@
+.btn-div {
+    display: inline-flex;
+    width: 100%;
+}
+
+button {
+    color: #fff;
+    width: 48%;
+}
+
+.del-btn {
+    margin-left: 0 !important;
+}
+
+.cancel-btn {
+    margin-left: 1em;
+}

@@ -3,8 +3,10 @@ import * as $ from "jquery"
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { ComponentFactoryResolver } from '@angular/core';
+import { DialogOptions } from '../dialog-options';
 import { GlobalMethods } from '../dialog-global';
 import { MatDialog } from '@angular/material';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { async } from '@angular/core/testing';
 import { th } from 'date-fns/locale';
 
@@ -45,7 +47,7 @@ export class OfficeOverviewComponent implements OnInit {
   }
 
   openUserProfileDialog() {
-    new GlobalMethods(this.dialog).openUserProfileDialog()
+    new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
   }
 
 

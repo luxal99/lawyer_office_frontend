@@ -1,6 +1,7 @@
+import { GenericService } from './generic.service';
 import { Injectable } from '@angular/core';
 import { Lawsuit } from '../model/Lawsuit';
-import { GenericService } from './generic.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { GenericService } from './generic.service';
 export class LawsuitService extends GenericService<Lawsuit> {
   route = "lawsuit"
 
-  getNextThreeLawsuit() {
-    return this.http.get(`${this.route}/nextThreeLawsuit`, { responseType: 'json' })
+  getNextThreeLawsuit():Observable<Lawsuit[]> {
+    return this.http.get<Lawsuit[]>(`${this.route}/nextThreeLawsuit`, { responseType: 'json' })
   }
 }

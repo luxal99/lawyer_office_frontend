@@ -13,6 +13,7 @@ import { CaseOverviewComponent } from "./office-overview/case-overview/case-over
 import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
 import { ClientOverviewComponent } from './office-overview/client-overview/client-overview.component';
 import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
+import { ConfirmDialogComponent } from './office-overview/confirm-dialog/confirm-dialog.component';
 import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 import { GlobalOverviewComponent } from './office-overview/global-overview/global-overview.component';
@@ -45,7 +46,8 @@ import { UserProfileComponent } from './office-overview/user-profile/user-profil
     HeadingComponent,
     EditCaseDialogComponent,
     EditLawsuitDialogComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     MatDaterangepickerModule,
@@ -60,7 +62,7 @@ import { UserProfileComponent } from './office-overview/user-profile/user-profil
   ],
   providers: [DatePipe, ThemeService,HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   entryComponents: [AddClientDialogComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+    ClientOverviewDialogComponent,ConfirmDialogComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

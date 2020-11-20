@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
 import { Case } from '../model/Case';
 import { GenericService } from './generic.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ import { GenericService } from './generic.service';
 export class CaseService extends GenericService<Case> {
   route = "case";
 
-  getLastThreeCases(){
-    return this.http.get(`/${this.route}/lastThree`,{responseType:'json'})
+  getLastThreeCases():Observable<Case[]>{
+    return this.http.get<Case[]>(`/${this.route}/lastThree`,{responseType:'json'})
   }
 
-  getCaseAnalytics(){
-    return this.http.get(`/${this.route}/analytics`,{responseType:'json'})
+  getCaseAnalytics():Observable<Case[]>{
+    return this.http.get<Case[]>(`/${this.route}/analytics`,{responseType:'json'})
   }
 }

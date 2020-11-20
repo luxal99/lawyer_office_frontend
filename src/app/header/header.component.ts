@@ -7,10 +7,12 @@ import { CaseService } from '../service/case.service';
 import { Client } from '../model/Client';
 import { ClientOverviewDialogComponent } from '../office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from '../service/client.service';
+import { DialogOptions } from '../dialog-options';
 import { GlobalMethods } from '../dialog-global';
 import { MatDialog } from '@angular/material';
 import { Notification } from 'src/app/model/Notification';
 import { NotificationService } from '../service/notification.service';
+import { UserProfileComponent } from '../office-overview/user-profile/user-profile.component';
 import { sm } from 'jssm';
 
 @Component({
@@ -60,20 +62,20 @@ export class HeaderComponent implements OnInit {
 
   getAllCases() {
     this.caseService.getAll().subscribe(resp => {
-      this.listOfCases = resp as Array<Case>
+      this.listOfCases = resp 
     })
   }
 
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listofClient = resp as Array<Client>
+      this.listofClient = resp
     })
   }
 
 
   getNotification() {
     this.notificatioService.getAll().subscribe(resp => {
-      this.listOfNotification = resp as Array<Notification>
+      this.listOfNotification = resp
 
       if (this.listOfNotification.length > 0) {
         this.notificationIcon = 'notifications_active';
@@ -92,8 +94,6 @@ export class HeaderComponent implements OnInit {
     this.notificatioService.delete(notification.id).subscribe(resp => {
       this.getNotification();
     }, err => {
-      console.log(err);
-
     })
   }
   async search() {
@@ -110,8 +110,6 @@ export class HeaderComponent implements OnInit {
     })
 
     this.listofClient.forEach(filter => {
-      console.log(filter);
-
       if (filter.full_name.toLowerCase().indexOf(this.searchForm.get("search").value) !== -1 && this.searchForm.get("search").value !== '') {
         if (this.filteredArray.findIndex(x => x.full_name === filter.full_name) < 0) {
           this.filteredArray.push(filter)
@@ -123,18 +121,18 @@ export class HeaderComponent implements OnInit {
   }
 
   openCaseOverview(cs): void {
-    new GlobalMethods(this.dialog).openCaseOverviewDialog(cs).afterClosed().subscribe(result => {
+    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(cs)).afterClosed().subscribe(result => {
       this.getAllCases();
     })
   }
   openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openClientOverview(client).afterClosed().subscribe(() => {
+    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
       this.getAllClients();
     })
   }
 
   openUserProfileDialog() {
-    new GlobalMethods(this.dialog).openUserProfileDialog()
+    new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
   }
 
   logout() {
@@ -144,9 +142,6 @@ export class HeaderComponent implements OnInit {
   }
 
   desideToOpenDialog(object) {
-
-    console.log(object.full_name);
-
     if (object.full_name !== undefined) {
       this.openClientOverview(object)
     } else {
