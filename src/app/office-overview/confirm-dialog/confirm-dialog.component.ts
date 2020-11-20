@@ -12,4 +12,11 @@ export class ConfirmDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  saidYes() {
+    localStorage.setItem("confirm", "true")
+  }
+
+  saidNo() {
+    localStorage.setItem("confirm", "false")
+  }
 }

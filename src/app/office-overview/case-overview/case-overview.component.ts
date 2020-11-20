@@ -9,6 +9,7 @@ import { DialogOptions } from 'src/app/dialog-options';
 import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
 import { GlobalMethods } from 'src/app/dialog-global';
 import { MatDialog } from '@angular/material';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-case-overview',
@@ -33,10 +34,17 @@ export class CaseOverviewComponent implements OnInit {
     })
   }
 
-  openConfirmDialog() {
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(result=>{
-      console.log(result);
-      
+  openConfirmDialog(id: number) {
+    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+      if (JSON.parse(localStorage.getItem("confirm"))) {
+        this.deleteCase(id)
+      }
+    })
+  }
+
+  async deleteCase(id) {
+    this.caseService.delete(id).subscribe(resp => {
+      this.getAllCases()
     })
   }
 
