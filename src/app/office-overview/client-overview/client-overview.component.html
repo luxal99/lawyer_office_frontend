@@ -24,7 +24,7 @@
                         <button mat-button class="gradient-blue-btn overview-btn" (click)="openClientOverview(client)">Pregledaj</button>
                         <button mat-button class="gradient-blue-btn edit-btn" (click)="openAddClientDialog(client)">Izmeni</button>
 
-                        <button mat-button class="gradient-red-btn del-btn">Obriši</button>
+                        <button mat-button class="gradient-red-btn del-btn" (click)="openConfirmDialog(client.id)">Obriši</button>
                     </div>
                 </div>
             </div>

@@ -38,6 +38,7 @@ export class CaseOverviewComponent implements OnInit {
     new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm"))) {
         this.deleteCase(id)
+        localStorage.removeItem("confirm")
       }
     })
   }

@@ -38,7 +38,7 @@ export class AddCaseDialogComponent implements OnInit {
     id_client: new FormControl("", Validators.required)
   })
 
-  
+
 
 
 
@@ -54,7 +54,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClietns = resp 
+      this.listOfClietns = resp
     })
   }
 
@@ -75,11 +75,10 @@ export class AddCaseDialogComponent implements OnInit {
       this.addCaseForm.get("id_client").value,
     );
 
-    console.log(caseEntity);
-    
-
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
     await this.caseService.save(caseEntity).subscribe(resp => {
+      console.log(resp);
+      
       caseEntity.id = resp['id']
     }, err => {
     })
@@ -98,7 +97,7 @@ export class AddCaseDialogComponent implements OnInit {
 
         this.openSnackBar("Dogodila se greška pri čuvanju ročišta", "DONE")
       })
-    }, 100);
+    }, 200);
   }
 
   save() {
@@ -110,15 +109,10 @@ export class AddCaseDialogComponent implements OnInit {
         this.openSnackBar("Dogodila se greška pri čuvanju predmeta", "DONE")
       });
     } else {
-
-      this.saveCase().then((resp) => {
+  this.saveCase().then((resp) => {
         this.saveLawsuit(resp);
       })
     }
-  }
-
-  update() {
-
   }
 
   openSnackBar(message: string, action: string) {
