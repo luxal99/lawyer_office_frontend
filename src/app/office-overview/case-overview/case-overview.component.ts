@@ -50,7 +50,7 @@ export class CaseOverviewComponent implements OnInit {
   }
 
   openAddCaseDialog(client): void {
-    new GlobalMethods(this.dialog).openDialog(AddCaseDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
+    new GlobalMethods<AddCaseDialogComponent>(this.dialog).openDialog(AddCaseDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
       this.getAllCases();
     })
   }

@@ -1,4 +1,4 @@
-
+import { Options } from './model/Options';
 
 export class DialogOptions {
 
@@ -6,18 +6,18 @@ export class DialogOptions {
 
     static getOptions(data) {
         if (window.screen.width <= 570) {
-            this.dialogOptions = { minWidth: '100vh', position: { bottom: '0' }, height: '82vh', data: data }
+            this.dialogOptions = new Options('100%', { bottom: '0' }, '82vh', data)
         } else {
-            this.dialogOptions = { minWidth: '40%', position: { right: '0' }, height: '100vh', data: data }
+            this.dialogOptions = new Options('40%', { right: '0' }, '100vh', data)
         }
         return this.dialogOptions
     }
 
-    static getConfirmDialogOption(){
+    static getConfirmDialogOption() {
         if (window.screen.width <= 570) {
-            this.dialogOptions = { minWidth: '100vh', position: { bottom: '0' }, height: '50vh' }
+            this.dialogOptions = new Options("100vh", { bottom: 0 }, '50vh')
         } else {
-            this.dialogOptions = { minWidth: '30%', position: { center: '0' }, height: 'auto' }
+            this.dialogOptions = new Options('30%', { center: '0' }, 'auto')
         }
         return this.dialogOptions
     }
