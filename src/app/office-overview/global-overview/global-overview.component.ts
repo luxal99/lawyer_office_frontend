@@ -59,7 +59,7 @@ export class GlobalOverviewComponent implements OnInit {
 
   getAnalytics() {
     this.caseService.getCaseAnalytics().subscribe(resp => {
-      this.analyticsResponseData = resp 
+      this.analyticsResponseData = resp
 
       this.analyticsResponseData.forEach(res => {
         this.analyticsData.push(Number.parseInt(res.value))
@@ -70,13 +70,13 @@ export class GlobalOverviewComponent implements OnInit {
 
   getAllCases() {
     this.clientService.getAll().subscribe(resp => {
-      this.listOfClient = resp 
+      this.listOfClient = resp
     })
   }
 
   getLastThreeCases() {
     this.caseService.getLastThreeCases().subscribe(resp => {
-      this.listOfLastThreeCases = resp 
+      this.listOfLastThreeCases = resp
       this.listOfLastThreeCases.forEach(cs => {
         cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
       })
@@ -118,6 +118,10 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   openCaseOverview(data) {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
+    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(resp => {
+      this.getNextThreeLawsuit();
+      // this.getAnalytics();
+      this.getLastThreeCases();
+    })
   }
 }
