@@ -2,9 +2,9 @@
     <div style="display: inline-flex;width: 100%;">
         <app-heading style="width: 100%;" header="Detalji o slučaju"></app-heading>
         <div class="text-right">
-            <button mat-button class="gradient-red-btn edit-status-btn" (click)="changeStatus()" mat-dialog-close>Izmeni status</button>
+            <button mat-button class="gradient-red-btn edit-status-btn" (click)="openConfirmDialog()" mat-dialog-close>Izmeni status</button>
 
-            <button mat-button class="gradient-silver-btn delete-btn">Obriši</button>
+            <button mat-button class="gradient-silver-btn delete-btn" (click)="openConfirmDialog(data.id)" mat-dialog-close>Obriši</button>
         </div>
     </div>
 

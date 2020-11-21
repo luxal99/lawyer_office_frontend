@@ -97,6 +97,12 @@ h6 {
     height: 250px;
 }
 
+.overview-container {
+    max-height: 91vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 @media screen and (max-width:420px) {
     .client {
         padding: 0em;

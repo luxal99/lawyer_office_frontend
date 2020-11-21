@@ -33,7 +33,7 @@ export class GlobalOverviewComponent implements OnInit {
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['Aktivan', 'Zatovren'];
+  barChartLabels: Label[] = ['Aktivan', 'Arhiviran'];
   barChartType: ChartType = 'pie';
   barChartLegend = true;
   barChartPlugins = [];
@@ -121,6 +121,7 @@ export class GlobalOverviewComponent implements OnInit {
     new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(resp => {
       this.getNextThreeLawsuit();
       // this.getAnalytics();
+      this.getAllCases();
       this.getLastThreeCases();
     })
   }

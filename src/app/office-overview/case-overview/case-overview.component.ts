@@ -56,7 +56,9 @@ export class CaseOverviewComponent implements OnInit {
   }
 
   openCaseOverview(data): void {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
+    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(() => {
+      
+    })
   }
 
 

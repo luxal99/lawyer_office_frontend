@@ -2,6 +2,10 @@
     <mat-drawer #drawer mode="over" style="width: 70%;">
         <div class="text-center" style="padding-top: 2em;">
             <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" alt="" class="img-fluid" width="100px">
+
+            <div class="small-text">
+                <h6>Advokatska kancelarija Nataše M. Tošić <br>Gospodar Jevremova 3, 15 000 Šabac</h6>
+            </div>
         </div>
         <div class="side-menu">
 
@@ -27,6 +31,10 @@
                     <h4 (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
                 </a>
             </a>
+
+            <div class="copyright text-center">
+                <h6>Powered by <br> <a href="https://alemarc.dev">Alemarc Dev</a></h6>
+            </div>
         </div>
     </mat-drawer>
     <mat-drawer-content>
@@ -51,6 +59,10 @@
                     <a (click)="openUserProfileDialog()">
                         <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
                     </a>
+
+                    <div class="copyright text-center">
+                        <h6>Powered by <br> <a href="https://alemarc.dev">Alemarc Dev</a></h6>
+                    </div>
                 </div>
                 <div class="col-sm">
                     <div class="target" #target>

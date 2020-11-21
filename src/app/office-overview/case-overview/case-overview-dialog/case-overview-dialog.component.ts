@@ -6,6 +6,7 @@ import { DialogOptions } from 'src/app/dialog-options';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { EditLawsuitDialogComponent } from './edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 
 @Component({
@@ -26,22 +27,36 @@ export class CaseOverviewDialogComponent implements OnInit {
     if (this.data.status) {
       this.status = "Aktivan"
     } else {
-      this.status = "Zatvoren"
+      this.status = "Arhiviran"
     }
 
   }
   openClientOverview(client) {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent,DialogOptions.getOptions(client))
+    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
   }
 
   openEditLawsuitDialog(lawsuit) {
-    new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent,DialogOptions.getOptions(lawsuit)).afterClosed().subscribe(() => {
+    new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit)).afterClosed().subscribe(() => {
       this.findById();
     });
   }
 
-  changeStatus() {
+  openConfirmDialog(id?: number) {
 
+    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+      if (JSON.parse(localStorage.getItem("confirm")) && id === undefined) {
+        this.changeStatus()
+      } else if (JSON.parse(localStorage.getItem("confirm")) && id !== undefined) {
+        this.deleteCase(id)
+      }
+
+    localStorage.removeItem("confirm")
+    location.reload();
+    })
+
+  }
+
+  changeStatus() {
 
     if (this.data.status) {
       this.data.status = false
@@ -52,6 +67,11 @@ export class CaseOverviewDialogComponent implements OnInit {
     })
   }
 
+  deleteCase(id) {
+    this.caseService.delete(id).subscribe(resp => {
+
+    })
+  }
   findById() {
     this.caseService.findById(this.data.id).subscribe(resp => {
       this.data = resp as Case

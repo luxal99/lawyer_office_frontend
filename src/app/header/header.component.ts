@@ -7,12 +7,14 @@ import { CaseService } from '../service/case.service';
 import { Client } from '../model/Client';
 import { ClientOverviewDialogComponent } from '../office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from '../service/client.service';
+import { ConfirmDialogComponent } from '../office-overview/confirm-dialog/confirm-dialog.component';
 import { DialogOptions } from '../dialog-options';
 import { GlobalMethods } from '../dialog-global';
 import { MatDialog } from '@angular/material';
 import { Notification } from 'src/app/model/Notification';
 import { NotificationService } from '../service/notification.service';
 import { UserProfileComponent } from '../office-overview/user-profile/user-profile.component';
+import { id } from 'date-fns/locale';
 import { sm } from 'jssm';
 
 @Component({
@@ -62,7 +64,7 @@ export class HeaderComponent implements OnInit {
 
   getAllCases() {
     this.caseService.getAll().subscribe(resp => {
-      this.listOfCases = resp 
+      this.listOfCases = resp
     })
   }
 
@@ -99,9 +101,11 @@ export class HeaderComponent implements OnInit {
   async search() {
 
 
+    var input: string = this.searchForm.get("search").value;
+
     this.listOfCases.forEach(filter => {
       if (
-        filter.title.toLowerCase().indexOf(this.searchForm.get("search").value) !== -1
+        filter.title.toLowerCase().indexOf(input.toLowerCase()) !== -1
         && this.searchForm.get("search").value !== ''
         && (this.filteredArray.findIndex(x => x.title === filter.title) < 0)
       ) {
@@ -110,7 +114,7 @@ export class HeaderComponent implements OnInit {
     })
 
     this.listofClient.forEach(filter => {
-      if (filter.full_name.toLowerCase().indexOf(this.searchForm.get("search").value) !== -1 && this.searchForm.get("search").value !== '') {
+      if (filter.full_name.toLowerCase().indexOf(input.toLowerCase()) !== -1 && this.searchForm.get("search").value !== '') {
         if (this.filteredArray.findIndex(x => x.full_name === filter.full_name) < 0) {
           this.filteredArray.push(filter)
         }
@@ -147,5 +151,15 @@ export class HeaderComponent implements OnInit {
     } else {
       this.openCaseOverview(object)
     }
+  }
+
+  openConfirmDialog() {
+    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+      if (JSON.parse(localStorage.getItem("confirm"))) {
+        localStorage.removeItem("token")
+        localStorage.removeItem("confirm")
+        location.reload();
+      }
+    })
   }
 }

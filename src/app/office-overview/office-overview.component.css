@@ -48,6 +48,24 @@
     margin: 5em 2em 0 2em;
 }
 
+.copyright {
+    padding-top: 25em;
+}
+
+.copyright a {
+    color: #2F80ED;
+    text-decoration: none;
+}
+
+.copyright h6 {
+    line-height: 20px;
+}
+
+.copyright a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 @media screen and (max-width:420px) {
     .col-sm-2 {
         display: none !important;
@@ -60,5 +78,12 @@
     }
      ::ng-deep.empty-col {
         display: none;
+    }
+    .copyright {
+        padding-top: 6em;
+    }
+    .copyright h6 {
+        line-height: 20px;
+        font-size: 18px;
     }
 }
