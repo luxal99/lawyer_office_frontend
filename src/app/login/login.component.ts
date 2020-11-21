@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  goToRegister(){
+    this.router.navigate(['/register'])
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,

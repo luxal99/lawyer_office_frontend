@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { UserInfo } from '../model/UserInfo';
 import { UserService } from '../service/user.service';
@@ -20,7 +21,7 @@ export class RegistationComponent implements OnInit {
     confirm_password: new FormControl("", Validators.required),
   })
 
-  constructor(private userService: UserService, private _snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
   }
@@ -32,11 +33,10 @@ export class RegistationComponent implements OnInit {
         new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
       )).subscribe(resp => {
         console.log(resp);
-        
-        this.openSnackBar('Uspesno ste se registrovali', "DONE")
+
+        this.openSnackBar('Uspesno ste se registrovali', "DONE");
+        this.router.navigate(['/'])
       }, err => {
-        console.log(err);
-        
         this.openSnackBar("Dogodila se greska", "DONE")
       })
     }
