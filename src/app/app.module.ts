@@ -28,6 +28,7 @@ import { OfficeOverviewComponent } from './office-overview/office-overview.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './registation/registation.component';
 import { UserProfileComponent } from './office-overview/user-profile/user-profile.component';
+import { LawsuitOverviewComponent } from './office-overview/lawsuit-overview/lawsuit-overview.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserProfileComponent } from './office-overview/user-profile/user-profil
     EditCaseDialogComponent,
     EditLawsuitDialogComponent,
     UserProfileComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    LawsuitOverviewComponent
   ],
   imports: [
     MatDaterangepickerModule,
