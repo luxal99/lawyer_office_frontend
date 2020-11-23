@@ -1,15 +1,15 @@
-import { AddCaseDialogComponent } from './office-overview/case-overview/add-case-dialog/add-case-dialog.component';
-import { AddClientDialogComponent } from './office-overview/client-overview/add-client-dialog/add-client-dialog.component';
-import { CaseOverviewDialogComponent } from './office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
+import { AddCaseDialogComponent } from './components/office-overview/case-overview/add-case-dialog/add-case-dialog.component';
+import { AddClientDialogComponent } from './components/office-overview/client-overview/add-client-dialog/add-client-dialog.component';
+import { CaseOverviewDialogComponent } from './components/office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
 import { Client } from './model/Client';
-import { ClientOverviewDialogComponent } from './office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
+import { ClientOverviewDialogComponent } from './components/office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { Component } from '@angular/core';
 import { ComponentType } from '@angular/cdk/portal';
 import { DialogOptions } from './dialog-options';
-import { EditCaseDialogComponent } from './office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
-import { EditLawsuitDialogComponent } from './office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
+import { EditCaseDialogComponent } from './components/office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
+import { EditLawsuitDialogComponent } from './components/office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 import { MatDialog } from '@angular/material';
-import { UserProfileComponent } from './office-overview/user-profile/user-profile.component';
+import { UserProfileComponent } from './components/office-overview/user-profile/user-profile.component';
 
 export class GlobalMethods<T> {
 

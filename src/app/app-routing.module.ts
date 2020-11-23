@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { OfficeOverviewComponent } from './office-overview/office-overview.component';
-import { RegistationComponent } from './registation/registation.component';
-import {HeaderComponent} from './header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { OfficeOverviewComponent } from './components/office-overview/office-overview.component';
+import { RegistationComponent } from './components/registation/registation.component';
+import {HeaderComponent} from './components/header/header.component';
 import { AuthService } from './service/auth.service';
 
 
