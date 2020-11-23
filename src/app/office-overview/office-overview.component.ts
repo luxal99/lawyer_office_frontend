@@ -65,6 +65,13 @@ export class OfficeOverviewComponent implements OnInit {
     this.entry.createComponent(factory);
   }
 
+  async loadLawsuitOverview() {
+    this.entry.clear();
+    const { LawsuitOverviewComponent } = await import('./lawsuit-overview/lawsuit-overview.component');
+    const factory = this.resolver.resolveComponentFactory(LawsuitOverviewComponent)
+    this.entry.createComponent(factory);
+  }
+
 
   async loadCaseOverview() {
     this.entry.clear();
