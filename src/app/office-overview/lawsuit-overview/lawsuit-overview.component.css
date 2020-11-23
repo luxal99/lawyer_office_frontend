@@ -1,0 +1,45 @@
+.lawsuit-overview {
+    padding: 3em;
+    background-color: #fff;
+    margin: 1em;
+    border-radius: 30px;
+}
+
+.lawsuit-card {
+    margin: 1em;
+    padding: 2em;
+    height: 250px;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+}
+
+.header-div {
+    display: inline-flex;
+    width: 100%;
+}
+
+mat-form-field {
+    margin-left: 2em;
+    width: 100%;
+}
+
+.lawsuit-card:hover {
+    cursor: pointer;
+    opacity: .8;
+    transition: .5s ease;
+}
+
+@media screen and (max-width:570px) {
+    .lawsuit-card {
+        margin: 2em 0 0 0;
+    }
+    .header-div {
+        display: block;
+    }
+    mat-form-field {
+        margin-left: 0 !important;
+    }
+}

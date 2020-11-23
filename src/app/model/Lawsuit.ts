@@ -9,6 +9,8 @@ export class Lawsuit {
     note: string;
     id_case: Case
 
+    _bc_color:string;
+
     constructor(_date?: Date, _note?: string, _id_case?: Case) {
         this.date = _date;
         this.note = _note

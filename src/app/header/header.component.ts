@@ -25,7 +25,7 @@ import { sm } from 'jssm';
 export class HeaderComponent implements OnInit {
 
   notificationIcon;
-
+  
   filteredArray: Array<any> = [];
 
   listOfCases: Array<Case> = [];

@@ -9,7 +9,11 @@ import { Observable } from 'rxjs';
 export class LawsuitService extends GenericService<Lawsuit> {
   route = "lawsuit"
 
-  getNextThreeLawsuit():Observable<Lawsuit[]> {
+  getNextThreeLawsuit(): Observable<Lawsuit[]> {
     return this.http.get<Lawsuit[]>(`${this.route}/nextThreeLawsuit`, { responseType: 'json' })
+  }
+
+  getLawsuitForCurrentMonth(): Observable<Lawsuit[]> {
+    return this.http.get<Lawsuit[]>(`${this.route}/lawsuitForCurrentMonth`, { responseType: 'json' })
   }
 }

@@ -20,6 +20,7 @@ import { GlobalOverviewComponent } from './office-overview/global-overview/globa
 import { HeaderComponent } from './header/header.component';
 import { HeadingComponent } from './heading/heading.component'
 import { HttpClientModule } from '@angular/common/http';
+import { LawsuitOverviewComponent } from './office-overview/lawsuit-overview/lawsuit-overview.component';
 import { LoginComponent } from './login/login.component';
 import { MatDaterangepickerModule } from 'mat-daterangepicker';
 import { MaterialModule } from './material.module';
@@ -27,8 +28,10 @@ import { NgModule } from '@angular/core';
 import { OfficeOverviewComponent } from './office-overview/office-overview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './registation/registation.component';
+import { SearchLawsuitPipe } from './pipe/search-lawsuit.pipe';
 import { UserProfileComponent } from './office-overview/user-profile/user-profile.component';
-import { LawsuitOverviewComponent } from './office-overview/lawsuit-overview/lawsuit-overview.component';
+
+;
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { LawsuitOverviewComponent } from './office-overview/lawsuit-overview/law
     EditLawsuitDialogComponent,
     UserProfileComponent,
     ConfirmDialogComponent,
-    LawsuitOverviewComponent
+    LawsuitOverviewComponent,
+    SearchLawsuitPipe
   ],
   imports: [
     MatDaterangepickerModule,
@@ -64,7 +68,7 @@ import { LawsuitOverviewComponent } from './office-overview/lawsuit-overview/law
   ],
   providers: [DatePipe, ThemeService,HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   entryComponents: [AddClientDialogComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent,ConfirmDialogComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+    ClientOverviewDialogComponent,ConfirmDialogComponent,LawsuitOverviewComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
