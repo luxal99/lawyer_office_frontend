@@ -1,0 +1,66 @@
+<div class="case-dialog">
+    <app-heading header="Dodavanje predmeta"></app-heading>
+    <form [formGroup]="addCaseForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Naslov</mat-label>
+                <input formControlName="title" matInput placeholder="John Doe">
+                <mat-icon matSuffix>subject</mat-icon>
+                <mat-hint>Ovo polje je obavezno</mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Datum početka slučaja</mat-label>
+                <input matInput formControlName="creation_date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Odaberi stranku</mat-label>
+                <mat-select formControlName="id_client">
+                    <mat-option *ngFor="let client of listOfClietns" [value]="client">
+                        {{client.full_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+    <div>
+        <div style="display: inline-flex;width: 100%;">
+
+            <app-heading header="Dodaj ročište" style="width: 100%;"></app-heading>
+
+            <button mat-icon-button (click)="showLawsuitForm()"><mat-icon>keyboard_arrow_down</mat-icon></button>
+        </div>
+
+
+        <div id="lawsuit" style="display: none;">
+            <form [formGroup]="lawsuitForm">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Datum početka slučaja</mat-label>
+                        <input matInput formControlName="date" [matDatepicker]="lawsuit_picker">
+                        <mat-datepicker-toggle matSuffix [for]="lawsuit_picker"></mat-datepicker-toggle>
+                        <mat-datepicker #lawsuit_picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </form>
+
+            <div style="margin-top: 2em">
+                <ckeditor #lawsuitEditor [editor]="LawsuitEditor" [data]="lawsuitEditorData"></ckeditor>
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 2em;">
+
+        <app-heading header="Napomena"></app-heading>
+    </div>
+    <div style="margin-top: 2em;">
+        <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
+    </div>
+
+    <button class="gradient-blue-btn save-btn" [disabled]="!addCaseForm.valid" (click)="save()" mat-button>Sačuvaj</button>
+</div>

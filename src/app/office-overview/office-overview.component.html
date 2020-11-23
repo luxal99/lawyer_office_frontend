@@ -1,1 +1,83 @@
-<p>office-overview works!</p>
+<mat-drawer-container>
+    <mat-drawer #drawer mode="over" style="width: 70%;">
+        <div class="text-center" style="padding-top: 2em;">
+            <img src="../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2 1.png" alt="" class="img-fluid" width="100px">
+
+            <div class="small-text">
+                <h6>Advokatska kancelarija Nataše M. Tošić <br>Gospodar Jevremova 3, 15 000 Šabac</h6>
+            </div>
+        </div>
+        <div class="side-menu">
+
+            <a (click)="drawer.toggle()">
+                <a (click)="loadGlobarOverview()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-eye"></i> Pregled</h4>
+                </a>
+            </a>
+            <a (click)="drawer.toggle()">
+                <a (click)="loadClientOverview()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+                </a>
+            </a>
+
+            <a (click)="drawer.toggle()">
+                <a (click)="loadCaseOverview()">
+                    <h4 (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+                </a>
+            </a>
+            <a (click)="drawer.toggle()">
+                <a (click)="loadLawsuitOverview()">
+                    <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-gavel"></i> Ročišta</h4>
+                </a>
+            </a>
+            <a (click)="drawer.toggle()">
+
+                <a (click)="openUserProfileDialog()">
+                    <h4 (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+                </a>
+            </a>
+
+            <div class="copyright text-center">
+                <h6>Powered by <br> <a href="https://alemarc.dev">Alemarc Dev</a></h6>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <div class="menu">
+            <button mat-icon-button class="menu-btn" (click)="drawer.toggle()"><mat-icon style="font-size: 30px;">format_align_left</mat-icon></button>
+        </div>
+        <app-header></app-header>
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-2" id="menu">
+
+                    <a (click)="loadGlobarOverview()">
+                        <h4 (click)="changeColor($event)" id="overview-btn"><i class="fa fa-eye"></i> Pregled</h4>
+                    </a>
+                    <a (click)="loadClientOverview()">
+                        <h4 (click)="changeColor($event)" class="link"><i class="fa fa-users" aria-disabled="true"></i> Stranke</h4>
+                    </a>
+                    <a (click)="loadCaseOverview()">
+                        <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-book"></i> Predmeti</h4>
+                    </a>
+                    <a (click)="loadLawsuitOverview()">
+                        <h4 class="link" (click)="changeColor($event)"> <i class="fa fa-gavel"></i> Ročišta</h4>
+                    </a>
+                    <a (click)="openUserProfileDialog()">
+                        <h4 class="link" (click)="changeColor($event)"><i class="fa fa-cogs"></i> Upravljanje nalogom</h4>
+                    </a>
+
+                    <div class="copyright text-center">
+                        <h6>Powered by <br> <a href="https://alemarc.dev">Alemarc Dev</a></h6>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="target" #target>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

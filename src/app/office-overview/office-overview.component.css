@@ -1,0 +1,89 @@
+.content {
+    background-color: #F7F8F8;
+    min-height: 89vh;
+}
+
+.content .row .col-sm-2 {
+    padding: 2em;
+    color: #000;
+    background-color: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    min-height: 89vh;
+}
+
+.content h4 {
+    padding-top: .3em;
+}
+
+.active {
+    transition: .5s ease;
+    color: #56CCF2;
+    color: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    color: linear-gradient(to right, #2F80ED, #56CCF2);
+    background-color: #282828;
+    padding: .5em;
+    border-radius: 20px;
+}
+
+.content h4:hover {
+    cursor: pointer;
+}
+
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background: none
+}
+
+::ng-deep.mat-form-field-underline {
+    transform: none !important;
+}
+
+.menu {
+    display: none;
+    padding: 1em;
+    background-color: #fff;
+}
+
+.side-menu {
+    margin: 5em 2em 0 2em;
+}
+
+.copyright {
+    padding-top: 25em;
+}
+
+.copyright a {
+    color: #2F80ED;
+    text-decoration: none;
+}
+
+.copyright h6 {
+    line-height: 20px;
+}
+
+.copyright a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@media screen and (max-width:420px) {
+    .col-sm-2 {
+        display: none !important;
+    }
+    .content .row .col-sm-3 {
+        height: 60vh;
+    }
+    .menu {
+        display: block;
+    }
+     ::ng-deep.empty-col {
+        display: none;
+    }
+    .copyright {
+        padding-top: 6em;
+    }
+    .copyright h6 {
+        line-height: 20px;
+        font-size: 18px;
+    }
+}

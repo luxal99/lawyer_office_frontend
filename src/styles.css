@@ -1,4 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.gradient-blue-btn {
+    background: #56CCF2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+button {
+    font-weight: bold !important;
+}
+
+.gradient-red-btn {
+    background: #EB3349;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F45C43, #EB3349);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F45C43, #EB3349);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+::-webkit-scrollbar {
+    height: .5em;
+    background-color: #222;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #56CCF2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+    border-radius: 10px;
+}
+
+.overview-container {
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    margin-top: 3em;
+}
+
+.del-btn,
+.edit-btn {
+    margin-left: 2em !important;
+}
+
+.del-btn,
+.overview-btn,
+.edit-btn {
+    color: #fff;
+    width: 30%;
+    padding: .2em 0 .2em 0;
+}
+
+.edit-btn {
+    color: #121212;
+}
+
+h6 {
+    color: #999;
+    font-weight: bold;
+    line-height: 3px;
+}
+
+.border-col {
+    border-right: 1px solid #e1e1e1;
+}
+
+.overview-container .row .col-sm {
+    padding-top: 2em;
+}
+
+.overview-container .row {
+    padding: 0em 2em 0 2em;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.btn-div {
+    display: inline-flex;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.edit-btn {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #e1e1e1);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #e1e1e1);
+}
+
+.gradient-silver-btn {
+    background: #ECE9E6;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ECE9E6, #e1e1e1);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ECE9E6, #e1e1e1);
+}
+
+.small-text h6 {
+    padding-top: 2em;
+    font-weight: normal;
+    line-height: normal;
+    line-height: 1.5em;
+}
+
+@media screen and (max-width:570px) {
+    .overview-container .row {
+        border-bottom: none;
+    }
+     ::-webkit-scrollbar {
+        display: none;
+    }
+    .mat-dialog-container {
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 20px !important;
+    }
+}
+
+@media screen and (max-width:570px) {
+    mat-form-field {
+        width: 100% !important;
+    }
+}

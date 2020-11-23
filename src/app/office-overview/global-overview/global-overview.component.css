@@ -1,0 +1,108 @@
+.global-overview {
+    padding: 3em;
+    background-color: #fff;
+    margin: 1em;
+    border-radius: 30px;
+}
+
+.lawyersuit-card {
+    padding: 2em;
+    color: #e1e1e1;
+    border-radius: 10px;
+    margin-top: 2em;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+}
+
+.lawsuit-case {
+    color: #121212;
+    font-weight: normal;
+}
+
+.lawyersuit-card:hover {
+    background-color: #282828 !important;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.lawyersuit-card:hover .lawsuit-case {
+    color: #ffa900;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.save-btn {
+    padding: .3em 0;
+    color: #fff;
+    width: 50%;
+}
+
+.case-card {
+    padding: 5em 1em;
+    background: #56CCF2;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2);
+    display: inline-block;
+    margin: 1em 0;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.mobile-container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2em;
+    margin-top: 2em;
+    display: none;
+}
+
+.mobile-overview {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-app-header {
+    display: none;
+}
+
+@media screen and (max-width:570px) {
+    .mobile-overview {
+        display: block !important;
+    }
+    .col-sm-3 {
+        display: none;
+    }
+    .overview-container {
+        display: none;
+    }
+     ::-webkit-scrollbar {
+        display: none;
+    }
+    .lawyersuit-card {
+        display: inline-block;
+        margin: 1em;
+        padding: 5em 1em;
+        border-radius: 15px;
+    }
+    .global-overview {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+    .desktop-app-header,
+    .desktop-lawsuit {
+        display: none;
+    }
+    .mobile-app-header,
+    .mobile-container {
+        display: block;
+    }
+}

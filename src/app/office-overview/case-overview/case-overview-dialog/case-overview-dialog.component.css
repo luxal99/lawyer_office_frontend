@@ -1,0 +1,42 @@
+.case-dialog-overview {
+    padding: 2em 1em;
+}
+
+.edit-status-btn {
+    color: #fff;
+}
+
+.delete-btn {
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+span {
+    font-weight: bold;
+}
+
+.show-client-btn {
+    color: #fff;
+    margin-left: 1em;
+}
+
+mat-expansion-panel {
+    margin-top: 2em;
+}
+
+.lawsuit {
+    margin-top: 1em;
+    border-radius: 10px;
+    background-color: #fafafa;
+    padding: 1em;
+}
+
+p {
+    font-size: 18px;
+}
+
+.edit-lawsuit-btn {
+    color: #fff;
+    padding: 1px 0;
+    width: 5%;
+}

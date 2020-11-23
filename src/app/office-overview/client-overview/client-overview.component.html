@@ -1,0 +1,60 @@
+<div class="client">
+    <div class="row header-row">
+        <div class="col">
+            <h1>Stranke</h1>
+        </div>
+        <div class="col text-right">
+            <button mat-button (click)="openAddClientDialog({})" class="add-client-btn gradient-blue-btn">Dodaj stranku</button>
+        </div>
+    </div>
+
+    <div class="overview-container">
+        <div class="client-item" *ngFor="let client of listOfClients">
+            <div class="row test">
+                <div class="col-sm border-col">
+                    <h6>Ime i prezime</h6>
+                    <h4>{{client.full_name}}</h4>
+                </div>
+                <div class="col-sm border-col">
+                    <h6>Telefon</h6>
+                    <h4>{{client.telephone}}</h4>
+                </div>
+                <div class="col-sm">
+                    <div class="btn-div">
+                        <button mat-button class="gradient-blue-btn overview-btn" (click)="openClientOverview(client)">Pregledaj</button>
+                        <button mat-button class="gradient-blue-btn edit-btn" (click)="openAddClientDialog(client)">Izmeni</button>
+
+                        <button mat-button class="gradient-red-btn del-btn" (click)="openConfirmDialog(client.id)">Obriši</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-container">
+        <div class="mobile-overview">
+
+
+            <div class="client-card" *ngFor="let client of listOfClients;let i =index" [attr.data-index]="i" [ngStyle]="i % 2===0? {'background':'linear-gradient(to right, #2F80ED, #56CCF2)'}:i % 3 ===0 ? {'background':'linear-gradient(to right, #f2994a, #f2c94c)'}: i % 5 ? {'background':'linear-gradient(to right, #f2994a, #f2c94c)'}:{'background':'linear-gradient(to right, #f2994a, #f2c94c)'} ">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h5 style="color: #e1e1e1;">Ime</h5>
+                        <h5 style="font-weight: bold;color: #fff;">{{client.full_name}}</h5>
+
+                    </div>
+                    <div class="col text-right">
+                        <button mat-icon-button style="color: #fff;" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="openClientOverview(client)">Pregledaj</button>
+                            <button mat-menu-item (click)="openAddClientDialog(client)">Izmeni</button>
+
+                            <button mat-menu-item>Obriši</button>
+                        </mat-menu>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

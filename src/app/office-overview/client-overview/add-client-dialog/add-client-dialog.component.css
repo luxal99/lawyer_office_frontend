@@ -1,0 +1,8 @@
+@import "../../../../assets/css/forms.css";
+.client-dialog {
+    padding: 2em 1em;
+}
+
+h3 {
+    font-weight: bold;
+}

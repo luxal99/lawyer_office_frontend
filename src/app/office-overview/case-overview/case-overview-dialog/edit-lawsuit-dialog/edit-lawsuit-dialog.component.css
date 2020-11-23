@@ -1,0 +1,21 @@
+.save-btn {
+    color: #fff;
+    width: 30%;
+    padding: .5em 0;
+}
+
+.form-div {
+    padding-top: 2em;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-dialog-container {
+    overflow: hidden;
+}
+
+.dialog {
+    padding: 2em 4em;
+}

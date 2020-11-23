@@ -1,0 +1,104 @@
+<div class="global-overview">
+    <div class="row">
+        <div class="col-sm-8">
+
+            <app-heading header="Najnoviji predmeti" class="desktop-app-header"></app-heading>
+            <div class="overview-container">
+
+                <div class="row" *ngFor="let case of listOfLastThreeCases">
+                    <div class="col-sm border-col">
+                        <h6>Naziv</h6>
+                        <h5>{{case.title}}</h5>
+                    </div>
+                    <div class="col-sm border-col">
+                        <h6>Datum</h6>
+                        <h5>{{case.creation_date_formatted}}</h5>
+                    </div>
+                    <div class="col-sm text-center">
+                        <div class="btn-div ">
+                            <button mat-button class="gradient-blue-btn overview-btn" style="width: 50%;" (click)="openCaseOverview(case)">Pregledaj</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mobile-container">
+                <app-heading header="Najnoviji predmeti" class="mobile-app-header"></app-heading>
+                <div class="mobile-overview" style="display: none;">
+
+
+                    <div class="case-card" *ngFor="let case of listOfLastThreeCases" (click)="openCaseOverview(case)">
+                        <h5 style="color: #fff;">{{case.creation_date_formatted}}</h5>
+                        <h5 style="font-weight: bold;">{{case.title}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="overview-container" style="padding: 1em;">
+                        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                      </canvas>
+                    </div>
+                </div>
+                <div class="col-sm" style="padding-top: 3em;">
+                    <form [formGroup]="lawsuitForm">
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Datum ročišta</mat-label>
+                                <input matInput formControlName="date" [matDatepicker]="picker" [min]="currentDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Slučaj/Predmet</mat-label>
+                                <mat-select formControlName="id_client">
+                                    <mat-option>-- None --</mat-option>
+                                    <mat-optgroup *ngFor="let client of listOfClient" [label]="client.full_name">
+                                        <mat-option *ngFor="let case of client.listOfCases" [value]="case">
+                                            {{case.title}}
+                                        </mat-option>
+                                    </mat-optgroup>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <button mat-button class="save-btn gradient-blue-btn" (click)="saveLawsuit()" [disabled]="!lawsuitForm.valid">Dodaj</button>
+                    </form>
+                </div>
+                <div class="mobile-container" style="padding: 1em;">
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm">
+            <div class="desktop-lawsuit">
+                <app-heading header="Predstojeća ročišta" class="desktop-app-header"></app-heading>
+
+                <div class="card-container">
+                    <div class="lawyersuit-card" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} "
+                        (click)="openCaseOverview(lawsuit.id_case)">
+                        <h5>{{lawsuit.date_formatted}}</h5>
+                        <h5 class="lawsuit-case">Predmet: {{lawsuit.id_case.title}}</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-container">
+                <app-heading header="Predstojeća ročišta" class="mobile-app-header"></app-heading>
+
+                <div class="mobile-overview">
+                    <div class="lawyersuit-card" *ngFor="let lawsuit of listOfNextThreeLawsuits;let i = index" [attr.data-index]="i" [ngStyle]="i === 0? {'background-color':'#e56d6d'}:i === 1 ? {'background-color':'#c374ee'}: i === 2 ? {'background-color':'#0065f7'}:{'color':''} "
+                        (click)="openCaseOverview(lawsuit.id_case)">
+                        <h5>{{lawsuit.date_formatted}}</h5>
+                        <h5 class="lawsuit-case">Predmet: {{lawsuit.id_case.title}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

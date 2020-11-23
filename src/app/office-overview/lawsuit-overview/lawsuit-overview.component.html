@@ -1,0 +1,26 @@
+<div class="lawsuit-overview">
+    <div class="header-div">
+        <h1>Ročišta</h1>
+        <form [formGroup]="searchForm">
+            <mat-form-field class="example-full-width" appereance="fill">
+                <mat-label>Pretraži</mat-label>
+                <input type="text" [(ngModel)]="text" matInput formControlName="search">
+
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div style="">
+        <div class="item">
+            <div class="row">
+                <div class="col-sm-3" *ngFor="let lawsuit of listOfLawsuits |searchLawsuit:text" (click)="openCaseDialog(lawsuit.id_case)">
+                    <div class="lawsuit-card" [ngStyle]="{'background-color': lawsuit._bc_color}">
+                        <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.id_case.title}}</span></h4>
+                        <mat-divider></mat-divider>
+                        <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.date_formatted}}</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
