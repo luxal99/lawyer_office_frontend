@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { Case } from '../model/Case';
+import { Case } from '../../model/Case';
 import { CaseOverviewDialogComponent } from '../office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
-import { CaseService } from '../service/case.service';
-import { Client } from '../model/Client';
+import { CaseService } from '../../service/case.service';
+import { Client } from '../../model/Client';
 import { ClientOverviewDialogComponent } from '../office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
-import { ClientService } from '../service/client.service';
+import { ClientService } from '../../service/client.service';
 import { ConfirmDialogComponent } from '../office-overview/confirm-dialog/confirm-dialog.component';
-import { DialogOptions } from '../dialog-options';
-import { GlobalMethods } from '../dialog-global';
+import { DialogOptions } from '../../dialog-options';
+import { GlobalMethods } from '../../dialog-global';
 import { MatDialog } from '@angular/material';
 import { Notification } from 'src/app/model/Notification';
-import { NotificationService } from '../service/notification.service';
+import { NotificationService } from '../../service/notification.service';
 import { UserProfileComponent } from '../office-overview/user-profile/user-profile.component';
 import { id } from 'date-fns/locale';
 import { sm } from 'jssm';
@@ -25,7 +25,7 @@ import { sm } from 'jssm';
 export class HeaderComponent implements OnInit {
 
   notificationIcon;
-  
+
   filteredArray: Array<any> = [];
 
   listOfCases: Array<Case> = [];

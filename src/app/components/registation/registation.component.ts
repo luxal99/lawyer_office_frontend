@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { User } from '../model/User';
-import { UserInfo } from '../model/UserInfo';
-import { UserService } from '../service/user.service';
+import { User } from '../../model/User';
+import { UserInfo } from '../../model/UserInfo';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-registation',
