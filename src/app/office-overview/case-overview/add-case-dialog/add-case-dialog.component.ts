@@ -77,7 +77,6 @@ export class AddCaseDialogComponent implements OnInit {
 
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
     await this.caseService.save(caseEntity).subscribe(resp => {
-      console.log(resp);
       
       caseEntity.id = resp['id']
     }, err => {
