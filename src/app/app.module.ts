@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './components/registation/registation.component';
 import { SearchLawsuitPipe } from './pipe/search-lawsuit.pipe';
 import { UserProfileComponent } from './components/office-overview/user-profile/user-profile.component';
+import { EDiaryOverviewComponent } from './components/office-overview/e-diary-overview/e-diary-overview.component';
 
 ;
 
@@ -53,7 +54,8 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
     UserProfileComponent,
     ConfirmDialogComponent,
     LawsuitOverviewComponent,
-    SearchLawsuitPipe
+    SearchLawsuitPipe,
+    EDiaryOverviewComponent
   ],
   imports: [
     MatDaterangepickerModule,
