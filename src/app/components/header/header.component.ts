@@ -8,8 +8,8 @@ import { Client } from '../../model/Client';
 import { ClientOverviewDialogComponent } from '../office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from '../../service/client.service';
 import { ConfirmDialogComponent } from '../office-overview/confirm-dialog/confirm-dialog.component';
-import { DialogOptions } from '../../dialog-options';
-import { GlobalMethods } from '../../dialog-global';
+import { DialogOptions } from '../../util/dialog-options';
+import { GlobalMethods } from '../../util/dialog-global';
 import { MatDialog } from '@angular/material';
 import { Notification } from 'src/app/model/Notification';
 import { NotificationService } from '../../service/notification.service';
@@ -100,7 +100,6 @@ export class HeaderComponent implements OnInit {
   }
   async search() {
 
-
     var input: string = this.searchForm.get("search").value;
 
     this.listOfCases.forEach(filter => {
@@ -125,18 +124,18 @@ export class HeaderComponent implements OnInit {
   }
 
   openCaseOverview(cs): void {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(cs)).afterClosed().subscribe(result => {
+     GlobalMethods.openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(cs),this.dialog).afterClosed().subscribe(result => {
       this.getAllCases();
     })
   }
   openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client),this.dialog).afterClosed().subscribe(() => {
       this.getAllClients();
     })
   }
 
   openUserProfileDialog() {
-    new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
+     GlobalMethods.openDialog(UserProfileComponent, DialogOptions.getOptions({}),this.dialog)
   }
 
   logout() {
@@ -154,7 +153,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openConfirmDialog() {
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(),this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm"))) {
         localStorage.removeItem("token")
         localStorage.removeItem("confirm")

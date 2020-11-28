@@ -1,8 +1,8 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { GlobalMethods } from 'src/app/dialog-global';
-import { DialogOptions } from 'src/app/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';
@@ -32,18 +32,18 @@ export class CaseOverviewDialogComponent implements OnInit {
 
   }
   openClientOverview(client) {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
+     GlobalMethods.openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client),this.dialog)
   }
 
   openEditLawsuitDialog(lawsuit) {
-    new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit)).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit),this.dialog).afterClosed().subscribe(() => {
       this.findById();
     });
   }
 
   openConfirmDialog(id?: number) {
 
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(),this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm")) && id === undefined) {
         this.changeStatus()
       } else if (JSON.parse(localStorage.getItem("confirm")) && id !== undefined) {

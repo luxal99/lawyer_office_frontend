@@ -5,8 +5,8 @@ import { Client } from 'src/app/model/Client';
 import { ClientOverviewDialogComponent } from './client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from 'src/app/service/client.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { DialogOptions } from 'src/app/dialog-options';
-import { GlobalMethods } from 'src/app/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -25,7 +25,7 @@ export class ClientOverviewComponent implements OnInit {
   }
 
   openConfirmDialog(id: number) {
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(),this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm"))) {
         this.deleteClient(id)
         localStorage.removeItem("confirm")
@@ -46,13 +46,13 @@ export class ClientOverviewComponent implements OnInit {
   }
 
   openAddClientDialog(client): void {
-    new GlobalMethods(this.dialog).openDialog(AddClientDialogComponent,DialogOptions.getOptions(client)).afterClosed().subscribe(result => {
+     GlobalMethods.openDialog(AddClientDialogComponent,DialogOptions.getOptions(client),this.dialog).afterClosed().subscribe(result => {
       this.getAllClients();
     })
   }
 
   openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
+     GlobalMethods.openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client),this.dialog)
   }
 }
 

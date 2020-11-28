@@ -1,5 +1,4 @@
-import { Options } from './model/Options';
-
+import { Options } from '../model/Options';
 export class DialogOptions {
 
     static dialogOptions: Options;
