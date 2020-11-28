@@ -32,18 +32,18 @@ export class CaseOverviewDialogComponent implements OnInit {
 
   }
   openClientOverview(client) {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client))
+     GlobalMethods.openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client),this.dialog)
   }
 
   openEditLawsuitDialog(lawsuit) {
-    new GlobalMethods(this.dialog).openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit)).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(EditLawsuitDialogComponent, DialogOptions.getOptions(lawsuit),this.dialog).afterClosed().subscribe(() => {
       this.findById();
     });
   }
 
   openConfirmDialog(id?: number) {
 
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(),this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm")) && id === undefined) {
         this.changeStatus()
       } else if (JSON.parse(localStorage.getItem("confirm")) && id !== undefined) {

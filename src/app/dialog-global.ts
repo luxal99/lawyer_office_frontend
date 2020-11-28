@@ -13,11 +13,10 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
 
 export class GlobalMethods<T> {
 
-    constructor(private dialog: MatDialog) {
-    }
+    
 
-     openDialog(component: ComponentType<T>, options: {}) {
-        let dialogRef = this.dialog.open<T>(component, options)
+   static openDialog(component: ComponentType<any>, options: {}, dialog: MatDialog) {
+        let dialogRef = dialog.open<any>(component, options)
         return dialogRef;
     }
 

@@ -6,7 +6,7 @@
         <div class="col text-right">
 
             <form [formGroup]="rangeForm">
-                <div style="display: inline-flex;">
+                <div class="date-div">
                     <div>
 
                         <mat-form-field class="example-full-width">
@@ -19,7 +19,7 @@
 
                     </div>
 
-                    <div style="margin-left: 2em;">
+                    <div class="end-date-div">
 
                         <mat-form-field class="example-full-width">
                             <input matInput [matDatepicker]="endPicker" placeholder="Choose a date" (dateChange)="getAllLawsuit()" formControlName="endDate">

@@ -124,18 +124,18 @@ export class HeaderComponent implements OnInit {
   }
 
   openCaseOverview(cs): void {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(cs)).afterClosed().subscribe(result => {
+     GlobalMethods.openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(cs),this.dialog).afterClosed().subscribe(result => {
       this.getAllCases();
     })
   }
   openClientOverview(client): void {
-    new GlobalMethods(this.dialog).openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ClientOverviewDialogComponent, DialogOptions.getOptions(client),this.dialog).afterClosed().subscribe(() => {
       this.getAllClients();
     })
   }
 
   openUserProfileDialog() {
-    new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
+     GlobalMethods.openDialog(UserProfileComponent, DialogOptions.getOptions({}),this.dialog)
   }
 
   logout() {
@@ -153,7 +153,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openConfirmDialog() {
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(),this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm"))) {
         localStorage.removeItem("token")
         localStorage.removeItem("confirm")

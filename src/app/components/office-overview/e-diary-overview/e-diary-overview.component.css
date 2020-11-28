@@ -25,3 +25,23 @@ mat-form-field {
     opacity: .8;
     transition: .5s ease;
 }
+
+.date-div {
+    display: inline-flex;
+}
+
+.end-date-div {
+    margin-left: 2em;
+}
+
+@media screen and (max-width:570px) {
+    .date-div {
+        display: block;
+    }
+    mat-form-field {
+        margin-left: 0 !important;
+    }
+    .end-date-div {
+        margin-left: 0 !important;
+    }
+}

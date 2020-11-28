@@ -43,12 +43,10 @@ export class EDiaryOverviewComponent implements OnInit {
   }
 
   openCaseDialog(data) {
-    new GlobalMethods(this.dialog).openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data))
+     GlobalMethods.openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data),this.dialog)
   }
 
   getAllLawsuit() {
-    console.log({ startDate: this.rangeForm.get("startDate").value, endDate: this.rangeForm.get("endDate").value });
-
     this.lawsuitService.getLawsuitFromPeriod({ startDate: this.rangeForm.get("startDate").value, endDate: this.rangeForm.get("endDate").value }).subscribe(resp => {
       this.listOfLawsuits = resp
       this.listOfLawsuits.forEach(x => { x._bc_color = "hsl(" + Math.random() * 360 + ", 100%, 75%)" })

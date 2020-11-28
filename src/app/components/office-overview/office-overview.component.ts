@@ -54,7 +54,7 @@ export class OfficeOverviewComponent implements OnInit {
   }
 
   openUserProfileDialog() {
-    new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
+     GlobalMethods.openDialog(UserProfileComponent, DialogOptions.getOptions({}),this.dialog)
   }
 
   async loadGlobarOverview() {

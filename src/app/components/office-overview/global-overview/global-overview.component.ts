@@ -28,12 +28,12 @@ export class GlobalOverviewComponent implements OnInit {
   listOfLastThreeCases: Array<Case> = [];
   listOfNextThreeLawsuits: Array<Lawsuit> = [];
   analyticsResponseData: Array<any> = []
-  analyticsData: Array<any> = []
+  analyticsData: Array<number> = []
 
   barChartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['Aktivan', 'Arhiviran'];
+  barChartLabels: Label[] = ['Arhiviran', 'Aktivan'];
   barChartType: ChartType = 'pie';
   barChartLegend = true;
   barChartPlugins = [];
@@ -44,7 +44,7 @@ export class GlobalOverviewComponent implements OnInit {
     id_client: new FormControl("", Validators.required)
   })
 
-  barChartData: ChartDataSets[] = [{ data: this.analyticsData, backgroundColor: ['#2F80ED', "#F45C43"] }
+  barChartData: ChartDataSets[] = [{ data: this.analyticsData, backgroundColor: ['#F45C43', "#2F80ED"] }
   ];
 
   constructor(private lawsuitService: LawsuitService, private caseService: CaseService,
@@ -60,7 +60,6 @@ export class GlobalOverviewComponent implements OnInit {
   getAnalytics() {
     this.caseService.getCaseAnalytics().subscribe(resp => {
       this.analyticsResponseData = resp
-
       this.analyticsResponseData.forEach(res => {
         this.analyticsData.push(Number.parseInt(res.value))
       })
@@ -118,9 +117,8 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   openCaseOverview(data) {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(resp => {
+     GlobalMethods.openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data),this.dialog).afterClosed().subscribe(resp => {
       this.getNextThreeLawsuit();
-      // this.getAnalytics();
       this.getAllCases();
       this.getLastThreeCases();
     })

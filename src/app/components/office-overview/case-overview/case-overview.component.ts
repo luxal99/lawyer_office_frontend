@@ -35,7 +35,7 @@ export class CaseOverviewComponent implements OnInit {
   }
 
   openConfirmDialog(id: number) {
-    new GlobalMethods(this.dialog).openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption()).afterClosed().subscribe(() => {
+    GlobalMethods.openDialog(ConfirmDialogComponent, DialogOptions.getConfirmDialogOption(), this.dialog).afterClosed().subscribe(() => {
       if (JSON.parse(localStorage.getItem("confirm"))) {
         this.deleteCase(id)
         localStorage.removeItem("confirm")
@@ -50,20 +50,20 @@ export class CaseOverviewComponent implements OnInit {
   }
 
   openAddCaseDialog(client): void {
-    new GlobalMethods<AddCaseDialogComponent>(this.dialog).openDialog(AddCaseDialogComponent, DialogOptions.getOptions(client)).afterClosed().subscribe(() => {
+     GlobalMethods.openDialog(AddCaseDialogComponent, DialogOptions.getOptions(client),this.dialog).afterClosed().subscribe(() => {
       this.getAllCases();
     })
   }
 
   openCaseOverview(data): void {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(() => {
-      
+     GlobalMethods.openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data),this.dialog).afterClosed().subscribe(() => {
+
     })
   }
 
 
   openEditCaseDialog(data): void {
-    new GlobalMethods(this.dialog).openDialog(EditCaseDialogComponent, DialogOptions.getOptions(data)).afterClosed().subscribe(result => {
+     GlobalMethods.openDialog(EditCaseDialogComponent, DialogOptions.getOptions(data),this.dialog).afterClosed().subscribe(result => {
       this.getAllCases();
     })
   }

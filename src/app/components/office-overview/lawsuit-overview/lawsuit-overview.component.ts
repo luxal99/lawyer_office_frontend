@@ -56,7 +56,7 @@ export class LawsuitOverviewComponent implements OnInit {
   }
 
   openCaseDialog(data) {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
+     GlobalMethods.openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data),this.dialog)
   }
 
 }
