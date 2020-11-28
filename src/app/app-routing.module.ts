@@ -1,17 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AuthService } from './service/auth.service';
+import {HeaderComponent} from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { NgModule } from '@angular/core';
 import { OfficeOverviewComponent } from './components/office-overview/office-overview.component';
 import { RegistationComponent } from './components/registation/registation.component';
-import {HeaderComponent} from './components/header/header.component';
-import { AuthService } from './service/auth.service';
-
-
-
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
-  { path: 'overview', component: OfficeOverviewComponent,canActivate:[AuthService] },
+  { path: '', component: OfficeOverviewComponent,canActivate:[AuthService] },
+  {path:'login',component:LoginComponent},
   { path: 'register', component: RegistationComponent}
 ];
 

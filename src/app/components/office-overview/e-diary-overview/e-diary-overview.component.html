@@ -10,7 +10,7 @@
                     <div>
 
                         <mat-form-field class="example-full-width">
-                            <input matInput [matDatepicker]="startPicker" placeholder="Choose a date" formControlName="startDate">
+                            <input matInput [matDatepicker]="startPicker" placeholder="Od datuma" formControlName="startDate">
                             <mat-datepicker-toggle matSuffix [for]="startPicker">
                                 <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                             </mat-datepicker-toggle>
@@ -22,7 +22,7 @@
                     <div class="end-date-div">
 
                         <mat-form-field class="example-full-width">
-                            <input matInput [matDatepicker]="endPicker" placeholder="Choose a date" (dateChange)="getAllLawsuit()" formControlName="endDate">
+                            <input matInput [matDatepicker]="endPicker" placeholder="Do datuma" (dateChange)="getAllLawsuit()" formControlName="endDate">
                             <mat-datepicker-toggle matSuffix [for]="endPicker">
                                 <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                             </mat-datepicker-toggle>

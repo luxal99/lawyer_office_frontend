@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("token", JSON.stringify(resp['token']))
 
         localStorage.setItem("username", JSON.stringify(resp['username']))
-        this.router.navigate(['/overview'])
+        this.router.navigate(['/'])
       }
     }, err => {
       this.openSnackBar("Uneti podaci nisu validni", "DONE")
