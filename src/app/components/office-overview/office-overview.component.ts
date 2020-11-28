@@ -2,9 +2,15 @@ import * as $ from "jquery"
 
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
+import { CaseOverviewComponent } from './case-overview/case-overview.component';
+import { ClientOverviewComponent } from './client-overview/client-overview.component';
 import { ComponentFactoryResolver } from '@angular/core';
+import { ComponentType } from '@angular/cdk/portal';
 import { DialogOptions } from '../../dialog-options';
 import { GlobalMethods } from '../../dialog-global';
+import { GlobalOverviewComponent } from './global-overview/global-overview.component';
+import { LawsuitOverviewComponent } from './lawsuit-overview/lawsuit-overview.component';
+import { LazyLoadingComponents } from 'src/app/lazy-load-components';
 import { MatDialog } from '@angular/material';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { async } from '@angular/core/testing';
@@ -52,31 +58,21 @@ export class OfficeOverviewComponent implements OnInit {
 
 
   async loadGlobarOverview() {
-    this.entry.clear();
-    const { GlobalOverviewComponent } = await import('./global-overview/global-overview.component');
-    const factory = this.resolver.resolveComponentFactory(GlobalOverviewComponent)
-    this.entry.createComponent(factory);
+    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(GlobalOverviewComponent,this.entry)
+
   }
 
   async loadClientOverview() {
-    this.entry.clear();
-    const { ClientOverviewComponent } = await import('./client-overview/client-overview.component');
-    const factory = this.resolver.resolveComponentFactory(ClientOverviewComponent)
-    this.entry.createComponent(factory);
+    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(ClientOverviewComponent,this.entry)
+
   }
 
   async loadLawsuitOverview() {
-    this.entry.clear();
-    const { LawsuitOverviewComponent } = await import('./lawsuit-overview/lawsuit-overview.component');
-    const factory = this.resolver.resolveComponentFactory(LawsuitOverviewComponent)
-    this.entry.createComponent(factory);
+    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(LawsuitOverviewComponent,this.entry)
   }
 
 
   async loadCaseOverview() {
-    this.entry.clear();
-    const { CaseOverviewComponent } = await import('./case-overview/case-overview.component');
-    const factory = this.resolver.resolveComponentFactory(CaseOverviewComponent)
-    this.entry.createComponent(factory);
+    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(CaseOverviewComponent,this.entry)
   }
 }
