@@ -14,6 +14,7 @@ import { CaseOverviewDialogComponent } from './components/office-overview/case-o
 import { ClientOverviewComponent } from './components/office-overview/client-overview/client-overview.component';
 import { ClientOverviewDialogComponent } from './components/office-overview/client-overview/client-overview-dialog/client-overview-dialog.component';
 import { ConfirmDialogComponent } from './components/office-overview/confirm-dialog/confirm-dialog.component';
+import { EDiaryOverviewComponent } from './components/office-overview/e-diary-overview/e-diary-overview.component';
 import { EditCaseDialogComponent } from './components/office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 import { EditLawsuitDialogComponent } from './components/office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
 import { GlobalOverviewComponent } from './components/office-overview/global-overview/global-overview.component';
@@ -30,7 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './components/registation/registation.component';
 import { SearchLawsuitPipe } from './pipe/search-lawsuit.pipe';
 import { UserProfileComponent } from './components/office-overview/user-profile/user-profile.component';
-import { EDiaryOverviewComponent } from './components/office-overview/e-diary-overview/e-diary-overview.component';
 
 ;
 
@@ -68,9 +68,9 @@ import { EDiaryOverviewComponent } from './components/office-overview/e-diary-ov
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe, ThemeService,HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
-  entryComponents: [AddClientDialogComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent,ConfirmDialogComponent,LawsuitOverviewComponent, ClientOverviewComponent,UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+  providers: [DatePipe, ThemeService, HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  entryComponents: [AddClientDialogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
+    ClientOverviewDialogComponent, ConfirmDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

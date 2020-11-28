@@ -9,7 +9,7 @@ export class EDiaryOverviewComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  async ngOnInit():Promise<void> {
   }
 
 }

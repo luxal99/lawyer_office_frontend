@@ -3,6 +3,10 @@
     min-height: 92vh;
 }
 
+.office {
+    zoom: 90%;
+}
+
 .content .row .col-sm-2 {
     padding: 2em;
     color: #000;

@@ -7,6 +7,7 @@ import { ClientOverviewComponent } from './client-overview/client-overview.compo
 import { ComponentFactoryResolver } from '@angular/core';
 import { ComponentType } from '@angular/cdk/portal';
 import { DialogOptions } from '../../dialog-options';
+import { EDiaryOverviewComponent } from './e-diary-overview/e-diary-overview.component';
 import { GlobalMethods } from '../../dialog-global';
 import { GlobalOverviewComponent } from './global-overview/global-overview.component';
 import { LawsuitOverviewComponent } from './lawsuit-overview/lawsuit-overview.component';
@@ -68,7 +69,9 @@ export class OfficeOverviewComponent implements OnInit {
     LazyLoadingComponents.loadComponent(LawsuitOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
 
-
+  async loadEDiaryOverview (){
+    LazyLoadingComponents.loadComponent(EDiaryOverviewComponent,this.entry,this.cvRef,this.resolver);
+  }
   async loadCaseOverview() {
     LazyLoadingComponents.loadComponent(CaseOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
