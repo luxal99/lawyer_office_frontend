@@ -23,8 +23,6 @@ import { th } from 'date-fns/locale';
 })
 export class OfficeOverviewComponent implements OnInit {
 
-  activeClass = "active";
-
 
   @ViewChild('target', { read: ViewContainerRef, static: false }) entry: ViewContainerRef;
 
@@ -36,7 +34,9 @@ export class OfficeOverviewComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
-    this.initDefaultMenu();
+    setTimeout(() => {
+      this.initDefaultMenu();
+    }, 10);
   }
 
 
@@ -56,23 +56,20 @@ export class OfficeOverviewComponent implements OnInit {
     new GlobalMethods(this.dialog).openDialog(UserProfileComponent, DialogOptions.getOptions({}))
   }
 
-
   async loadGlobarOverview() {
-    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(GlobalOverviewComponent,this.entry)
-
+    LazyLoadingComponents.loadComponent(GlobalOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
 
   async loadClientOverview() {
-    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(ClientOverviewComponent,this.entry)
-
+    LazyLoadingComponents.loadComponent(ClientOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
 
   async loadLawsuitOverview() {
-    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(LawsuitOverviewComponent,this.entry)
+    LazyLoadingComponents.loadComponent(LawsuitOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
 
 
   async loadCaseOverview() {
-    new LazyLoadingComponents(this.cvRef,this.resolver).loadComponent(CaseOverviewComponent,this.entry)
+    LazyLoadingComponents.loadComponent(CaseOverviewComponent, this.entry, this.cvRef, this.resolver)
   }
 }

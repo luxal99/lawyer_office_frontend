@@ -4,15 +4,14 @@ import { ComponentType } from '@angular/cdk/portal';
 import { ViewChild } from '@angular/core';
 
 export class LazyLoadingComponents<T> {
-    
 
-    constructor(private cvRef: ViewContainerRef, private resolver: ComponentFactoryResolver){
+    constructor() {
 
     }
 
-    loadComponent(component: ComponentType<T>,entry:ViewContainerRef){
+    static loadComponent(component: ComponentType<any>, entry: ViewContainerRef, cvRef: ViewContainerRef, resolver: ComponentFactoryResolver) {
         entry.clear();
-         const factory = this.resolver.resolveComponentFactory(component)
+        const factory = resolver.resolveComponentFactory(component)
         entry.createComponent(factory);
     }
 }

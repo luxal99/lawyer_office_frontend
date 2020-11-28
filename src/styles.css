@@ -124,6 +124,10 @@ h6 {
     line-height: 1.5em;
 }
 
+body {
+    zoom: 90%;
+}
+
 @media screen and (max-width:570px) {
     .overview-container .row {
         border-bottom: none;
