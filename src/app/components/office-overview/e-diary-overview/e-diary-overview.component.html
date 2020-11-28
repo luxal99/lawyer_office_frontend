@@ -1,1 +1,52 @@
-<p>e-diary-overview works!</p>
+<div class="overview-component">
+    <div class="row header-row">
+        <div class="col">
+            <h1>E-Rokovnik</h1>
+        </div>
+        <div class="col text-right">
+
+            <form [formGroup]="rangeForm">
+                <div style="display: inline-flex;">
+                    <div>
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker]="startPicker" placeholder="Choose a date" formControlName="startDate">
+                            <mat-datepicker-toggle matSuffix [for]="startPicker">
+                                <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #startPicker></mat-datepicker>
+                        </mat-form-field>
+
+                    </div>
+
+                    <div style="margin-left: 2em;">
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput [matDatepicker]="endPicker" placeholder="Choose a date" (dateChange)="getAllLawsuit()" formControlName="endDate">
+                            <mat-datepicker-toggle matSuffix [for]="endPicker">
+                                <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #endPicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
+        <div>
+            <div class="item">
+                <div class="row">
+                    <div class="col-sm-3" *ngFor="let lawsuit of listOfLawsuits |searchLawsuit:text" (click)="openCaseDialog(lawsuit.id_case)">
+                        <div class="lawsuit-card" [ngStyle]="{'background-color': lawsuit._bc_color}">
+                            <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.id_case.title}}</span></h4>
+                            <mat-divider></mat-divider>
+                            <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.date_formatted}}</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

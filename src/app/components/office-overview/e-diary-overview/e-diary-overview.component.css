@@ -1,0 +1,27 @@
+.overview-component {
+    padding: 3em;
+    background-color: #fff;
+    margin: 1em;
+    border-radius: 30px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.lawsuit-card {
+    margin: 1em;
+    padding: 2em;
+    height: 250px;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+}
+
+.lawsuit-card:hover {
+    cursor: pointer;
+    opacity: .8;
+    transition: .5s ease;
+}

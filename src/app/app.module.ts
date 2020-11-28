@@ -1,6 +1,7 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { MatCalendar, MatCalendarBody, MatDatepicker, MatDatepickerToggle, MatMonthView } from '@angular/material';
+import { MatCalendar, MatCalendarBody, MatDatepicker, MatDatepickerToggle, MatFormFieldControl, MatFormFieldModule, MatInputModule, MatMonthView } from '@angular/material';
 
 import { AddCaseDialogComponent } from './components/office-overview/case-overview/add-case-dialog/add-case-dialog.component';
 import { AddClientDialogComponent } from './components/office-overview/client-overview/add-client-dialog/add-client-dialog.component';
@@ -25,7 +26,6 @@ import { LawsuitOverviewComponent } from './components/office-overview/lawsuit-o
 import { LoginComponent } from './components/login/login.component';
 import { MatDaterangepickerModule } from 'mat-daterangepicker';
 import { MaterialModule } from './material.module';
-import { NgModule } from '@angular/core';
 import { OfficeOverviewComponent } from './components/office-overview/office-overview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './components/registation/registation.component';
@@ -66,9 +66,14 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule
   ],
   providers: [DatePipe, ThemeService, HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA],
+  exports:[MatFormFieldModule,
+    MatInputModule],
   entryComponents: [AddClientDialogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
     ClientOverviewDialogComponent, ConfirmDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
