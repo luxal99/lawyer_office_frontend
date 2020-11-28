@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
-import { DialogOptions } from 'src/app/dialog-options';
-import { GlobalMethods } from 'src/app/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { MatDialog } from '@angular/material';

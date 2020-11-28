@@ -1,8 +1,8 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { GlobalMethods } from 'src/app/dialog-global';
-import { DialogOptions } from 'src/app/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
 import { Case } from 'src/app/model/Case';
 import { CaseService } from 'src/app/service/case.service';
 import { ClientOverviewDialogComponent } from '../../client-overview/client-overview-dialog/client-overview-dialog.component';

@@ -1,4 +1,4 @@
-import { DateRange } from '../inteface/DateRange';
+import { DateRange } from '../util/DateRange';
 import { GenericService } from './generic.service';
 import { Injectable } from '@angular/core';
 import { Lawsuit } from '../model/Lawsuit';

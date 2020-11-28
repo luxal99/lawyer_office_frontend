@@ -10,8 +10,8 @@ import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dial
 import { CaseService } from 'src/app/service/case.service';
 import { Client } from 'src/app/model/Client';
 import { ClientService } from 'src/app/service/client.service';
-import { DialogOptions } from 'src/app/dialog-options';
-import { GlobalMethods } from 'src/app/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { formatDate } from '@angular/common';

@@ -5,9 +5,9 @@ import { Case } from 'src/app/model/Case';
 import { CaseOverviewDialogComponent } from './case-overview-dialog/case-overview-dialog.component';
 import { CaseService } from 'src/app/service/case.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { DialogOptions } from 'src/app/dialog-options';
+import { DialogOptions } from 'src/app/util/dialog-options';
 import { EditCaseDialogComponent } from './edit-case-dialog/edit-case-dialog.component';
-import { GlobalMethods } from 'src/app/dialog-global';
+import { GlobalMethods } from 'src/app/util/dialog-global';
 import { MatDialog } from '@angular/material';
 import { async } from '@angular/core/testing';
 

@@ -5,8 +5,8 @@ import { Client } from 'src/app/model/Client';
 import { ClientOverviewDialogComponent } from './client-overview-dialog/client-overview-dialog.component';
 import { ClientService } from 'src/app/service/client.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { DialogOptions } from 'src/app/dialog-options';
-import { GlobalMethods } from 'src/app/dialog-global';
+import { DialogOptions } from 'src/app/util/dialog-options';
+import { GlobalMethods } from 'src/app/util/dialog-global';
 import { MatDialog } from '@angular/material';
 
 @Component({
