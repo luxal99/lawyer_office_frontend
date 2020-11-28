@@ -5,6 +5,7 @@ import { MatCalendar, MatCalendarBody, MatDatepicker, MatDatepickerToggle, MatFo
 
 import { AddCaseDialogComponent } from './components/office-overview/case-overview/add-case-dialog/add-case-dialog.component';
 import { AddClientDialogComponent } from './components/office-overview/client-overview/add-client-dialog/add-client-dialog.component';
+import { AddLawsuitDilaogComponent } from './components/office-overview/e-diary-overview/add-lawsuit-dilaog/add-lawsuit-dilaog.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,7 +56,8 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
     ConfirmDialogComponent,
     LawsuitOverviewComponent,
     SearchLawsuitPipe,
-    EDiaryOverviewComponent
+    EDiaryOverviewComponent,
+    AddLawsuitDilaogComponent
   ],
   imports: [
     MatDaterangepickerModule,
@@ -74,7 +76,7 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
   schemas:[ CUSTOM_ELEMENTS_SCHEMA],
   exports:[MatFormFieldModule,
     MatInputModule],
-  entryComponents: [AddClientDialogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
+  entryComponents: [AddClientDialogComponent,AddLawsuitDilaogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
     ClientOverviewDialogComponent, ConfirmDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })

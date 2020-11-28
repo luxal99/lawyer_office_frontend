@@ -100,7 +100,6 @@ export class HeaderComponent implements OnInit {
   }
   async search() {
 
-
     var input: string = this.searchForm.get("search").value;
 
     this.listOfCases.forEach(filter => {

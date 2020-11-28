@@ -1,0 +1,19 @@
+.dialog {
+    padding: 2em 1em;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-top: 2em;
+}
+
+.save-btn {
+    color: #fff;
+    width: 60%;
+    margin-top: 2em;
+    padding: .5em 0;
+}
+
+.btn-div {
+    width: 100%;
+}

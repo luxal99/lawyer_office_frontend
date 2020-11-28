@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+import { AddLawsuitDilaogComponent } from './add-lawsuit-dilaog/add-lawsuit-dilaog.component';
 import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 import { DialogOptions } from 'src/app/dialog-options';
 import { GlobalMethods } from 'src/app/dialog-global';
@@ -42,7 +43,7 @@ export class EDiaryOverviewComponent implements OnInit {
   }
 
   openCaseDialog(data) {
-    new GlobalMethods(this.dialog).openDialog(CaseOverviewDialogComponent, DialogOptions.getOptions(data))
+    new GlobalMethods(this.dialog).openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data))
   }
 
   getAllLawsuit() {

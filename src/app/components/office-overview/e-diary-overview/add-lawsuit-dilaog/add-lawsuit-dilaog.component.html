@@ -1,0 +1,21 @@
+<div class="dialog">
+    <app-heading header="Dodaj ročište"></app-heading>
+    <form [formGroup]="lawsuitForm">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Datum početka slučaja</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="lawsuit_picker">
+                <mat-datepicker-toggle matSuffix [for]="lawsuit_picker"></mat-datepicker-toggle>
+                <mat-datepicker #lawsuit_picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div style="margin-top: 2em">
+        <ckeditor #editor [editor]="LawsuitEditor" [data]="lawsuitEditorData"></ckeditor>
+    </div>
+
+    <div class="btn-div">
+        <button mat-button class="gradient-blue-btn save-btn" (click)="saveLawsuit()" *ngIf="lawsuitForm.valid">Dodaj</button>
+    </div>
+</div>
