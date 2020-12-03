@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { CalendarModule } from 'ionic2-calendar2';
 import { CaseOverviewComponent } from "./components/office-overview/case-overview/case-overview.component";
 import { CaseOverviewDialogComponent } from './components/office-overview/case-overview/case-overview-dialog/case-overview-dialog.component';
 import { ClientOverviewComponent } from './components/office-overview/client-overview/client-overview.component';
@@ -70,6 +71,7 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
     MaterialModule,
     MatFormFieldModule,
     MatInputModule,
+    CalendarModule,
     ReactiveFormsModule
   ],
   providers: [DatePipe, ThemeService, HttpClientModule, { provide: LocationStrategy, useClass: HashLocationStrategy }],
