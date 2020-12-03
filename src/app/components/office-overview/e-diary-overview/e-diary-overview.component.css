@@ -34,6 +34,35 @@ mat-form-field {
     margin-left: 2em;
 }
 
+calendar {
+    padding: 2em 7em;
+}
+
+::ng-deep.calendar-container .calendar-header {
+    background: linear-gradient(to right, #2F80ED, #56CCF2) !important;
+    border-right: 0 !important;
+}
+
+::ng-deep.calendar-container .calendar-body .calendar-week-header {
+    background: linear-gradient(to right, #2F80ED, #56CCF2) !important;
+    border-right: 0 !important;
+}
+
+::ng-deep.calendar-container .calendar-body .month-slider .calendar-week .calendar-day-wrapper .calendar-day.today {
+    background-color: #eee !important;
+    color: #121212 !important;
+}
+
+::ng-deep.calendar-container .calendar-body .month-slider .calendar-week .calendar-day-wrapper .calendar-day.selected {
+    background: linear-gradient(to right, #2F80ED, #56CCF2) !important;
+}
+
+::ng-deep.calendar-container .calendar-body .month-slider {
+    border-right: 1px solid #eee !important;
+    border-left: 1px solid #eee !important;
+    border-bottom: 1px solid #eee !important;
+}
+
 @media screen and (max-width:570px) {
     .date-div {
         display: block;

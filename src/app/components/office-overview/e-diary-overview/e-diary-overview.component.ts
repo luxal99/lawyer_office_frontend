@@ -4,11 +4,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AddLawsuitDilaogComponent } from './add-lawsuit-dilaog/add-lawsuit-dilaog.component';
 import { CaseOverviewDialogComponent } from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 import { DialogOptions } from 'src/app/util/dialog-options';
+import { EventEmitter } from 'protractor';
 import { GlobalMethods } from 'src/app/util/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs';
+import { Output } from '@angular/core';
+import { da } from 'date-fns/locale';
 
 @Component({
   selector: 'app-e-diary-overview',
@@ -17,6 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class EDiaryOverviewComponent implements OnInit {
 
+  
   listOfLawsuits: Array<Lawsuit> = [];
   text = ''
 
@@ -56,5 +60,10 @@ export class EDiaryOverviewComponent implements OnInit {
 
 
     })
+  }
+
+  showDate(date:Date) {
+    console.log(date['selectedDate'].day);
+    
   }
 }
