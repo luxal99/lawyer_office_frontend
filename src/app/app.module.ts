@@ -28,6 +28,7 @@ import { LawsuitOverviewComponent } from './components/office-overview/lawsuit-o
 import { LoginComponent } from './components/login/login.component';
 import { MatDaterangepickerModule } from 'mat-daterangepicker';
 import { MaterialModule } from './material.module';
+import { NoteOverviewDialogComponent } from './components/office-overview/e-diary-overview/note-overview-dialog/note-overview-dialog.component';
 import { OfficeOverviewComponent } from './components/office-overview/office-overview.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './components/registation/registation.component';
@@ -58,7 +59,8 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
     LawsuitOverviewComponent,
     SearchLawsuitPipe,
     EDiaryOverviewComponent,
-    AddLawsuitDilaogComponent
+    AddLawsuitDilaogComponent,
+    NoteOverviewDialogComponent
   ],
   imports: [
     MatDaterangepickerModule,
@@ -79,7 +81,7 @@ import { UserProfileComponent } from './components/office-overview/user-profile/
   exports:[MatFormFieldModule,
     MatInputModule],
   entryComponents: [AddClientDialogComponent,AddLawsuitDilaogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent, ConfirmDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+    ClientOverviewDialogComponent, ConfirmDialogComponent,NoteOverviewDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

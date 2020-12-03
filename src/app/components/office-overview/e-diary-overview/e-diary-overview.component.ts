@@ -9,6 +9,7 @@ import { GlobalMethods } from 'src/app/util/dialog-global';
 import { Lawsuit } from 'src/app/model/Lawsuit';
 import { LawsuitService } from 'src/app/service/lawsuit.service';
 import { MatDialog } from '@angular/material';
+import { NoteOverviewDialogComponent } from './note-overview-dialog/note-overview-dialog.component';
 import { Observable } from 'rxjs';
 import { Output } from '@angular/core';
 import { da } from 'date-fns/locale';
@@ -20,7 +21,7 @@ import { da } from 'date-fns/locale';
 })
 export class EDiaryOverviewComponent implements OnInit {
 
-  
+
   listOfLawsuits: Array<Lawsuit> = [];
   text = ''
 
@@ -47,7 +48,7 @@ export class EDiaryOverviewComponent implements OnInit {
   }
 
   openCaseDialog(data) {
-     GlobalMethods.openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data),this.dialog)
+    GlobalMethods.openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data), this.dialog)
   }
 
   getAllLawsuit() {
@@ -62,8 +63,7 @@ export class EDiaryOverviewComponent implements OnInit {
     })
   }
 
-  showDate(date:Date) {
-    console.log(date['selectedDate'].day);
-    
+  showDate(date: Date) {
+    GlobalMethods.openDialog(NoteOverviewDialogComponent, DialogOptions.getOptions(date['selectedDate'].day), this.dialog)
   }
 }
