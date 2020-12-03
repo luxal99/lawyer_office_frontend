@@ -21,4 +21,8 @@ export class LawsuitService extends GenericService<Lawsuit> {
   getLawsuitFromPeriod(dateRange: DateRange): Observable<Lawsuit[]> {
     return this.http.post<Lawsuit[]>(`/${this.route}/period`, dateRange, { responseType: 'json' })
   }
+
+  getLawsuitsForForwardedDate(date): Observable<Lawsuit[]> {
+    return this.http.get<Lawsuit[]>(`/${this.route}/getBydate?date=${date}`, { responseType: 'json' })
+  }
 }
