@@ -1,4 +1,5 @@
 export class Notes {
+    id:number;
     date:Date;
     note:string;
 

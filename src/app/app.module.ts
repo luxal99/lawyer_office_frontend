@@ -20,6 +20,7 @@ import { ConfirmDialogComponent } from './components/office-overview/confirm-dia
 import { EDiaryOverviewComponent } from './components/office-overview/e-diary-overview/e-diary-overview.component';
 import { EditCaseDialogComponent } from './components/office-overview/case-overview/edit-case-dialog/edit-case-dialog.component';
 import { EditLawsuitDialogComponent } from './components/office-overview/case-overview/case-overview-dialog/edit-lawsuit-dialog/edit-lawsuit-dialog.component';
+import { EditNotesDialogComponent } from './components/office-overview/e-diary-overview/note-overview-dialog/edit-notes-dialog/edit-notes-dialog.component';
 import { GlobalOverviewComponent } from './components/office-overview/global-overview/global-overview.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeadingComponent } from './components/heading/heading.component'
@@ -34,7 +35,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistationComponent } from './components/registation/registation.component';
 import { SearchLawsuitPipe } from './pipe/search-lawsuit.pipe';
 import { UserProfileComponent } from './components/office-overview/user-profile/user-profile.component';
-import { EditNotesDialogComponent } from './components/office-overview/e-diary-overview/edit-notes-dialog/edit-notes-dialog.component';
 
 ;
 
@@ -83,7 +83,7 @@ import { EditNotesDialogComponent } from './components/office-overview/e-diary-o
   exports:[MatFormFieldModule,
     MatInputModule],
   entryComponents: [AddClientDialogComponent,AddLawsuitDilaogComponent, EDiaryOverviewComponent, MatDatepicker, MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent, CaseOverviewDialogComponent,
-    ClientOverviewDialogComponent, ConfirmDialogComponent,NoteOverviewDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
+    ClientOverviewDialogComponent, ConfirmDialogComponent,NoteOverviewDialogComponent, EditNotesDialogComponent,LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent, EditLawsuitDialogComponent, EditCaseDialogComponent, GlobalOverviewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

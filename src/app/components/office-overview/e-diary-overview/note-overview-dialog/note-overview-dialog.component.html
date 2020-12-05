@@ -1,14 +1,32 @@
 <app-heading header="Ročišta"></app-heading>
 <div class="item">
     <div class="inline-row">
+        <div class="lawsuit-form-div">
+            <form [formGroup]="lawsuitForm">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Slučaj/Predmet</mat-label>
+                    <mat-select formControlName="id_case">
+                        <mat-option>-- None --</mat-option>
+                        <mat-optgroup *ngFor="let client of listOfClients" [label]="client.full_name">
+                            <mat-option *ngFor="let case of client.listOfCases" [value]="case">
+                                {{case.title}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-button [hidden]="!lawsuitForm.valid" class="gradient-blue-btn ls-save-btn" (click)="saveLawsuit()">Dodaj</button>
+            </form>
+        </div>
         <div class="col-sm-3" *ngFor="let lawsuit of listOfLawsuits ">
-            <div class="lawsuit-card" [ngStyle]="{'background-color': lawsuit._bc_color}" (click)="openCaseDialog(lawsuit.id_case)">
+            <div class="lawsuit-card ls-card" [ngStyle]="{'background-color': lawsuit._bc_color}" (click)="openCaseDialog(lawsuit.id_case)">
                 <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.id_case.title}}</span></h4>
                 <mat-divider></mat-divider>
                 <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.date_formatted}}</span></h5>
             </div>
         </div>
     </div>
+
     <div style="margin-top: 2em;">
         <app-heading header="Beleške"></app-heading>
     </div>
@@ -17,8 +35,8 @@
             <div class="lawsuit-card" [ngStyle]="{'background-color': note._bc_color}">
                 <p [innerHTML]="note.note">...</p>
                 <div style="display: inline-flex;width: 100%;" class="text-right">
-                    <button mat-icon-button><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button><mat-icon>close</mat-icon></button>
+                    <button mat-icon-button (click)="openEditNotesDialog(note)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button (click)="openConfirmDialog(note.id)"><mat-icon>close</mat-icon></button>
                 </div>
             </div>
         </div>
