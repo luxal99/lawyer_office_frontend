@@ -1,17 +1,23 @@
 .lawsuit-card {
-    margin-top: 2em;
+    margin: 2em;
     padding: 2em;
-    height: 250px;
+    min-height: 250px;
     width: 100%;
+    cursor: pointer;
     border-radius: 10px;
     -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
 }
 
+.lawsuit-card:hover {
+    opacity: .7;
+    transition: .6 ease;
+}
+
 .inline-row {
     display: inline-flex;
-    height: 35vh;
+    max-height: 45vh;
     overflow-x: scroll;
     width: 100%;
 }
@@ -20,4 +26,11 @@
     height: .5em;
     background-color: #fff !important;
     width: 10px;
+}
+
+.save-btn {
+    margin-top: 2em;
+    width: 30%;
+    padding: .5em 0;
+    color: #fff;
 }

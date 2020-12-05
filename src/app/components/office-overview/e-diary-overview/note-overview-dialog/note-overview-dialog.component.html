@@ -1,12 +1,34 @@
-<app-heading header="Pregled"></app-heading>
+<app-heading header="Ročišta"></app-heading>
 <div class="item">
     <div class="inline-row">
         <div class="col-sm-3" *ngFor="let lawsuit of listOfLawsuits ">
-            <div class="lawsuit-card" [ngStyle]="{'background-color': lawsuit._bc_color}">
+            <div class="lawsuit-card" [ngStyle]="{'background-color': lawsuit._bc_color}" (click)="openCaseDialog(lawsuit.id_case)">
                 <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.id_case.title}}</span></h4>
                 <mat-divider></mat-divider>
                 <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.date_formatted}}</span></h5>
             </div>
         </div>
+    </div>
+    <div style="margin-top: 2em;">
+        <app-heading header="Beleške"></app-heading>
+    </div>
+    <div class="inline-row">
+        <div class="col-sm-3" *ngFor="let note of listOfNotes ">
+            <div class="lawsuit-card" [ngStyle]="{'background-color': note._bc_color}">
+                <p [innerHTML]="note.note">...</p>
+                <div style="display: inline-flex;width: 100%;" class="text-right">
+                    <button mat-icon-button><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button><mat-icon>close</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 2em;">
+
+        <app-heading header="Dodaj belešku"></app-heading>
+    </div>
+    <div style="margin-top: 2em;">
+        <ckeditor #editor [editor]="Editor" [data]="editorData"></ckeditor>
+        <button mat-button class="gradient-blue-btn save-btn" (click)="saveNote()">Dodaj</button>
     </div>
 </div>
