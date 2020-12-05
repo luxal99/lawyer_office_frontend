@@ -98,9 +98,11 @@ export class GlobalOverviewComponent implements OnInit {
   saveLawsuit() {
     let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, "", this.lawsuitForm.get("id_client").value);
     lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US')
-
+    
+    lawsuit.date.setHours(7)
     this.lawsuitService.save(lawsuit).subscribe(resp => {
       this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.id_case.title}`, "DONE")
+
 
       this.getNextThreeLawsuit();
     }, err => {

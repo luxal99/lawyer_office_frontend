@@ -75,12 +75,14 @@ export class EditCaseDialogComponent implements OnInit {
       this.editorComponent.editorInstance.getData()
     );
 
+    
     caseEntity.id = this.data.id;
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US')
     let client = new Client();
     client.id = this.addCaseForm.get("id_client").value;
 
     caseEntity.id_client = client;
+    caseEntity.creation_date.setHours(7)
 
 
     await this.caseService.update(caseEntity).subscribe(resp => {
@@ -93,6 +95,8 @@ export class EditCaseDialogComponent implements OnInit {
     setTimeout(() => {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
       lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+
+    lawsuit.date.setHours(7)
 
       this.lawsuitService.save(lawsuit).subscribe(resp => {
         this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")

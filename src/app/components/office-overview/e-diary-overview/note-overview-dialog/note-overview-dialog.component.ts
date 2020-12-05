@@ -100,6 +100,7 @@ export class NoteOverviewDialogComponent implements OnInit {
     let lawsuit = new Lawsuit(this.date, "", this.lawsuitForm.get("id_case").value);
     lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US')
 
+    lawsuit.date.setHours(7)
     this.lawsuitService.save(lawsuit).subscribe(resp => {
       this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.id_case.title}`, "DONE")
 

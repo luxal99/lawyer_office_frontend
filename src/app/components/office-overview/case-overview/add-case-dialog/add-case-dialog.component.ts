@@ -75,6 +75,9 @@ export class AddCaseDialogComponent implements OnInit {
       this.addCaseForm.get("id_client").value,
     );
 
+    
+    caseEntity.creation_date.setHours(7)
+
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
     await this.caseService.save(caseEntity).subscribe(resp => {
       
@@ -89,6 +92,8 @@ export class AddCaseDialogComponent implements OnInit {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
       lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
+
+    lawsuit.date.setHours(7)
       this.lawsuitService.save(lawsuit).subscribe(resp => {
 
         this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")

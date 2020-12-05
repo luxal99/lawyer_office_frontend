@@ -35,7 +35,7 @@ export class AddLawsuitDilaogComponent implements OnInit {
    saveLawsuit() {
       let lawsuit = new Lawsuit(this.lawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), this.data);
       lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
-
+      lawsuit.date.setHours(7)
       this.lawsuitService.save(lawsuit).subscribe(resp => {
         this.openSnackBar("Uspešno ste sačuvali predmet i ročište", "DONE")
         location.reload()

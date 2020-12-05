@@ -1,6 +1,6 @@
-import { formatDate } from '@angular/common';
 import { Client } from './Client';
 import { Lawsuit } from './Lawsuit';
+import { formatDate } from '@angular/common';
 
 export class Case {
 
