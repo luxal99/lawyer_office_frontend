@@ -75,6 +75,8 @@ export class EditCaseDialogComponent implements OnInit {
       this.editorComponent.editorInstance.getData()
     );
 
+    caseEntity.creation_date.setHours(7);
+
     
     caseEntity.id = this.data.id;
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US')
