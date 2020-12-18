@@ -1,11 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { Notes } from 'src/app/model/Notes';
-import { NotesService } from 'src/app/service/notes.service';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {Notes} from 'src/app/model/Notes';
+import {NotesService} from 'src/app/service/notes.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { CKEditorComponent, ChangeEvent } from '@ckeditor/ckeditor5-angular';
-import { ViewChild } from '@angular/core';
+import {CKEditorComponent, ChangeEvent} from '@ckeditor/ckeditor5-angular';
+import {ViewChild} from '@angular/core';
+
 @Component({
   selector: 'app-edit-notes-dialog',
   templateUrl: './edit-notes-dialog.component.html',
@@ -13,25 +14,25 @@ import { ViewChild } from '@angular/core';
 })
 export class EditNotesDialogComponent implements OnInit {
 
-  @ViewChild('editor', { static: false }) editorComponent: CKEditorComponent;
+  @ViewChild('editor', {static: false}) editorComponent: CKEditorComponent;
   public Editor = ClassicEditor;
 
 
   editorData = '';
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Notes, private notesService: NotesService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Notes, private notesService: NotesService) {
+  }
 
   ngOnInit() {
   }
 
   update() {
-    let updatedNote = new Notes(this.data.date,this.editorComponent.editorInstance.getData());
+    let updatedNote = new Notes(this.data.date, this.editorComponent.editorInstance.getData());
     updatedNote.id = this.data.id;
-    updatedNote.date.setHours(7)
     this.notesService.update(updatedNote).subscribe(resp => {
       console.log(resp);
 
-    })
+    });
   }
 
 }
