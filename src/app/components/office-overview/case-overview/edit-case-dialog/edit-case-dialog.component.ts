@@ -10,6 +10,14 @@ import {CaseService} from 'src/app/service/case.service';
 import {ClientService} from 'src/app/service/client.service';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
+import {
+  CLIENT_FORM_CONTROL_NAME,
+  DATE_FORMAT,
+  DATE_LOCALE,
+  SNACKBAR_BUTTON_TEXT,
+  SNACKBAR_ERR_MESSAGE,
+  VALID_SNACKBAR_MESSAGE
+} from '../../../../constants/constant';
 
 
 @Component({
@@ -29,7 +37,7 @@ export class EditCaseDialogComponent implements OnInit {
 
   editorData = '';
   lawsuitEditorData = '';
-  listOfClietns: Array<Client> = [];
+  listOfClients: Array<Client> = [];
 
   addCaseForm = new FormGroup({
     title: new FormControl(this.data.title, Validators.required),
@@ -56,8 +64,8 @@ export class EditCaseDialogComponent implements OnInit {
   }
 
   getAllClients() {
-    this.clientService.getAll().subscribe(resp => {
-      this.listOfClietns = resp;
+    this.clientService.getAll().subscribe((resp) => {
+      this.listOfClients = resp;
     });
   }
 
@@ -78,13 +86,13 @@ export class EditCaseDialogComponent implements OnInit {
     );
 
     caseEntity.id = this.data.id;
-    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
+    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, DATE_FORMAT, DATE_LOCALE);
     const client = new Client();
-    client.id = this.addCaseForm.get('id_client').value;
+    client.id = this.addCaseForm.get(CLIENT_FORM_CONTROL_NAME).value;
 
     caseEntity.id_client = client;
 
-    await this.caseService.update(caseEntity).subscribe(resp => {
+    await this.caseService.update(caseEntity).subscribe(() => {
     }, err => {
     });
     return caseEntity;
@@ -93,14 +101,14 @@ export class EditCaseDialogComponent implements OnInit {
   async saveLawsuit(enCase) {
     setTimeout(() => {
       let lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
-      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+      lawsuit.date_formatted = formatDate(lawsuit.date, DATE_FORMAT, DATE_LOCALE);
 
       lawsuit.date.setHours(7);
 
       this.lawsuitService.save(lawsuit).subscribe(resp => {
-        this.openSnackBar('Uspešno ste sačuvali predmet i ročište', 'DONE');
+        this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
       }, err => {
-        this.openSnackBar('Dogodila se greška pri čuvanju ročišta', 'DONE');
+        this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
       });
     }, 100);
   }
@@ -108,10 +116,10 @@ export class EditCaseDialogComponent implements OnInit {
   update() {
     if (document.getElementById('lawsuit').style.display === 'none') {
       this.updateCase().then(() => {
-        this.openSnackBar('Uspešno ste sačuvali predmet', 'DONE');
+        this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
       }, err => {
         console.log(err);
-        this.openSnackBar("Dogodila se greska", 'DONE');
+        this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
       });
     } else {
 

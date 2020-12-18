@@ -44,6 +44,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RegistationComponent} from './components/registation/registation.component';
 import {SearchLawsuitPipe} from './pipe/search-lawsuit.pipe';
 import {UserProfileComponent} from './components/office-overview/user-profile/user-profile.component';
+import { SearchClientPipe } from './pipe/search-client.pipe';
+import { SearchCasePipe } from './pipe/search-case.pipe';
 
 ;
 
@@ -71,7 +73,9 @@ import {UserProfileComponent} from './components/office-overview/user-profile/us
     EDiaryOverviewComponent,
     AddLawsuitDilaogComponent,
     NoteOverviewDialogComponent,
-    EditNotesDialogComponent
+    EditNotesDialogComponent,
+    SearchClientPipe,
+    SearchCasePipe
   ],
   imports: [
     MatDaterangepickerModule,

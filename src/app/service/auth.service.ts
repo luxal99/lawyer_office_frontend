@@ -2,6 +2,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {LOGIN_SLASH_ROUTE, TOKEN_NAME} from '../constants/constant';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class AuthService implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (localStorage.getItem('token')) { // logged in so return true
+    if (localStorage.getItem(TOKEN_NAME)) { // logged in so return true
       return true;
     }
     // not logged in so redirect to login page with the return url
-    this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
+    this.router.navigate([LOGIN_SLASH_ROUTE], {queryParams: {returnUrl: state.url}});
     return false;
   }
 }

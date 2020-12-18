@@ -8,8 +8,12 @@
           src="../../../assets/img/kisspng-court-gavel-judge-clip-art-lawyer-criminal-defense-gavel-svg-12-x12-png-cli-5d10b2a0d964d2%201.png"
           alt="" class="img-fluid">
       </div>
+
+      <div id="login-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
       <div class="form-div">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" id="login-form">
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Korisničko ime</mat-label>

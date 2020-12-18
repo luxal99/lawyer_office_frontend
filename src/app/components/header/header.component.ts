@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   filteredArray: Array<any> = [];
 
   listOfCases: Array<Case> = [];
-  listofClient: Array<Client> = [];
+  listOfClients: Array<Client> = [];
   listOfNotification: Array<Notification> = [];
 
   searchForm: FormGroup = this._formBuilder.group({
@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
 
   getAllClients() {
     this.clientService.getAll().subscribe(resp => {
-      this.listofClient = resp;
+      this.listOfClients = resp;
     });
   }
 
@@ -116,7 +116,7 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    this.listofClient.forEach(filter => {
+    this.listOfClients.forEach(filter => {
       if (filter.full_name.toLowerCase().indexOf(input.toLowerCase()) !== -1 && this.searchForm.get('search').value !== '') {
         if (this.filteredArray.findIndex(x => x.full_name === filter.full_name) < 0) {
           this.filteredArray.push(filter);

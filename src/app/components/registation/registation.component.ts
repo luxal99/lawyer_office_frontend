@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
-import { User } from '../../model/User';
-import { UserInfo } from '../../model/UserInfo';
-import { UserService } from '../../service/user.service';
+import {MatSnackBar} from '@angular/material';
+import {Router} from '@angular/router';
+import {User} from '../../model/User';
+import {UserInfo} from '../../model/UserInfo';
+import {UserService} from '../../service/user.service';
+import {
+  BASIC_ROUTE, EMAIL_FORM_CONTROL_NAME, FULL_NAME_FORM_CONTROL_NAME, PASSWORD_CONFIRM_FORM_CONTROL_NAME,
+  PASSWORD_FORM_CONTROL_NAME,
+  SNACKBAR_BUTTON_TEXT,
+  SNACKBAR_ERR_MESSAGE,
+  USERNAME_FORM_CONTROL_NAME, VALID_REGISTRATION_MESSAGE
+} from '../../constants/constant';
 
 @Component({
   selector: 'app-registation',
@@ -14,29 +21,32 @@ import { UserService } from '../../service/user.service';
 })
 export class RegistationComponent implements OnInit {
   registrationForm = new FormGroup({
-    full_name: new FormControl("", Validators.required),
-    email: new FormControl("", Validators.required),
-    username: new FormControl("", Validators.required),
-    password: new FormControl("", Validators.required),
-    confirm_password: new FormControl("", Validators.required),
-  })
+    full_name: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    confirm_password: new FormControl('', Validators.required),
+  });
 
-  constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router) { }
+  // tslint:disable-next-line:variable-name
+  constructor(private userService: UserService, private _snackBar: MatSnackBar, private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   register() {
-    if (this.registrationForm.get("password").value === this.registrationForm.get("confirm_password").value) {
-      this.userService.save(new User(
-        this.registrationForm.get("username").value, this.registrationForm.get("password").value,
-        new UserInfo(this.registrationForm.get("full_name").value, this.registrationForm.get("email").value)
-      )).subscribe(resp => {
-        this.openSnackBar('Uspesno ste se registrovali', "DONE");
-        this.router.navigate(['/'])
+    if (this.registrationForm.get(PASSWORD_FORM_CONTROL_NAME).value ===
+      this.registrationForm.get(PASSWORD_CONFIRM_FORM_CONTROL_NAME).value) {
+      this.userService.register(new User(
+        this.registrationForm.get(USERNAME_FORM_CONTROL_NAME).value, this.registrationForm.get(PASSWORD_FORM_CONTROL_NAME).value,
+        new UserInfo(this.registrationForm.get(FULL_NAME_FORM_CONTROL_NAME).value, this.registrationForm.get(EMAIL_FORM_CONTROL_NAME).value)
+      )).subscribe(() => {
+        this.openSnackBar(VALID_REGISTRATION_MESSAGE, SNACKBAR_BUTTON_TEXT);
+        this.router.navigate([BASIC_ROUTE]);
       }, err => {
-        this.openSnackBar("Dogodila se greska", "DONE")
-      })
+        this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+      });
     }
   }
 
