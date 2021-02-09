@@ -39,14 +39,14 @@ export class GlobalOverviewComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
 
-
+  barChartData: ChartDataSets[] = [{data: this.analyticsData, backgroundColor: ['#F45C43', '#2F80ED']}
+  ];
+  
   lawsuitForm = new FormGroup({
     date: new FormControl(Date.now(), Validators.required),
     id_client: new FormControl('', Validators.required)
   });
 
-  barChartData: ChartDataSets[] = [{data: this.analyticsData, backgroundColor: ['#F45C43', '#2F80ED']}
-  ];
 
   constructor(private lawsuitService: LawsuitService, private caseService: CaseService,
               private clientService: ClientService, private dialog: MatDialog, private _snackBar: MatSnackBar, private router: Router) {

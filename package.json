@@ -6,7 +6,7 @@
         "start": "sudo ng serve --watch --proxy-config proxy.config.json",
         "build": "ng build --aot --prod",
         "test": "ng test",
-        "deploy_on_vm": "rsync -avz -e 'ssh' ./dist/lawyer-office-frontend/* root@68.183.212.84:/var/www/html",
+        "deploy": "rsync -avz -e 'ssh' ./dist/lawyer-office-frontend/* root@68.183.212.84:/var/www/html",
         "lint": "ng lint",
         "e2e": "ng e2e"
     },

@@ -9,8 +9,7 @@ import {LOGIN_ROUTE, REGISTER_ROUTE} from './constants/constant';
 
 const routes: Routes = [
   {path: '', component: OfficeOverviewComponent, canActivate: [AuthService]},
-  {path: LOGIN_ROUTE, component: LoginComponent},
-  {path: REGISTER_ROUTE, component: RegistationComponent}
+  {path: LOGIN_ROUTE, component: LoginComponent}
 ];
 
 @NgModule({
