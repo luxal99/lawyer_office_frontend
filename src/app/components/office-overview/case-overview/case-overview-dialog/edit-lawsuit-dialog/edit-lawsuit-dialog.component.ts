@@ -29,6 +29,7 @@ export class EditLawsuitDialogComponent implements OnInit {
   update() {
     let lawsuit = new Lawsuit(this.editLawsuitForm.get("date").value, this.lawsuitEditorComponent.editorInstance.getData(), this.data.id_case);
     lawsuit.id = this.data.id;
+    lawsuit.date.setHours(7)
     lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US')
 
     this.lawsuitService.update(lawsuit).subscribe(resp => {

@@ -25,7 +25,7 @@
                 </mat-form-field>
             </div>
             <div>
-                <button mat-button *ngIf="userForm.valid && userForm.get('password').value === userForm.get('confirm_password').value" class=" gradient-blue-btn save-btn">Izmeni podatke</button>
+                <button (click)="updateUser()" mat-button *ngIf="userForm.valid && userForm.get('password').value === userForm.get('confirm_password').value" class=" gradient-blue-btn save-btn">Izmeni podatke</button>
             </div>
         </form>
     </div>

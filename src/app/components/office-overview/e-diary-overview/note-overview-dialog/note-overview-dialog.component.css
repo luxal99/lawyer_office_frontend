@@ -1,0 +1,61 @@
+.lawsuit-card {
+    margin: 2em;
+    padding: 2em;
+    min-height: 250px;
+    width: 100%;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 49px -27px rgba(0, 0, 0, 0.75);
+}
+
+.ls-card {
+    cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.lawsuit-form-div {
+    margin: 2em;
+    border: 1px solid #eee;
+    padding: 2em;
+    border-radius: 20px;
+    display: inline-flex;
+}
+
+.ls-card:hover {
+    opacity: .7;
+    transition: .5s ease;
+}
+
+button:hover {
+    opacity: .7;
+    transition: .6s ease;
+}
+
+.inline-row {
+    display: inline-flex;
+    max-height: 45vh;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    height: .5em;
+    background-color: #fff !important;
+    width: 10px;
+}
+
+.save-btn {
+    margin-top: 2em;
+    width: 30%;
+    padding: .5em 0;
+    color: #fff;
+}
+
+.ls-save-btn {
+    width: 100%;
+    color: #fff;
+}

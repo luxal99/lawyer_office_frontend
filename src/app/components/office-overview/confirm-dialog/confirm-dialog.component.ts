@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CONFIRM_LC} from '../../../constants/constant';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -7,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   saidYes() {
-    localStorage.setItem("confirm", "true")
+    localStorage.setItem(CONFIRM_LC, 'true');
   }
 
   saidNo() {
-    localStorage.setItem("confirm", "false")
+    localStorage.setItem(CONFIRM_LC, 'false');
   }
 }

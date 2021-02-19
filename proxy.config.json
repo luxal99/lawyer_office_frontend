@@ -4,6 +4,7 @@
         "/user",
         "/client",
         "/lawsuit",
+        "/notes",
         "/notification"
     ],
     "target": "http://localhost:8080",
