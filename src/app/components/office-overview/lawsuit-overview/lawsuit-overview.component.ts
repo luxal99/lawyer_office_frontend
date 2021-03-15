@@ -1,4 +1,4 @@
-import {AfterContentChecked, ChangeDetectorRef} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef} from '@angular/core';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -7,14 +7,14 @@ import {DialogOptions} from 'src/app/util/dialog-options';
 import {GlobalMethods} from 'src/app/util/dialog-global';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-lawsuit-overview',
   templateUrl: './lawsuit-overview.component.html',
   styleUrls: ['./lawsuit-overview.component.css']
 })
-export class LawsuitOverviewComponent implements OnInit {
+export class LawsuitOverviewComponent implements OnInit, AfterViewChecked {
 
   listOfLawsuits: Array<Lawsuit> = [];
   text = '';

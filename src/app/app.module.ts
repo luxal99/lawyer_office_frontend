@@ -1,15 +1,8 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {ChartsModule, ThemeService} from 'ng2-charts';
 import {DatePipe, HashLocationStrategy, LocationStrategy} from '@angular/common';
+
 import {
-  MatCalendar,
-  MatCalendarBody,
-  MatDatepicker,
-  MatDatepickerToggle,
-  MatMonthView
-} from '@angular/material/datepicker';
-import {
-  MatFormFieldControl,
   MatFormFieldModule,
 } from '@angular/material/form-field';
 import {
@@ -39,7 +32,6 @@ import {HeadingComponent} from './components/heading/heading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LawsuitOverviewComponent} from './components/office-overview/lawsuit-overview/lawsuit-overview.component';
 import {LoginComponent} from './components/login/login.component';
-import {MatDaterangepickerModule} from 'mat-daterangepicker';
 import {MaterialModule} from './material.module';
 import {NoteOverviewDialogComponent} from './components/office-overview/e-diary-overview/note-overview-dialog/note-overview-dialog.component';
 import {OfficeOverviewComponent} from './components/office-overview/office-overview.component';
@@ -49,8 +41,6 @@ import {SearchLawsuitPipe} from './pipe/search-lawsuit.pipe';
 import {UserProfileComponent} from './components/office-overview/user-profile/user-profile.component';
 import {SearchClientPipe} from './pipe/search-client.pipe';
 import {SearchCasePipe} from './pipe/search-case.pipe';
-
-;
 
 @NgModule({
   declarations: [
@@ -81,25 +71,27 @@ import {SearchCasePipe} from './pipe/search-case.pipe';
     SearchCasePipe
   ],
   imports: [
-    MatDaterangepickerModule,
     BrowserModule,
+    MaterialModule,
     ChartsModule,
     CKEditorModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule,
     MatFormFieldModule,
     MatInputModule,
     CalendarModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe, ThemeService, HttpClientModule, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [DatePipe, ThemeService, HttpClientModule, {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [MatFormFieldModule,
     MatInputModule],
-  entryComponents: [AddClientDialogComponent, AddLawsuitDilaogComponent, EDiaryOverviewComponent, MatDatepicker,
-    MatCalendar, MatMonthView, MatCalendarBody, MatDatepickerToggle, AddCaseDialogComponent, CaseOverviewComponent,
+  entryComponents: [AddClientDialogComponent, AddLawsuitDilaogComponent, EDiaryOverviewComponent,
+    AddCaseDialogComponent, CaseOverviewComponent,
     CaseOverviewDialogComponent,
     ClientOverviewDialogComponent, ConfirmDialogComponent, NoteOverviewDialogComponent,
     EditNotesDialogComponent, LawsuitOverviewComponent, ClientOverviewComponent, UserProfileComponent,

@@ -5,7 +5,7 @@ import {DialogOptions} from 'src/app/util/dialog-options';
 import {GlobalMethods} from 'src/app/util/dialog-global';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {NoteOverviewDialogComponent} from './note-overview-dialog/note-overview-dialog.component';
 
 

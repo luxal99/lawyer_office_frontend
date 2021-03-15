@@ -24,12 +24,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   imports: [
     MatDialogModule,
     DragDropModule,
     MatDividerModule,
+    MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
@@ -54,6 +57,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CdkTableModule,
     CdkTreeModule,
     MatStepperModule,
+    MatSidenavModule,
     MatMenuModule,
     MatRadioModule,
     MatProgressSpinnerModule,

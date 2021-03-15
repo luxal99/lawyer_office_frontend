@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../../service/user.service';
 import {PASSWORD_FORM_CONTROL_NAME, SNACKBAR_ERR_MESSAGE, TOKEN_NAME, USERNAME_FORM_CONTROL_NAME} from '../../../constants/constant';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,7 +17,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   userForm = new FormGroup({
-    username: new FormControl(localStorage.getItem('username').substring(1, localStorage.getItem('username').length - 1), Validators.required),
+    username: new FormControl(localStorage.getItem('username')
+      .substring(1, localStorage.getItem('username').length - 1), Validators.required),
     password: new FormControl('', Validators.required),
     confirm_password: new FormControl('', Validators.required)
   });

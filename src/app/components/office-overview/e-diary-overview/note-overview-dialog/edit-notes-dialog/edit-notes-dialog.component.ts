@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Notes} from 'src/app/model/Notes';
 import {NotesService} from 'src/app/service/notes.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -27,7 +27,7 @@ export class EditNotesDialogComponent implements OnInit {
   }
 
   update() {
-    let updatedNote = new Notes(this.data.date, this.editorComponent.editorInstance.getData());
+    const updatedNote = new Notes(this.data.date, this.editorComponent.editorInstance.getData());
     updatedNote.id = this.data.id;
     this.notesService.update(updatedNote).subscribe(resp => {
       console.log(resp);

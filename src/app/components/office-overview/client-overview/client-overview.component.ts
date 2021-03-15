@@ -7,7 +7,7 @@ import {ClientService} from 'src/app/service/client.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 import {DialogOptions} from 'src/app/util/dialog-options';
 import {GlobalMethods} from 'src/app/util/dialog-global';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({

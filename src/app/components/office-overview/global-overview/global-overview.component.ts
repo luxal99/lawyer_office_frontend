@@ -2,9 +2,8 @@ import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatDialog, MatSnackBar} from '@angular/material';
-
-import {AddCaseDialogComponent} from '../case-overview/add-case-dialog/add-case-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Case} from 'src/app/model/Case';
 import {CaseOverviewDialogComponent} from '../case-overview/case-overview-dialog/case-overview-dialog.component';
 import {CaseService} from 'src/app/service/case.service';
@@ -41,7 +40,7 @@ export class GlobalOverviewComponent implements OnInit {
 
   barChartData: ChartDataSets[] = [{data: this.analyticsData, backgroundColor: ['#F45C43', '#2F80ED']}
   ];
-  
+
   lawsuitForm = new FormGroup({
     date: new FormControl(Date.now(), Validators.required),
     id_client: new FormControl('', Validators.required)
@@ -49,7 +48,7 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   constructor(private lawsuitService: LawsuitService, private caseService: CaseService,
-              private clientService: ClientService, private dialog: MatDialog, private _snackBar: MatSnackBar, private router: Router) {
+              private clientService: ClientService, private dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -60,9 +59,10 @@ export class GlobalOverviewComponent implements OnInit {
   }
 
   getAnalytics() {
-    this.caseService.getCaseAnalytics().subscribe(resp => {
+    this.caseService.getCaseAnalytics().subscribe((resp) => {
       this.analyticsResponseData = resp;
       this.analyticsResponseData.forEach(res => {
+        // tslint:disable-next-line:radix
         this.analyticsData.push(Number.parseInt(res.value));
       });
 
@@ -114,7 +114,7 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   saveLawsuit() {
-    let lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, '', this.lawsuitForm.get('id_client').value);
+    const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, '', this.lawsuitForm.get('id_client').value);
     lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
     lawsuit.date.setHours(7);
@@ -130,7 +130,7 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }

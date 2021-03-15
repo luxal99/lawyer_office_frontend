@@ -1,9 +1,8 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import {CKEditorComponent, ChangeEvent} from '@ckeditor/ckeditor5-angular';
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {CKEditorComponent} from '@ckeditor/ckeditor5-angular';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {Case} from 'src/app/model/Case';

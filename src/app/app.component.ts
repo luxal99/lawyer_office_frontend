@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,12 +7,7 @@ import { Router } from '@angular/router';
 })
 
 export class AppComponent implements OnInit {
-
-
-
-  title = 'lawyer-office-frontend';
-
-  constructor(private router: Router) {
+  constructor() {
 
   }
   ngOnInit(): void {
