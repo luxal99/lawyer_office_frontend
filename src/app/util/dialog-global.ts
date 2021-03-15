@@ -1,5 +1,5 @@
 import {ComponentType} from '@angular/cdk/portal';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 
 export class GlobalMethods {
   static openDialog(component: ComponentType<any>, options: {}, dialog: MatDialog) {

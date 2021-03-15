@@ -6,12 +6,15 @@ import {
   MatCalendarBody,
   MatDatepicker,
   MatDatepickerToggle,
+  MatMonthView
+} from '@angular/material/datepicker';
+import {
   MatFormFieldControl,
   MatFormFieldModule,
-  MatInputModule,
-  MatMonthView
-} from '@angular/material';
-
+} from '@angular/material/form-field';
+import {
+  MatInputModule
+} from '@angular/material/input';
 import {AddCaseDialogComponent} from './components/office-overview/case-overview/add-case-dialog/add-case-dialog.component';
 import {AddClientDialogComponent} from './components/office-overview/client-overview/add-client-dialog/add-client-dialog.component';
 import {AddLawsuitDilaogComponent} from './components/office-overview/e-diary-overview/add-lawsuit-dilaog/add-lawsuit-dilaog.component';
@@ -44,8 +47,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RegistationComponent} from './components/registation/registation.component';
 import {SearchLawsuitPipe} from './pipe/search-lawsuit.pipe';
 import {UserProfileComponent} from './components/office-overview/user-profile/user-profile.component';
-import { SearchClientPipe } from './pipe/search-client.pipe';
-import { SearchCasePipe } from './pipe/search-case.pipe';
+import {SearchClientPipe} from './pipe/search-client.pipe';
+import {SearchCasePipe} from './pipe/search-case.pipe';
 
 ;
 

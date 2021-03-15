@@ -10,7 +10,7 @@ import {ClientService} from '../../service/client.service';
 import {ConfirmDialogComponent} from '../office-overview/confirm-dialog/confirm-dialog.component';
 import {DialogOptions} from '../../util/dialog-options';
 import {GlobalMethods} from '../../util/dialog-global';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {Notification} from 'src/app/model/Notification';
 import {NotificationService} from '../../service/notification.service';
 import {UserProfileComponent} from '../office-overview/user-profile/user-profile.component';

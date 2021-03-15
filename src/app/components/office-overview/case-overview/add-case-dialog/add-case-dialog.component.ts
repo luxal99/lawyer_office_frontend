@@ -3,7 +3,8 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {CKEditorComponent, ChangeEvent} from '@ckeditor/ckeditor5-angular';
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {Case} from 'src/app/model/Case';
 import {CaseService} from 'src/app/service/case.service';
@@ -44,7 +45,7 @@ export class AddCaseDialogComponent implements OnInit {
   });
 
   constructor(private clientService: ClientService, private caseService: CaseService,
-              private _snackBar: MatSnackBar, private lawsuitService: LawsuitService) {
+              private snackBar: MatSnackBar, private lawsuitService: LawsuitService) {
   }
 
   ngOnInit() {
@@ -67,7 +68,7 @@ export class AddCaseDialogComponent implements OnInit {
   }
 
   async saveCase() {
-    let caseEntity = new Case(
+    const caseEntity = new Case(
       this.addCaseForm.get('title').value,
       this.addCaseForm.get('creation_date').value,
       this.editorComponent.editorInstance.getData(),
@@ -78,9 +79,9 @@ export class AddCaseDialogComponent implements OnInit {
     caseEntity.creation_date.setHours(7);
 
     caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
-    await this.caseService.save(caseEntity).subscribe(resp => {
+    await this.caseService.save(caseEntity).subscribe((resp) => {
 
-      caseEntity.id = resp['id'];
+      caseEntity.id = resp.id;
     }, err => {
     });
     return caseEntity;
@@ -88,7 +89,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   async saveLawsuit(enCase) {
     setTimeout(() => {
-      let lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
+      const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
       lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
 
@@ -119,7 +120,7 @@ export class AddCaseDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }

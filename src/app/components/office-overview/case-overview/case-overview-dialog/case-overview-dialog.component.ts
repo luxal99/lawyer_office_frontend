@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {GlobalMethods} from 'src/app/util/dialog-global';
 import {DialogOptions} from 'src/app/util/dialog-options';
 import {Case} from 'src/app/model/Case';
@@ -15,7 +15,7 @@ import {EditLawsuitDialogComponent} from './edit-lawsuit-dialog/edit-lawsuit-dia
 })
 export class CaseOverviewDialogComponent implements OnInit {
 
-  status: string = '';
+  status = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Case, private dialog: MatDialog, private caseService: CaseService) {
   }

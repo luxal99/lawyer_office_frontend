@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {MatSnackBar, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {CKEditorComponent} from '@ckeditor/ckeditor5-angular';
 import {Case} from 'src/app/model/Case';
@@ -50,7 +51,7 @@ export class EditCaseDialogComponent implements OnInit {
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Case, private clientService: ClientService,
-              private caseService: CaseService, private lawsuitService: LawsuitService, private _snackBar: MatSnackBar) {
+              private caseService: CaseService, private lawsuitService: LawsuitService, private snackBar: MatSnackBar) {
   }
 
 
@@ -79,7 +80,7 @@ export class EditCaseDialogComponent implements OnInit {
   }
 
   async updateCase() {
-    let caseEntity = new Case(
+    const caseEntity = new Case(
       this.addCaseForm.get('title').value,
       this.addCaseForm.get('creation_date').value,
       this.editorComponent.editorInstance.getData()
@@ -100,7 +101,7 @@ export class EditCaseDialogComponent implements OnInit {
 
   async saveLawsuit(enCase) {
     setTimeout(() => {
-      let lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
+      const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
       lawsuit.date_formatted = formatDate(lawsuit.date, DATE_FORMAT, DATE_LOCALE);
 
       lawsuit.date.setHours(7);
@@ -130,7 +131,7 @@ export class EditCaseDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }

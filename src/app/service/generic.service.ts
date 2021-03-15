@@ -13,8 +13,8 @@ export class GenericService<T> {
   constructor(protected http: HttpClient) {
   }
 
-  save(entity: T): Observable<T[]> {
-    return this.http.post<T[]>(`/${this.route}`, entity, {
+  save(entity: T): Observable<T> {
+    return this.http.post<T>(`/${this.route}`, entity, {
       responseType: 'json',
       headers: {'auth-token': localStorage.getItem(TOKEN_NAME)}
     });

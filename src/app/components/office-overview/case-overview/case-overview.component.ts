@@ -8,7 +8,7 @@ import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component
 import {DialogOptions} from 'src/app/util/dialog-options';
 import {EditCaseDialogComponent} from './edit-case-dialog/edit-case-dialog.component';
 import {GlobalMethods} from 'src/app/util/dialog-global';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {CONFIRM_LC} from '../../../constants/constant';
 import {FormControl, FormGroup} from '@angular/forms';
 
