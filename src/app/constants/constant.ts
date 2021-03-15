@@ -19,3 +19,18 @@ export const CONFIRM_LC = 'confirm';
 export const DATE_FORMAT = 'dd/MM/yyyy';
 export const DATE_LOCALE = 'en-US';
 export const CLIENT_FORM_CONTROL_NAME = 'id_client';
+
+export class FormControlNames {
+  static TITLE_FORM_CONTROL = 'title';
+  static CREATION_DATE_FORM_CONTROL = 'creationDate';
+  static DATE_FORM_CONTROL = 'date';
+  static ID_CLIENT_FORM_CONTROL = 'idClient';
+  static FULL_NAME_FORM_CONTROL = 'fullName';
+  static EMAIL_FORM_CONTROL = 'email';
+  static TELEPHONE_FORM_CONTROL = 'telephone';
+}
+
+export class FormFieldTypes {
+  static INPUT = 'input';
+  static SELECT = 'select';
+}

@@ -20,15 +20,18 @@
   </div>
 
   <div class="overview-container">
-    <div class="client-item" *ngFor="let case of listOfCases|searchCase:text">
+
+
+    <mat-spinner #spinner style="margin-left: 45%"></mat-spinner>
+     <div class="client-item"  *ngFor="let case of listOfCases|searchCase:text">
       <div class="row">
         <div class="col-sm border-col">
           <h6>Naziv</h6>
           <h4>{{case.title}}</h4>
         </div>
         <div class="col-sm border-col">
-          <h6>Telefon</h6>
-          <h4>{{case.creation_date_formatted}}</h4>
+          <h6>Datum početka</h6>
+          <h4>{{case.creationDate}}</h4>
         </div>
         <div class="col-sm">
           <div class="btn-div">
@@ -45,7 +48,6 @@
 
   <div class="mobile-container">
     <div class="mobile-overview">
-
 
       <div class="case-card" *ngFor="let case of listOfCases|searchCase:text;let i =index" [attr.data-index]="i"
            [ngStyle]="i % 2===0? {'background':'linear-gradient(to right, #2F80ED, #56CCF2)'}:i % 3 ===0 ? {'background':'linear-gradient(to right, #f2994a, #f2c94c)'}: i % 5 ? {'background':'linear-gradient(to right, #f2994a, #f2c94c)'}:{'background':'linear-gradient(to right, #f2994a, #f2c94c)'} ">

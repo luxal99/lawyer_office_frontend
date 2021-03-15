@@ -15,7 +15,7 @@ export class SearchLawsuitPipe implements PipeTransform {
     if (!text) {
       return listOfLawsuits;
     }
-    return listOfLawsuits.filter(x => x.id_case.title.toLowerCase().includes(text.toLowerCase()));
+    return listOfLawsuits.filter(x => x.idCase.title.toLowerCase().includes(text.toLowerCase()));
   }
 
 }

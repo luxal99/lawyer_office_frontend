@@ -1,19 +1,11 @@
-import { Case } from './Case';
+import {Case} from './Case';
 
-export class Lawsuit {
+export interface Lawsuit {
 
-    id: number;
-
-    date: Date;
-    date_formatted: string;
-    note: string;
-    id_case: Case
-
-    _bc_color:string;
-
-    constructor(_date?: Date, _note?: string, _id_case?: Case) {
-        this.date = _date;
-        this.note = _note
-        this.id_case = _id_case
-    }
+  id?: number;
+  date?: Date;
+  dateFormatted?: string;
+  note?: string;
+  idCase?: Case;
+  backgroundColor?: string;
 }

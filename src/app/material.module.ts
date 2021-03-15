@@ -25,7 +25,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -36,6 +36,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatFormFieldModule,
     MatNativeDateModule,
     MatProgressBarModule,
     MatCheckboxModule,
@@ -62,6 +63,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatRadioModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
     MatAutocompleteModule,

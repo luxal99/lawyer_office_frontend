@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {AddLawsuitDilaogComponent} from './add-lawsuit-dilaog/add-lawsuit-dilaog.component';
 import {DialogOptions} from 'src/app/util/dialog-options';
 import {GlobalMethods} from 'src/app/util/dialog-global';
 import {Lawsuit} from 'src/app/model/Lawsuit';
@@ -42,11 +41,6 @@ export class EDiaryOverviewComponent implements OnInit {
       this.listOfLawsuits = JSON.parse(localStorage.getItem('lawsuitSearch'));
     }
   }
-
-  openCaseDialog(data) {
-    GlobalMethods.openDialog(AddLawsuitDilaogComponent, DialogOptions.getOptions(data), this.dialog);
-  }
-
   getAllLawsuit() {
     this.lawsuitService.getLawsuitFromPeriod({
       startDate: this.rangeForm.get('startDate').value,
@@ -54,7 +48,7 @@ export class EDiaryOverviewComponent implements OnInit {
     }).subscribe(resp => {
       this.listOfLawsuits = resp;
       this.listOfLawsuits.forEach(x => {
-        x._bc_color = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
+        x.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
       });
 
       localStorage.removeItem('lawsuitSearch');

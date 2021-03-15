@@ -117,8 +117,8 @@ export class HeaderComponent implements OnInit {
     });
 
     this.listOfClients.forEach(filter => {
-      if (filter.full_name.toLowerCase().indexOf(input.toLowerCase()) !== -1 && this.searchForm.get('search').value !== '') {
-        if (this.filteredArray.findIndex(x => x.full_name === filter.full_name) < 0) {
+      if (filter.fullName.toLowerCase().indexOf(input.toLowerCase()) !== -1 && this.searchForm.get('search').value !== '') {
+        if (this.filteredArray.findIndex(x => x.full_name === filter.fullName) < 0) {
           this.filteredArray.push(filter);
         }
       }

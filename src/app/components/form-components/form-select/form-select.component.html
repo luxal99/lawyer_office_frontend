@@ -1,0 +1,11 @@
+<div class="dynamic-field form-select" [formGroup]="group">
+  <mat-form-field appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-select [formControlName]="config.name">
+      <mat-option value="" selected>---</mat-option>
+      <mat-option *ngFor="let item of config.options" [value]="item">
+        {{item[formDisplayValue]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

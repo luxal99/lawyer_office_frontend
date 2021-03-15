@@ -2,7 +2,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import {CKEditorComponent} from '@ckeditor/ckeditor5-angular';
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {Case} from 'src/app/model/Case';
@@ -12,6 +12,8 @@ import {ClientService} from 'src/app/service/client.service';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
+import {DATE_FORMAT, DATE_LOCALE, FormControlNames, FormFieldTypes} from '../../../../constants/constant';
+import {FieldConfig} from '../../../../model/FieldConfig';
 
 @Component({
   selector: 'app-add-case-dialog',
@@ -20,28 +22,29 @@ import {formatDate} from '@angular/common';
 })
 export class AddCaseDialogComponent implements OnInit {
 
-  selectedClient = {};
 
   @ViewChild('editor', {static: false}) editorComponent: CKEditorComponent;
   public Editor = ClassicEditor;
-
   @ViewChild('lawsuitEditor', {static: false}) lawsuitEditorComponent: CKEditorComponent;
   public LawsuitEditor = ClassicEditor;
 
   editorData = '';
   lawsuitEditorData = '';
-  listOfClietns: Array<Client> = [];
+  listOfClients: Array<Client> = [];
 
   addCaseForm = new FormGroup({
     title: new FormControl('', Validators.required),
     creation_date: new FormControl(Validators.required),
-    id_client: new FormControl('', Validators.required)
+    idClient: new FormControl('', Validators.required)
   });
 
 
   lawsuitForm = new FormGroup({
     date: new FormControl('', Validators.required)
   });
+
+  titleInputConfig: FieldConfig = {name: FormControlNames.TITLE_FORM_CONTROL, type: FormFieldTypes.INPUT};
+  clientSelectConfig: FieldConfig = {name: FormControlNames.ID_CLIENT_FORM_CONTROL, type: FormFieldTypes.SELECT};
 
   constructor(private clientService: ClientService, private caseService: CaseService,
               private snackBar: MatSnackBar, private lawsuitService: LawsuitService) {
@@ -52,8 +55,9 @@ export class AddCaseDialogComponent implements OnInit {
   }
 
   getAllClients() {
-    this.clientService.getAll().subscribe(resp => {
-      this.listOfClietns = resp;
+    this.clientService.getAll().subscribe((resp) => {
+      this.listOfClients = resp;
+      this.clientSelectConfig.options = resp;
     });
   }
 
@@ -66,35 +70,28 @@ export class AddCaseDialogComponent implements OnInit {
     }
   }
 
+
   async saveCase() {
-    const caseEntity = new Case(
-      this.addCaseForm.get('title').value,
-      this.addCaseForm.get('creation_date').value,
-      this.editorComponent.editorInstance.getData(),
-      this.addCaseForm.get('id_client').value,
-    );
-
-
-    caseEntity.creation_date.setHours(7);
-
-    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, 'dd/MM/yyyy', 'en-US');
+    const caseEntity: Case = this.addCaseForm.getRawValue();
+    caseEntity.creationDateFormatted = formatDate(caseEntity.creationDate, DATE_FORMAT, DATE_LOCALE);
+    caseEntity.creationDate.setHours(7);
     await this.caseService.save(caseEntity).subscribe((resp) => {
-
       caseEntity.id = resp.id;
     }, err => {
     });
     return caseEntity;
   }
 
-  async saveLawsuit(enCase) {
+  async saveLawsuit(caseEntity: Case) {
     setTimeout(() => {
-      const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
-      lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
-
-
+      const lawsuit: Lawsuit = {
+        note: this.lawsuitEditorComponent.editorInstance.getData(),
+        idCase: caseEntity,
+        date: this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value,
+        dateFormatted: formatDate(this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE)
+      };
       lawsuit.date.setHours(7);
       this.lawsuitService.save(lawsuit).subscribe(resp => {
-
         this.openSnackBar('Uspešno ste sačuvali predmet i ročište', 'DONE');
       }, err => {
 

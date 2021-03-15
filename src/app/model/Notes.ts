@@ -1,12 +1,7 @@
-export class Notes {
-    id:number;
-    date:Date;
-    note:string;
+export interface Notes {
+  id?: number;
+  date?: Date;
+  note?: string;
+  backgroundColor?: string;
 
-    
-    _bc_color:string;
-    constructor(date?,note?){
-        this.date = date;
-        this.note = note;
-    }
 }

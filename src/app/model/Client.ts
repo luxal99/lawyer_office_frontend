@@ -1,19 +1,12 @@
-import { Case } from './Case';
+import {Case} from './Case';
 
-export class Client {
+export interface Client {
 
-	id: number;
-	full_name: string;
-	email: string;
-	telephone: string;
-
-	listOfCases: Case[];
-
-	constructor(_full_name?: string, _email?: string, _telephone?: string) {
-		this.full_name = _full_name;
-		this.email = _email;
-		this.telephone = _telephone;
-	}
+  id?: number;
+  fullName?: string;
+  email?: string;
+  telephone?: string;
+  listOfCases?: Case[];
 
 
 }

@@ -1,9 +1,9 @@
-import {Lawsuit} from "./Lawsuit"
-export class Notification {
-	
-	id:number;
+import {Lawsuit} from './Lawsuit';
 
-	note:string;
-	id_lawsuit:Lawsuit;
+export interface Notification {
+
+  id?: number;
+  note?: string;
+  idLawsuit?: Lawsuit;
 
 }

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   });
 
   // tslint:disable-next-line:variable-name
-  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -37,32 +37,29 @@ export class LoginComponent implements OnInit {
 
     document.getElementById('login-form').style.display = 'none';
     document.getElementById('login-spinner').style.display = 'block';
-    this.authService.auth(
-      new User(
-        this.loginForm.get(USERNAME_FORM_CONTROL_NAME).value,
-        this.loginForm.get(PASSWORD_FORM_CONTROL_NAME).value))
-      .subscribe(resp => {
-        if (resp[TOKEN_NAME]) {
-          localStorage.setItem(TOKEN_NAME, resp[TOKEN_NAME]);
+    this.authService.auth({
+      username: this.loginForm.get(USERNAME_FORM_CONTROL_NAME).value,
+      password: this.loginForm.get(PASSWORD_FORM_CONTROL_NAME).value
+    }).subscribe(async (resp) => {
+      if (resp[TOKEN_NAME]) {
+        localStorage.setItem(TOKEN_NAME, resp[TOKEN_NAME]);
+        localStorage.setItem(USERNAME_FORM_CONTROL_NAME, JSON.stringify(resp[USERNAME_LS]));
+        await this.router.navigate([BASIC_ROUTE]);
+      }
+    }, () => {
+      document.getElementById('login-spinner').style.display = 'none';
 
-          localStorage.setItem(USERNAME_FORM_CONTROL_NAME, JSON.stringify(resp[USERNAME_LS]));
-          this.router.navigate([BASIC_ROUTE]);
-        }
-      }, err => {
-
-        document.getElementById('login-spinner').style.display = 'none';
-
-        document.getElementById('login-form').style.display = 'block';
-        this.openSnackBar(NOT_VALID_CREDENTIALS_MESSAGE, SNACKBAR_BUTTON_TEXT);
-      });
+      document.getElementById('login-form').style.display = 'block';
+      this.openSnackBar(NOT_VALID_CREDENTIALS_MESSAGE, SNACKBAR_BUTTON_TEXT);
+    });
   }
 
-  goToRegister() {
-    this.router.navigate([REGISTER_SLASH_ROUTE_]);
-  }
+  // goToRegister() {
+  //   this.router.navigate([REGISTER_SLASH_ROUTE_]);
+  // }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }

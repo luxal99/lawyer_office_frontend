@@ -14,7 +14,7 @@ import {formatDate} from '@angular/common';
 import {
   CLIENT_FORM_CONTROL_NAME,
   DATE_FORMAT,
-  DATE_LOCALE,
+  DATE_LOCALE, FormControlNames,
   SNACKBAR_BUTTON_TEXT,
   SNACKBAR_ERR_MESSAGE,
   VALID_SNACKBAR_MESSAGE
@@ -42,7 +42,7 @@ export class EditCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl(this.data.title, Validators.required),
-    creation_date: new FormControl(this.data.creation_date, Validators.required),
+    creation_date: new FormControl(this.data.creationDate, Validators.required),
     id_client: new FormControl('', Validators.required)
   });
 
@@ -61,7 +61,7 @@ export class EditCaseDialogComponent implements OnInit {
   }
 
   setSelectedClient() {
-    this.selectedClient = this.data.id_client.id;
+    this.selectedClient = this.data.idClient.id;
   }
 
   getAllClients() {
@@ -80,29 +80,26 @@ export class EditCaseDialogComponent implements OnInit {
   }
 
   async updateCase() {
-    const caseEntity = new Case(
-      this.addCaseForm.get('title').value,
-      this.addCaseForm.get('creation_date').value,
-      this.editorComponent.editorInstance.getData()
-    );
-
-    caseEntity.id = this.data.id;
-    caseEntity.creation_date_formatted = formatDate(caseEntity.creation_date, DATE_FORMAT, DATE_LOCALE);
-    const client = new Client();
-    client.id = this.addCaseForm.get(CLIENT_FORM_CONTROL_NAME).value;
-
-    caseEntity.id_client = client;
-
+    const caseEntity: Case = {
+      note: this.editorComponent.editorInstance.getData(),
+      id: this.data.id,
+      creationDate: this.addCaseForm.get(FormControlNames.DATE_FORM_CONTROL).value,
+      creationDateFormatted: formatDate(this.addCaseForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE)
+    };
     await this.caseService.update(caseEntity).subscribe(() => {
     }, err => {
     });
     return caseEntity;
   }
 
-  async saveLawsuit(enCase) {
+  async saveLawsuit(idCase) {
     setTimeout(() => {
-      const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, this.lawsuitEditorComponent.editorInstance.getData(), enCase);
-      lawsuit.date_formatted = formatDate(lawsuit.date, DATE_FORMAT, DATE_LOCALE);
+      const lawsuit: Lawsuit = {
+        date: this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value,
+        note: this.lawsuitEditorComponent.editorInstance.getData(),
+        dateFormatted: formatDate(this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE),
+        idCase
+      };
 
       lawsuit.date.setHours(7);
 

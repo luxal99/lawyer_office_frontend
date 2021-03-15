@@ -1,13 +1,13 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Client} from '../model/Client';
 import {Case} from '../model/Case';
+import {Client} from '../model/Client';
 
 @Pipe({
   name: 'searchCase'
 })
 export class SearchCasePipe implements PipeTransform {
 
-  transform(listOfCases: Array<Case>, text: string): Array<Case> {
+  transform(listOfCases: Array<Case> , text: string): Array<Case> {
 
     if (!listOfCases) {
       return [];

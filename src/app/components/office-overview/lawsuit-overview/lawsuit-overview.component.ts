@@ -53,8 +53,8 @@ export class LawsuitOverviewComponent implements OnInit, AfterViewChecked {
   getAllLawsuitsForCurrentMonth() {
     this.lawsuitService.getLawsuitForCurrentMonth().subscribe(resp => {
       this.listOfLawsuits = resp;
-      this.listOfLawsuits.forEach(x => {
-        x._bc_color = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
+      this.listOfLawsuits.forEach((lawsuit) => {
+        lawsuit.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
       });
 
     });

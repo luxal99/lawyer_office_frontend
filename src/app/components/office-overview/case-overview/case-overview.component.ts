@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 
 import {AddCaseDialogComponent} from './add-case-dialog/add-case-dialog.component';
 import {Case} from 'src/app/model/Case';
@@ -11,6 +11,7 @@ import {GlobalMethods} from 'src/app/util/dialog-global';
 import {MatDialog} from '@angular/material/dialog';
 import {CONFIRM_LC} from '../../../constants/constant';
 import {FormControl, FormGroup} from '@angular/forms';
+import {MatSpinner} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-case-overview',
@@ -19,6 +20,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class CaseOverviewComponent implements OnInit {
 
+  @ViewChild('spinner') spinner: MatSpinner;
 
   listOfCases: Array<Case> = [];
 
@@ -35,13 +37,17 @@ export class CaseOverviewComponent implements OnInit {
   constructor(private dialog: MatDialog, private caseService: CaseService) {
   }
 
-  ngOnInit() {
+  async ngOnInit(): Promise<void> {
+
     this.getAllCases();
   }
 
   getAllCases() {
     this.caseService.getAll().subscribe((resp) => {
-      this.listOfCases = resp;
+      setTimeout(() => {
+        this.listOfCases = resp;
+        this.spinner._elementRef.nativeElement.style.display = 'none';
+      }, 500);
     });
   }
 
@@ -55,7 +61,7 @@ export class CaseOverviewComponent implements OnInit {
     });
   }
 
-  async deleteCase(id) {
+  deleteCase(id) {
     this.caseService.delete(id).subscribe(() => {
       this.getAllCases();
     });
@@ -82,4 +88,5 @@ export class CaseOverviewComponent implements OnInit {
       this.getAllCases();
     });
   }
+
 }

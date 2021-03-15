@@ -8,6 +8,14 @@ import {Case} from 'src/app/model/Case';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
+import {
+  DATE_FORMAT,
+  DATE_LOCALE,
+  FormControlNames,
+  SNACKBAR_BUTTON_TEXT,
+  SNACKBAR_ERR_MESSAGE,
+  VALID_SNACKBAR_MESSAGE
+} from '../../../../../constants/constant';
 
 @Component({
   selector: 'app-edit-lawsuit-dialog',
@@ -30,11 +38,19 @@ export class EditLawsuitDialogComponent implements OnInit {
   }
 
   update() {
-    const lawsuit = new Lawsuit(this.editLawsuitForm.get('date').value,
-      this.lawsuitEditorComponent.editorInstance.getData(), this.data.id_case);
-    lawsuit.id = this.data.id;
+    const lawsuit: Lawsuit = {
+      date: this.editLawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value,
+      note: this.lawsuitEditorComponent.editorInstance.getData(),
+      dateFormatted: formatDate(this.editLawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE),
+    };
+
     lawsuit.date.setHours(7);
-    lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+
+    this.lawsuitService.save(lawsuit).subscribe(resp => {
+      this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+    }, err => {
+      this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+    });
 
     this.lawsuitService.update(lawsuit).subscribe(resp => {
       this.openSnackBar('Uspešno ažurirano ročište', 'DONE');

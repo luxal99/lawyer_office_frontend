@@ -15,7 +15,7 @@ export class SearchClientPipe implements PipeTransform {
     if (!text) {
       return listOfClients;
     }
-    return listOfClients.filter(x => x.full_name.toLowerCase().includes(text.toLowerCase()));
+    return listOfClients.filter(x => x.fullName.toLowerCase().includes(text.toLowerCase()));
   }
 
 }
