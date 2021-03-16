@@ -86,19 +86,16 @@ export class AddCaseDialogComponent implements OnInit {
   }
 
 
-  async saveCase() {
+  save() {
     const caseEntity: Case = this.addCaseForm.getRawValue();
     caseEntity.creationDateFormatted = formatDate(caseEntity.creationDate, DATE_FORMAT, DATE_LOCALE);
     caseEntity.creationDate.setHours(7);
-    await this.caseService.save(caseEntity).subscribe((resp) => {
+    this.caseService.save(caseEntity).subscribe((resp) => {
       caseEntity.id = resp.id;
     }, () => {
     });
-    return caseEntity;
-  }
 
-  saveLawsuit(caseEntity: Case) {
-    setTimeout(() => {
+    if (this.lawsuitForm.valid) {
       const lawsuit: Lawsuit = {
         note: this.lawsuitEditorComponent.editorInstance.getData(),
         idCase: caseEntity,
@@ -106,24 +103,8 @@ export class AddCaseDialogComponent implements OnInit {
         dateFormatted: formatDate(this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE)
       };
       lawsuit.date.setHours(7);
-      this.lawsuitService.save(lawsuit).subscribe(resp => {
-        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
-      }, err => {
-        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
-      });
-    }, 200);
-  }
 
-  save() {
-    if (!this.lawsuitForm.valid) {
-      this.saveCase().then(() => {
-        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
-      }, () => {
-        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
-      });
-    } else {
-      this.saveCase().then((resp) => {
-        this.saveLawsuit(resp);
+      this.lawsuitService.save(lawsuit).subscribe(() => {
       });
     }
   }
