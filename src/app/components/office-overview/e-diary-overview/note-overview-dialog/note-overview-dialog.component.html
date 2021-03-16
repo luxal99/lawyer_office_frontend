@@ -8,7 +8,7 @@
                     <mat-label>Slučaj/Predmet</mat-label>
                     <mat-select formControlName="id_case">
                         <mat-option>-- None --</mat-option>
-                        <mat-optgroup *ngFor="let client of listOfClients" [label]="client.full_name">
+                        <mat-optgroup *ngFor="let client of listOfClients" [label]="client.fullName">
                             <mat-option *ngFor="let case of client.listOfCases" [value]="case">
                                 {{case.title}}
                             </mat-option>
@@ -19,10 +19,10 @@
             </form>
         </div>
         <div class="col-sm-3" *ngFor="let lawsuit of listOfLawsuits ">
-            <div class="lawsuit-card ls-card" [ngStyle]="{'background-color': lawsuit._bc_color}" (click)="openCaseDialog(lawsuit.id_case)">
-                <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.id_case.title}}</span></h4>
+            <div class="lawsuit-card ls-card" [ngStyle]="{'background-color': lawsuit.backgroundColor}" (click)="openCaseDialog(lawsuit.idCase)">
+                <h4>Predmet: <span style="font-weight: bold;">{{lawsuit.idCase.title}}</span></h4>
                 <mat-divider></mat-divider>
-                <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.date_formatted}}</span></h5>
+                <h5 style="padding-top: .5em;">Datum: <span style="font-weight: bold;">{{lawsuit.dateFormatted}}</span></h5>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="inline-row">
         <div class="col-sm-3" *ngFor="let note of listOfNotes ">
-            <div class="lawsuit-card" [ngStyle]="{'background-color': note._bc_color}">
+            <div class="lawsuit-card" [ngStyle]="{'background-color': note.backgroundColor}">
                 <p [innerHTML]="note.note">...</p>
                 <div style="display: inline-flex;width: 100%;" class="text-right">
                     <button mat-icon-button (click)="openEditNotesDialog(note)"><mat-icon>edit</mat-icon></button>

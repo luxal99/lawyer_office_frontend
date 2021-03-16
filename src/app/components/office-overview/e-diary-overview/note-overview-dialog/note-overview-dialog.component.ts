@@ -4,8 +4,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-import {CKEditorComponent, ChangeEvent} from '@ckeditor/ckeditor5-angular';
+import {CKEditorComponent} from '@ckeditor/ckeditor5-angular';
 import {ViewChild} from '@angular/core';
 import {NotesService} from 'src/app/service/notes.service';
 import {Notes} from 'src/app/model/Notes';
@@ -14,11 +13,11 @@ import {CaseOverviewDialogComponent} from '../../case-overview/case-overview-dia
 import {DialogOptions} from 'src/app/util/dialog-options';
 import {EditNotesDialogComponent} from './edit-notes-dialog/edit-notes-dialog.component';
 import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
-import {CaseService} from 'src/app/service/case.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ClientService} from 'src/app/service/client.service';
 import {Client} from 'src/app/model/Client';
 import {formatDate} from '@angular/common';
+import {DATE_FORMAT, DATE_LOCALE, FormControlNames} from '../../../../constants/constant';
 
 @Component({
   selector: 'app-note-overview-dialog',
@@ -56,7 +55,7 @@ export class NoteOverviewDialogComponent implements OnInit {
     this.lawsuitService.getLawsuitsForForwardedDate(this.date).subscribe(resp => {
       this.listOfLawsuits = resp;
       this.listOfLawsuits.forEach(x => {
-        x._bc_color = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
+        x.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
       });
     });
   }
@@ -71,13 +70,16 @@ export class NoteOverviewDialogComponent implements OnInit {
     this.notesService.getNotesForForwardedDate(this.date).subscribe(resp => {
       this.listOfNotes = resp;
       this.listOfLawsuits.forEach(x => {
-        x._bc_color = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
+        x.backgroundColor = 'hsl(' + Math.random() * 360 + ', 100%, 75%)';
       });
     });
   }
 
   saveNote() {
-    this.notesService.save(new Notes(this.date, this.editorComponent.editorInstance.getData())).subscribe(resp => {
+    this.notesService.save({
+      date: this.date,
+      note: this.editorComponent.editorInstance.getData()
+    }).subscribe(resp => {
       this.openSnackBar('Uspešno ste dodali belešku', 'OK');
       this.getNotesForForwardedDate();
     }, err => {
@@ -103,12 +105,14 @@ export class NoteOverviewDialogComponent implements OnInit {
   }
 
   saveLawsuit() {
-    const lawsuit = new Lawsuit(this.date, '', this.lawsuitForm.get('id_case').value);
-    lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
-
+    const lawsuit: Lawsuit = {
+      date: this.date,
+      idCase: this.lawsuitForm.get(FormControlNames.ID_CASE_FORM_CONTROL).value,
+      dateFormatted: formatDate(this.date, DATE_FORMAT, DATE_LOCALE)
+    };
     lawsuit.date.setHours(7);
     this.lawsuitService.save(lawsuit).subscribe(resp => {
-      this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.id_case.title}`, 'DONE');
+      this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.idCase.title}`, 'DONE');
 
       this.getLawsuitsForForwardedDate();
     }, err => {

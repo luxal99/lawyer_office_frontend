@@ -25,6 +25,7 @@ export class FormControlNames {
   static CREATION_DATE_FORM_CONTROL = 'creationDate';
   static DATE_FORM_CONTROL = 'date';
   static ID_CLIENT_FORM_CONTROL = 'idClient';
+  static ID_CASE_FORM_CONTROL = 'idCase';
   static FULL_NAME_FORM_CONTROL = 'fullName';
   static EMAIL_FORM_CONTROL = 'email';
   static TELEPHONE_FORM_CONTROL = 'telephone';

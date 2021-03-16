@@ -1,7 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {ChartsModule, ThemeService} from 'ng2-charts';
 import {DatePipe, HashLocationStrategy, LocationStrategy} from '@angular/common';
-
 import {
   MatFormFieldModule,
 } from '@angular/material/form-field';
@@ -64,7 +63,7 @@ import {FormSelectComponent} from './components/form-components/form-select/form
     ConfirmDialogComponent,
     LawsuitOverviewComponent,
     SearchLawsuitPipe,
-    EDiaryOverviewComponent, ,
+    EDiaryOverviewComponent,
     NoteOverviewDialogComponent,
     EditNotesDialogComponent,
     SearchClientPipe,

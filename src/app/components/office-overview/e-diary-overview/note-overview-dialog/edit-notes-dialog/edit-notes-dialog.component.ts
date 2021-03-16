@@ -27,9 +27,11 @@ export class EditNotesDialogComponent implements OnInit {
   }
 
   update() {
-    const updatedNote = new Notes(this.data.date, this.editorComponent.editorInstance.getData());
-    updatedNote.id = this.data.id;
-    this.notesService.update(updatedNote).subscribe(resp => {
+    this.notesService.update({
+      date: this.data.date,
+      note: this.editorComponent.editorInstance.getData(),
+      id: this.data.id,
+    }).subscribe(resp => {
       console.log(resp);
 
     });

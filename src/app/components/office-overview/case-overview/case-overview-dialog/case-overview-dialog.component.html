@@ -9,10 +9,10 @@
     </div>
 
     <div class="case-info">
-        <h5>Datum kreiranja <span>{{data.creation_date_formatted}}</span></h5>
+        <h5>Datum kreiranja <span>{{data.creationDate}}</span></h5>
         <div style="display: inline-flex;width: 100%;">
-            <h5 style="padding-top: .5em;">Stranka <span>{{data.id_client.full_name}}</span></h5>
-            <button mat-button class="gradient-blue-btn show-client-btn" (click)="openClientOverview(data.id_client)">Pregledaj</button>
+            <h5 style="padding-top: .5em;">Stranka <span>{{data.idClient.fullName}}</span></h5>
+            <button mat-button class="gradient-blue-btn show-client-btn" (click)="openClientOverview(data.idClient)">Pregledaj</button>
         </div>
         <h5>Status: <span [ngStyle]="data.status ? {'color':'#2F80ED'} :{'color':'#F45C43'}">{{status}}</span></h5>
 
@@ -25,7 +25,7 @@
             <div class="lawsuit-container">
                 <div class="lawsuit" *ngFor="let lawsuit of data.listOfLawsuits">
                     <app-heading header="Ročište"></app-heading>
-                    <h5 style="padding-top: 1em;">Datum ročišta <span>{{lawsuit.date_formatted}}</span></h5>
+                    <h5 style="padding-top: 1em;">Datum ročišta <span>{{lawsuit.dateFormatted}}</span></h5>
                     <p [innerHTML]="lawsuit.note"></p>
                     <div style="margin-top: 1em;">
                         <button mat-button class="gradient-blue-btn edit-lawsuit-btn" (click)="openEditLawsuitDialog(lawsuit)">Izmeni</button>

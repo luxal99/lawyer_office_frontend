@@ -1,45 +1,45 @@
 <div class="client-overview-dialog">
+  <div class="row">
+    <div class="col-sm-3 text-center">
+      <img src="../../../../../assets/img/avatar.png" alt="" class="img-fluid">
+    </div>
+    <div class="col-sm-9">
+      <h3>{{data.fullName}}</h3><br>
+      <div class="row">
+        <div class="col-sm">
+          <h5>Broj telefona: <span style="font-weight: bold;">{{data.telephone}}</span></h5>
+          <h5>Mail: <span style="font-weight: bold;">{{data.email}}</span></h5>
+        </div>
+        <div class="col-sm">
+          <h5>Aktivnih slučajeva: <span style="font-weight: bold;">{{activeCases}}</span></h5>
+          <h5>Zatvorenih slučajeva: <span style="font-weight: bold;">{{closedCases}}</span></h5>
+        </div>
+        <div class="col-sm">
+          <div style="display: inline-flex;width: 100%;">
+            <h5>Aktivan</h5>
+            <div class="blue-box"></div>
+          </div>
+          <div style="display: inline-flex;width: 100%;">
+            <h5>Zatvoren</h5>
+            <div class="silver-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="case-container">
     <div class="row">
-        <div class="col-sm-3 text-center">
-            <img src="../../../../../assets/img/avatar.png" alt="" class="img-fluid">
-        </div>
-        <div class="col-sm-9">
-            <h3>{{data.full_name}}</h3><br>
-            <div class="row">
-                <div class="col-sm">
-                    <h5>Broj telefona: <span style="font-weight: bold;">{{data.telephone}}</span> </h5>
-                    <h5>Mail: <span style="font-weight: bold;">{{data.email}}</span></h5>
-                </div>
-                <div class="col-sm">
-                    <h5>Aktivnih slučajeva: <span style="font-weight: bold;">{{activeCases}}</span> </h5>
-                    <h5>Zatvorenih slučajeva: <span style="font-weight: bold;">{{closedCases}}</span></h5>
-                </div>
-                <div class="col-sm">
-                    <div style="display: inline-flex;width: 100%;">
-                        <h5>Aktivan</h5>
-                        <div class="blue-box"></div>
-                    </div>
-                    <div style="display: inline-flex;width: 100%;">
-                        <h5>Zatvoren</h5>
-                        <div class="silver-box"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="col-sm-5" *ngFor="let case of data.listOfCases"
+           [ngStyle]="case.status ? {'background':'linear-gradient(to right, #2F80ED, #56CCF2)','color':'#fff'}:{'background':'linear-gradient(to right, #ECE9E6, #FFFFFF)'}">
+        <h5>Naziv: {{case.title}}</h5>
+        <h5>Datum: {{case.creationDateFormatted}}</h5>
+      </div>
+
+      <div class="col-sm-1"></div>
+
 
     </div>
-
-    <div class="case-container">
-        <div class="row">
-            <div class="col-sm-5" *ngFor="let case of data.listOfCases" [ngStyle]="case.status ? {'background':'linear-gradient(to right, #2F80ED, #56CCF2)','color':'#fff'}:{'background':'linear-gradient(to right, #ECE9E6, #FFFFFF)'}">
-                <h5>Naziv: {{case.title}}</h5>
-                <h5>Datum: {{case.creation_date_formatted}}</h5>
-            </div>
-
-            <div class="col-sm-1"></div>
-
-
-
-        </div>
-    </div>
+  </div>
 </div>

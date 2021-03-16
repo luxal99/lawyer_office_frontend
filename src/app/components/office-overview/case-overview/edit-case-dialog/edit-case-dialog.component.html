@@ -22,7 +22,7 @@
                 <mat-label>Odaberi stranku</mat-label>
                 <mat-select formControlName="id_client" [(ngModel)]="selectedClient">
                     <mat-option *ngFor="let client of listOfClients" [value]="client.id">
-                        {{client.full_name}}
+                        {{client.fullName}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

@@ -15,6 +15,7 @@ import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
 import {Router} from '@angular/router';
+import {FormControlNames} from '../../../constants/constant';
 
 @Component({
   selector: 'app-global-overview',
@@ -43,7 +44,7 @@ export class GlobalOverviewComponent implements OnInit {
 
   lawsuitForm = new FormGroup({
     date: new FormControl(Date.now(), Validators.required),
-    id_client: new FormControl('', Validators.required)
+    idCase: new FormControl('', Validators.required)
   });
 
 
@@ -87,7 +88,7 @@ export class GlobalOverviewComponent implements OnInit {
     this.caseService.getLastThreeCases().subscribe(resp => {
       this.listOfLastThreeCases = resp;
       this.listOfLastThreeCases.forEach(cs => {
-        cs.creation_date_formatted = formatDate(cs.creation_date, 'dd/MM/yyyy', 'en-US');
+        cs.creationDateFormatted = formatDate(cs.creationDate, 'dd/MM/yyyy', 'en-US');
       });
     }, (error) => {
       if (error.status === 401) {
@@ -101,9 +102,9 @@ export class GlobalOverviewComponent implements OnInit {
       this.listOfNextThreeLawsuits = resp;
 
       this.listOfNextThreeLawsuits.forEach(lawsuit => {
-        lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
+        lawsuit.dateFormatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
 
-        lawsuit.id_case.creation_date_formatted = formatDate(lawsuit.id_case.creation_date, 'dd/MM/yyyy', 'en-US');
+        lawsuit.idCase.creationDateFormatted = formatDate(lawsuit.idCase.creationDate, 'dd/MM/yyyy', 'en-US');
       });
     }, (error) => {
       if (error.status === 401) {
@@ -114,14 +115,14 @@ export class GlobalOverviewComponent implements OnInit {
 
 
   saveLawsuit() {
-    const lawsuit = new Lawsuit(this.lawsuitForm.get('date').value, '', this.lawsuitForm.get('id_client').value);
-    lawsuit.date_formatted = formatDate(lawsuit.date, 'dd/MM/yyyy', 'en-US');
-
+    const lawsuit: Lawsuit = {
+      date: this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value,
+      idCase: this.lawsuitForm.get(FormControlNames.ID_CASE_FORM_CONTROL).value,
+      dateFormatted: formatDate(this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, 'dd/MM/yyyy', 'en-US')
+    };
     lawsuit.date.setHours(7);
     this.lawsuitService.save(lawsuit).subscribe(resp => {
-      this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.id_case.title}`, 'DONE');
-
-
+      this.openSnackBar(`Uspešno dodato ročište predmetu: ${lawsuit.idCase.title}`, 'DONE');
       this.getNextThreeLawsuit();
     }, err => {
       this.openSnackBar('Dogodila se greška', 'POKUŠAJ PONOVO');
