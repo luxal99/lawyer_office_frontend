@@ -13,6 +13,7 @@ export class FormInputComponent implements Field, OnInit {
   @Input() group!: FormGroup;
   @Input() label = 'Title';
   @Input() type = 'text';
+  @Input() icon = 'format_align_right';
 
   ngOnInit(): void {
   }

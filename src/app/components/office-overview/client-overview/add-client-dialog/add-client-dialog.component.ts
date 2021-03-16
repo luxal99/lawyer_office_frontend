@@ -4,7 +4,8 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Client} from 'src/app/model/Client';
 import {ClientService} from 'src/app/service/client.service';
-import {FormControlNames} from '../../../../constants/constant';
+import {FormControlNames, FormFieldTypes} from '../../../../constants/constant';
+import {FieldConfig} from '../../../../model/FieldConfig';
 
 @Component({
   selector: 'app-add-client-dialog',
@@ -16,10 +17,22 @@ export class AddClientDialogComponent implements OnInit {
   heading = 'Dodavanje stranke';
 
   addClientForm = new FormGroup({
-    full_name: new FormControl(this.data.fullName, Validators.required),
+    fullName: new FormControl(this.data.fullName, Validators.required),
     email: new FormControl(this.data.email, Validators.required),
     telephone: new FormControl(this.data.telephone, Validators.required)
   });
+
+  fullNameInputConfig: FieldConfig = {
+    name: FormControlNames.FULL_NAME_FORM_CONTROL,
+    type: FormFieldTypes.INPUT,
+    placeholder: 'Marko Jankovic'
+  };
+  emailInputConfig: FieldConfig = {name: FormControlNames.EMAIL_FORM_CONTROL, type: FormFieldTypes.INPUT, placeholder: 'mail@example.com'};
+  telephoneInputConfig: FieldConfig = {
+    name: FormControlNames.TELEPHONE_FORM_CONTROL,
+    type: FormFieldTypes.INPUT,
+    placeholder: '0694131***'
+  };
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Client, private clientService: ClientService,
               private snackBar: MatSnackBar) {

@@ -35,3 +35,6 @@ export class FormFieldTypes {
   static INPUT = 'input';
   static SELECT = 'select';
 }
+
+export class SnackBarMessages {
+}

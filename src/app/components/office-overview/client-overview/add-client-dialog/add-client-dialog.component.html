@@ -1,37 +1,14 @@
 <div class="client-dialog">
-    <app-heading [header]="heading"></app-heading>
+  <app-heading [header]="heading"></app-heading>
 
-    <div class="form-div">
-        <form [formGroup]="addClientForm">
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Ime i prezime</mat-label>
-                    <input formControlName="full_name" matInput placeholder="John Doe">
-                    <mat-icon matSuffix>subject</mat-icon>
-                    <mat-hint>Ovo polje je obavezno</mat-hint>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" placeholder="Placeholder">
-                    <mat-icon matSuffix>alternate_email</mat-icon>
-                    <mat-hint>Ovo polje je obavezno</mat-hint>
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Kontakt telefon</mat-label>
-                    <input matInput formControlName="telephone" placeholder="06921***">
-                    <mat-icon matSuffix>contact_phone</mat-icon>
-                    <mat-hint>Ovo polje je obavezno</mat-hint>
-                </mat-form-field>
-            </div>
-
-            <div>
-                <button mat-button class="gradient-blue-btn save-btn" (click)="save()" [disabled]="!addClientForm.valid" mat-dialog-close>Sačuvaj</button>
-            </div>
-
-        </form>
+  <div class="form-div">
+    <app-form-input label="Ime i prezime" [config]="fullNameInputConfig" [group]="addClientForm"></app-form-input>
+    <app-form-input label="Email" [config]="telephoneInputConfig" [group]="addClientForm"></app-form-input>
+    <app-form-input label="Kontakt telefon" [config]="emailInputConfig" [group]="addClientForm"></app-form-input>
+    <div>
+      <button mat-button class="gradient-blue-btn save-btn" (click)="save()" [disabled]="!addClientForm.valid"
+              mat-dialog-close>Sačuvaj
+      </button>
     </div>
+  </div>
 </div>

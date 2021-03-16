@@ -1,11 +1,10 @@
-
 <div class="dynamic-field form-input" [formGroup]="group">
   <mat-form-field appearance="fill">
     <mat-label>{{ config.label}}</mat-label>
     <mat-label>{{ label}}</mat-label>
     <label>
-      <input matInput [formControlName]="config.name" [type]="type">
+      <input [placeholder]="config.placeholder" matInput [formControlName]="config.name" [type]="type">
     </label>
-    <mat-icon matSuffix>format_align_right</mat-icon>
+    <mat-icon matSuffix>{{icon}}</mat-icon>
   </mat-form-field>
 </div>

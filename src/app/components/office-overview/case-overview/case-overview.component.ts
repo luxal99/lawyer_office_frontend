@@ -23,22 +23,16 @@ export class CaseOverviewComponent implements OnInit {
   @ViewChild('spinner') spinner: MatSpinner;
 
   listOfCases: Array<Case> = [];
-
-  // tslint:disable-next-line:variable-name
-  _listOfCases: Array<Case> = [];
-
   text = '';
 
   searchForm = new FormGroup({
     search: new FormControl('')
   });
 
-
   constructor(private dialog: MatDialog, private caseService: CaseService) {
   }
 
   async ngOnInit(): Promise<void> {
-
     this.getAllCases();
   }
 
