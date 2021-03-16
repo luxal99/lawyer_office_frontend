@@ -12,7 +12,14 @@ import {ClientService} from 'src/app/service/client.service';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
-import {DATE_FORMAT, DATE_LOCALE, FormControlNames, FormFieldTypes, Icons} from '../../../../constants/constant';
+import {
+  DATE_FORMAT,
+  DATE_LOCALE,
+  FormControlNames,
+  FormFieldTypes,
+  SNACKBAR_BUTTON_TEXT,
+  SnackBarMessages
+} from '../../../../constants/constant';
 import {FieldConfig} from '../../../../model/FieldConfig';
 
 @Component({
@@ -85,12 +92,12 @@ export class AddCaseDialogComponent implements OnInit {
     caseEntity.creationDate.setHours(7);
     await this.caseService.save(caseEntity).subscribe((resp) => {
       caseEntity.id = resp.id;
-    }, err => {
+    }, () => {
     });
     return caseEntity;
   }
 
-  async saveLawsuit(caseEntity: Case) {
+  saveLawsuit(caseEntity: Case) {
     setTimeout(() => {
       const lawsuit: Lawsuit = {
         note: this.lawsuitEditorComponent.editorInstance.getData(),
@@ -100,21 +107,19 @@ export class AddCaseDialogComponent implements OnInit {
       };
       lawsuit.date.setHours(7);
       this.lawsuitService.save(lawsuit).subscribe(resp => {
-        this.openSnackBar('Uspešno ste sačuvali predmet i ročište', 'DONE');
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
       }, err => {
-
-        this.openSnackBar('Dogodila se greška pri čuvanju ročišta', 'DONE');
+        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
       });
     }, 200);
   }
 
   save() {
-    if (document.getElementById('lawsuit').style.display === 'none') {
+    if (!this.lawsuitForm.valid) {
       this.saveCase().then(() => {
-        this.openSnackBar('Uspešno ste sačuvali predmet', 'DONE');
-      }, err => {
-
-        this.openSnackBar('Dogodila se greška pri čuvanju predmeta', 'DONE');
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
+      }, () => {
+        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
       });
     } else {
       this.saveCase().then((resp) => {
