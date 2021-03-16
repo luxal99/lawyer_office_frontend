@@ -12,7 +12,6 @@ import {ClientService} from 'src/app/service/client.service';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
 import {
-  CLIENT_FORM_CONTROL_NAME,
   DATE_FORMAT,
   DATE_LOCALE, FormControlNames,
   SNACKBAR_BUTTON_TEXT,

@@ -41,7 +41,7 @@ export class AddCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl('', Validators.required),
-    creation_date: new FormControl(Validators.required),
+    creationDate: new FormControl(''),
     idClient: new FormControl('', Validators.required)
   });
 
@@ -51,7 +51,7 @@ export class AddCaseDialogComponent implements OnInit {
   });
 
   titleInputConfig: FieldConfig = {
-    inputType: 'text', label: 'Stranka',
+    inputType: 'text', label: 'Naziv predmeta',
     name: FormControlNames.TITLE_FORM_CONTROL, type: FormFieldTypes.INPUT
   };
   clientSelectConfig: FieldConfig = {
@@ -87,12 +87,22 @@ export class AddCaseDialogComponent implements OnInit {
 
 
   save() {
-    const caseEntity: Case = this.addCaseForm.getRawValue();
-    caseEntity.creationDateFormatted = formatDate(caseEntity.creationDate, DATE_FORMAT, DATE_LOCALE);
+    let date = new Date();
+    if (this.addCaseForm.get(FormControlNames.CREATION_DATE_FORM_CONTROL).value) {
+      date = this.addCaseForm.get(FormControlNames.CREATION_DATE_FORM_CONTROL).value;
+    }
+    const caseEntity: Case = {
+      creationDate: date,
+      title: this.addCaseForm.get(FormControlNames.TITLE_FORM_CONTROL).value,
+      creationDateFormatted: formatDate(date, DATE_FORMAT, DATE_LOCALE),
+      idClient: {id: this.addCaseForm.get(FormControlNames.ID_CLIENT_FORM_CONTROL).value}
+    };
     caseEntity.creationDate.setHours(7);
     this.caseService.save(caseEntity).subscribe((resp) => {
       caseEntity.id = resp.id;
+      this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
     }, () => {
+      this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
     });
 
     if (this.lawsuitForm.valid) {
@@ -105,6 +115,9 @@ export class AddCaseDialogComponent implements OnInit {
       lawsuit.date.setHours(7);
 
       this.lawsuitService.save(lawsuit).subscribe(() => {
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
+      }, () => {
+        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
       });
     }
   }

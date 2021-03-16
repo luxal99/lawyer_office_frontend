@@ -33,7 +33,7 @@ export class AddClientDialogComponent implements OnInit {
     name: FormControlNames.EMAIL_FORM_CONTROL,
     type: FormFieldTypes.INPUT,
     placeholder: 'mail@example.com',
-    label: 'Telefon',
+    label: 'Email',
     inputType: 'text'
   };
   telephoneInputConfig: FieldConfig = {
