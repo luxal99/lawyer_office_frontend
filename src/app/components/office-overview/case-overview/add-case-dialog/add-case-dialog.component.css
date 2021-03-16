@@ -1,15 +1,27 @@
 @import "../../../../../assets/css/forms.css";
+
 .case-dialog {
-    padding: 2em 1em;
+  padding: 2em 1em;
 }
 
-.add-lawsuid-div {
-    padding: .5em;
-    background-color: #121212;
-    color: #fff;
+.add-lawsuit-div {
+  padding: .5em;
+  background-color: #121212;
+  color: #fff;
 }
 
-.add-lawsuid-div .col-sm {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+.add-lawsuit-div .col-sm {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#lawsuit {
+  display: none;
+}
+.inline {
+  display: inline-flex;
+  width: 100%;
+}
+.add-case-form-div {
+  margin-top: 2em;
 }
