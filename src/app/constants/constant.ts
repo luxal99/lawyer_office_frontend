@@ -37,4 +37,10 @@ export class FormFieldTypes {
 }
 
 export class SnackBarMessages {
+  static SUCCESSFULLY = 'Uspešno';
+  static ERROR = 'Dogodila se greška';
+}
+
+export class Icons {
+  static TITLE_ICON = 'format_align_right';
 }

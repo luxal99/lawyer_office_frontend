@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FieldConfig} from '../../../model/FieldConfig';
 import {FormGroup} from '@angular/forms';
 import {Field} from '../../../model/Field';
+import {Icons} from '../../../constants/constant';
 
 @Component({
   selector: 'app-form-input',
@@ -11,9 +12,7 @@ import {Field} from '../../../model/Field';
 export class FormInputComponent implements Field, OnInit {
   @Input() config!: FieldConfig;
   @Input() group!: FormGroup;
-  @Input() label = 'Title';
-  @Input() type = 'text';
-  @Input() icon = 'format_align_right';
+  @Input() icon = Icons.TITLE_ICON;
 
   ngOnInit(): void {
   }

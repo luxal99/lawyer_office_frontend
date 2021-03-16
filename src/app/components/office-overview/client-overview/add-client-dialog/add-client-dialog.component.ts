@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Client} from 'src/app/model/Client';
 import {ClientService} from 'src/app/service/client.service';
-import {FormControlNames, FormFieldTypes} from '../../../../constants/constant';
+import {FormControlNames, FormFieldTypes, Icons, SNACKBAR_BUTTON_TEXT, SnackBarMessages} from '../../../../constants/constant';
 import {FieldConfig} from '../../../../model/FieldConfig';
 
 @Component({
@@ -25,12 +25,22 @@ export class AddClientDialogComponent implements OnInit {
   fullNameInputConfig: FieldConfig = {
     name: FormControlNames.FULL_NAME_FORM_CONTROL,
     type: FormFieldTypes.INPUT,
+    label: 'Ime i prezime',
+    inputType: 'text',
     placeholder: 'Marko Jankovic'
   };
-  emailInputConfig: FieldConfig = {name: FormControlNames.EMAIL_FORM_CONTROL, type: FormFieldTypes.INPUT, placeholder: 'mail@example.com'};
+  emailInputConfig: FieldConfig = {
+    name: FormControlNames.EMAIL_FORM_CONTROL,
+    type: FormFieldTypes.INPUT,
+    placeholder: 'mail@example.com',
+    label: 'Telefon',
+    inputType: 'text'
+  };
   telephoneInputConfig: FieldConfig = {
+    inputType: 'text',
     name: FormControlNames.TELEPHONE_FORM_CONTROL,
     type: FormFieldTypes.INPUT,
+    label: 'Kontakt telefon',
     placeholder: '0694131***'
   };
 
@@ -53,15 +63,15 @@ export class AddClientDialogComponent implements OnInit {
     if (this.data.id !== undefined) {
       client.id = this.data.id;
       this.clientService.update(client).subscribe(() => {
-        this.openSnackBar('Uspešno ste dodali stranku', 'DONE');
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
       }, () => {
-        this.openSnackBar('Dogodila se greška', 'DONE');
+        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
       });
     } else {
       this.clientService.save(client).subscribe(() => {
-        this.openSnackBar('Uspešno ste dodali stranku', 'DONE');
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
       }, () => {
-        this.openSnackBar('Dogodila se greška', 'DONE');
+        this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
       });
     }
   }

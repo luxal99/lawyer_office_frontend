@@ -1,9 +1,9 @@
 <div class="dynamic-field form-input" [formGroup]="group">
   <mat-form-field appearance="fill">
     <mat-label>{{ config.label}}</mat-label>
-    <mat-label>{{ label}}</mat-label>
+    <mat-label>{{ config.label}}</mat-label>
     <label>
-      <input [placeholder]="config.placeholder" matInput [formControlName]="config.name" [type]="type">
+      <input [placeholder]="config.placeholder" matInput [formControlName]="config.name" [type]="config.type">
     </label>
     <mat-icon matSuffix>{{icon}}</mat-icon>
   </mat-form-field>

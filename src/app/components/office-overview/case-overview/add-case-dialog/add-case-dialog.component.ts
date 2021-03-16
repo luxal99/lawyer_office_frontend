@@ -1,7 +1,7 @@
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import {CKEditorComponent} from '@ckeditor/ckeditor5-angular';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
@@ -12,7 +12,7 @@ import {ClientService} from 'src/app/service/client.service';
 import {Lawsuit} from 'src/app/model/Lawsuit';
 import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
-import {DATE_FORMAT, DATE_LOCALE, FormControlNames, FormFieldTypes} from '../../../../constants/constant';
+import {DATE_FORMAT, DATE_LOCALE, FormControlNames, FormFieldTypes, Icons} from '../../../../constants/constant';
 import {FieldConfig} from '../../../../model/FieldConfig';
 
 @Component({
@@ -43,8 +43,16 @@ export class AddCaseDialogComponent implements OnInit {
     date: new FormControl('', Validators.required)
   });
 
-  titleInputConfig: FieldConfig = {name: FormControlNames.TITLE_FORM_CONTROL, type: FormFieldTypes.INPUT};
-  clientSelectConfig: FieldConfig = {name: FormControlNames.ID_CLIENT_FORM_CONTROL, type: FormFieldTypes.SELECT};
+  titleInputConfig: FieldConfig = {
+    inputType: 'text', label: 'Stranka',
+    name: FormControlNames.TITLE_FORM_CONTROL, type: FormFieldTypes.INPUT
+  };
+  clientSelectConfig: FieldConfig = {
+    inputType: FormFieldTypes.INPUT,
+    label: 'Stranka',
+    name: FormControlNames.ID_CLIENT_FORM_CONTROL,
+    type: FormFieldTypes.SELECT
+  };
 
   constructor(private clientService: ClientService, private caseService: CaseService,
               private snackBar: MatSnackBar, private lawsuitService: LawsuitService) {

@@ -2,9 +2,9 @@
   <app-heading [header]="heading"></app-heading>
 
   <div class="form-div">
-    <app-form-input label="Ime i prezime" [config]="fullNameInputConfig" [group]="addClientForm"></app-form-input>
-    <app-form-input label="Email" [config]="telephoneInputConfig" [group]="addClientForm"></app-form-input>
-    <app-form-input label="Kontakt telefon" [config]="emailInputConfig" [group]="addClientForm"></app-form-input>
+    <app-form-input [config]="fullNameInputConfig" [group]="addClientForm"></app-form-input>
+    <app-form-input icon="phone" [config]="telephoneInputConfig" [group]="addClientForm"></app-form-input>
+    <app-form-input icon="alternate_email" [config]="emailInputConfig" [group]="addClientForm"></app-form-input>
     <div>
       <button mat-button class="gradient-blue-btn save-btn" (click)="save()" [disabled]="!addClientForm.valid"
               mat-dialog-close>Sačuvaj
