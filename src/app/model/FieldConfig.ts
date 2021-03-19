@@ -1,7 +1,7 @@
 export interface FieldConfig {
   disabled?: boolean;
   label: string;
-  type: string;
+  type?: string;
   name: string;
   options?: any[];
   placeholder?: string;

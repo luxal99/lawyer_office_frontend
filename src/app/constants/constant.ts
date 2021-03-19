@@ -3,7 +3,6 @@ export const USERNAME_LS = 'username';
 export const SNACKBAR_ERR_MESSAGE = 'Dogodila se greška';
 export const NOT_VALID_CREDENTIALS_MESSAGE = 'Uneti podaci nisu validni';
 export const VALID_REGISTRATION_MESSAGE = 'Uspesno ste se registrovali';
-export const VALID_SNACKBAR_MESSAGE = 'Uspešno!';
 export const SNACKBAR_BUTTON_TEXT = 'DONE';
 export const REGISTER_SLASH_ROUTE_ = '/register';
 export const REGISTER_ROUTE = 'register';

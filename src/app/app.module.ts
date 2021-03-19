@@ -41,6 +41,7 @@ import {SearchClientPipe} from './pipe/search-client.pipe';
 import {SearchCasePipe} from './pipe/search-case.pipe';
 import {FormInputComponent} from './components/form-components/form-input/form-input.component';
 import {FormSelectComponent} from './components/form-components/form-select/form-select.component';
+import { FormDateComponent } from './components/form-components/form-date/form-date.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import {FormSelectComponent} from './components/form-components/form-select/form
     SearchClientPipe,
     SearchCasePipe,
     FormInputComponent,
-    FormSelectComponent
+    FormSelectComponent,
+    FormDateComponent
   ],
   imports: [
     BrowserModule,

@@ -13,11 +13,11 @@ import {LawsuitService} from 'src/app/service/lawsuit.service';
 import {formatDate} from '@angular/common';
 import {
   DATE_FORMAT,
-  DATE_LOCALE, FormControlNames,
+  DATE_LOCALE, FormControlNames, FormFieldTypes,
   SNACKBAR_BUTTON_TEXT,
-  SNACKBAR_ERR_MESSAGE,
-  VALID_SNACKBAR_MESSAGE
+  SNACKBAR_ERR_MESSAGE, SnackBarMessages
 } from '../../../../constants/constant';
+import {FieldConfig} from '../../../../model/FieldConfig';
 
 
 @Component({
@@ -26,8 +26,6 @@ import {
   styleUrls: ['./edit-case-dialog.component.css']
 })
 export class EditCaseDialogComponent implements OnInit {
-
-  selectedClient = {};
 
   @ViewChild('editor', {static: false}) editorComponent: CKEditorComponent;
   public Editor = ClassicEditor;
@@ -41,13 +39,30 @@ export class EditCaseDialogComponent implements OnInit {
 
   addCaseForm = new FormGroup({
     title: new FormControl(this.data.title, Validators.required),
-    creation_date: new FormControl(this.data.creationDate, Validators.required),
-    id_client: new FormControl('', Validators.required)
+    creationDate: new FormControl(this.data.creationDate, Validators.required),
+    idClient: new FormControl(this.data.idClient.id, Validators.required)
   });
 
   lawsuitForm = new FormGroup({
     date: new FormControl('', Validators.required)
   });
+
+  titleInputConfig: FieldConfig = {
+    inputType: 'text', label: 'Naziv predmeta',
+    name: FormControlNames.TITLE_FORM_CONTROL, type: FormFieldTypes.INPUT
+  };
+  clientSelectConfig: FieldConfig = {
+    inputType: FormFieldTypes.INPUT,
+    label: 'Stranka',
+    value: this.data.idClient.id,
+    name: FormControlNames.ID_CLIENT_FORM_CONTROL,
+    type: FormFieldTypes.SELECT
+  };
+
+  creationDateConfig: FieldConfig = {
+    label: 'Datum početka'
+  };
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Case, private clientService: ClientService,
               private caseService: CaseService, private lawsuitService: LawsuitService, private snackBar: MatSnackBar) {
@@ -56,16 +71,13 @@ export class EditCaseDialogComponent implements OnInit {
 
   ngOnInit() {
     this.getAllClients();
-    this.setSelectedClient();
-  }
-
-  setSelectedClient() {
-    this.selectedClient = this.data.idClient.id;
+    console.log(this.data);
   }
 
   getAllClients() {
     this.clientService.getAll().subscribe((resp) => {
       this.listOfClients = resp;
+      this.clientSelectConfig.options = resp;
     });
   }
 
@@ -78,50 +90,31 @@ export class EditCaseDialogComponent implements OnInit {
     }
   }
 
-  async updateCase() {
+  update() {
     const caseEntity: Case = {
       note: this.editorComponent.editorInstance.getData(),
       id: this.data.id,
-      creationDate: this.addCaseForm.get(FormControlNames.DATE_FORM_CONTROL).value,
-      creationDateFormatted: formatDate(this.addCaseForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE)
+      creationDate: this.addCaseForm.get(FormControlNames.CREATION_DATE_FORM_CONTROL).value,
+      creationDateFormatted: formatDate(this.addCaseForm.get(FormControlNames.CREATION_DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE)
     };
-    await this.caseService.update(caseEntity).subscribe(() => {
-    }, err => {
+    this.caseService.update(caseEntity).subscribe(() => {
+      this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
+    }, () => {
+      this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
     });
-    return caseEntity;
-  }
 
-  async saveLawsuit(idCase) {
-    setTimeout(() => {
+    if (this.lawsuitForm.valid) {
       const lawsuit: Lawsuit = {
         date: this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value,
         note: this.lawsuitEditorComponent.editorInstance.getData(),
         dateFormatted: formatDate(this.lawsuitForm.get(FormControlNames.DATE_FORM_CONTROL).value, DATE_FORMAT, DATE_LOCALE),
-        idCase
+        idCase: this.data
       };
-
       lawsuit.date.setHours(7);
-
-      this.lawsuitService.save(lawsuit).subscribe(resp => {
-        this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+      this.lawsuitService.save(lawsuit).subscribe(() => {
+        this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
       }, err => {
         this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
-      });
-    }, 100);
-  }
-
-  update() {
-    if (document.getElementById('lawsuit').style.display === 'none') {
-      this.updateCase().then(() => {
-        this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
-      }, err => {
-        console.log(err);
-        this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
-      });
-    } else {
-
-      this.updateCase().then((resp) => {
-        this.saveLawsuit(resp);
       });
     }
   }

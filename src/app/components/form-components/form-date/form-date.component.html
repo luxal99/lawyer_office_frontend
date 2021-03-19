@@ -1,0 +1,8 @@
+<div [formGroup]="group">
+  <mat-form-field appearance="fill">
+    <mat-label>Datum početka slučaja</mat-label>
+    <input matInput [formControlName]="config.name" [matDatepicker]="lawsuit_picker">
+    <mat-datepicker-toggle matSuffix [for]="lawsuit_picker"></mat-datepicker-toggle>
+    <mat-datepicker #lawsuit_picker></mat-datepicker>
+  </mat-form-field>
+</div>

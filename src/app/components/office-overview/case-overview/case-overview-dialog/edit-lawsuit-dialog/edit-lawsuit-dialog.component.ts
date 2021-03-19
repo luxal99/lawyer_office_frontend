@@ -13,8 +13,7 @@ import {
   DATE_LOCALE,
   FormControlNames,
   SNACKBAR_BUTTON_TEXT,
-  SNACKBAR_ERR_MESSAGE,
-  VALID_SNACKBAR_MESSAGE
+  SNACKBAR_ERR_MESSAGE, SnackBarMessages
 } from '../../../../../constants/constant';
 
 @Component({
@@ -47,15 +46,15 @@ export class EditLawsuitDialogComponent implements OnInit {
     lawsuit.date.setHours(7);
 
     this.lawsuitService.save(lawsuit).subscribe(resp => {
-      this.openSnackBar(VALID_SNACKBAR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+      this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
     }, err => {
-      this.openSnackBar(SNACKBAR_ERR_MESSAGE, SNACKBAR_BUTTON_TEXT);
+      this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
     });
 
     this.lawsuitService.update(lawsuit).subscribe(resp => {
-      this.openSnackBar('Uspešno ažurirano ročište', 'DONE');
+      this.openSnackBar(SnackBarMessages.SUCCESSFULLY, SNACKBAR_BUTTON_TEXT);
     }, err => {
-      this.openSnackBar('Dogodila se greška pri ažuriranju', 'PONOVI');
+      this.openSnackBar(SnackBarMessages.ERROR, SNACKBAR_BUTTON_TEXT);
     });
 
   }
